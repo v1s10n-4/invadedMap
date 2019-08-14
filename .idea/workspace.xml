@@ -2,67 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54ba728b-041d-4b78-87b9-fef2ac897974" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/$CACHE_FILE$" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/invadedMap.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gulpfile.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/polymer.json" beforeDir="false" afterPath="$PROJECT_DIR$/polymer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/push-manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.gcloudignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/app.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/counter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/shop.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/button-shared-styles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/counter-element.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/my-app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/my-icons.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/my-view1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/my-view2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/my-view3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/my-view404.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/page-view-element.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared-styles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shop-cart.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shop-item.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shop-products.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/snack-bar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/counter.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/shop.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sw-precache-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/sw-precache-config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/router.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/screenshots-baseline/narrow/batmanNotAView.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/screenshots-baseline/narrow/index.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/screenshots-baseline/narrow/view1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/screenshots-baseline/narrow/view2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/screenshots-baseline/narrow/view3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/screenshots-baseline/regenerate.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/screenshots-baseline/wide/batmanNotAView.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/screenshots-baseline/wide/index.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/screenshots-baseline/wide/view1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/screenshots-baseline/wide/view2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/screenshots-baseline/wide/view3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/integration/visual.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit/counter-element.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/unit/views-a11y.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wct.conf.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -92,6 +32,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
   </component>
   <component name="RunDashboard">
@@ -116,7 +57,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1565795373317</updated>
-      <workItem from="1565795375081" duration="630000" />
+      <workItem from="1565795375081" duration="2422000" />
     </task>
     <servers />
   </component>
