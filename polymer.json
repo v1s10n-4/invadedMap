@@ -13,7 +13,6 @@
   ],
   "extraDependencies": [
     "manifest.json",
-    "invader.svg",
     "bower_components/webcomponentsjs/*.js"
   ],
   "lint": {

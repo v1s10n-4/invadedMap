@@ -10,102 +10,87 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="generator" content="Polymer Starter Kit">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+	<head>
+		<meta charset="utf-8">
+		<meta content="Polymer Starter Kit" name="generator">
+		<meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no" name="viewport">
 
-    <title>Invaded Map</title>
-    <meta name="description" content="Invaded Map description">
+		<title>Invaded Map</title>
+		<meta content="Invaded Map description" name="description">
 
-    <!--
-      The `<base>` tag below is present to support two advanced deployment options:
-      1) Differential serving. 2) Serving from a non-root path.
+		<base href="/">
+		<link href="images/favicon.ico" rel="icon">
+		<link href="manifest.json" rel="manifest">
+		<meta content="#4285f4" name="theme-color">
 
-      Instead of manually editing the `<base>` tag yourself, you should generally either:
-      a) Add a `basePath` property to the build configuration in your `polymer.json`.
-      b) Use the `--base-path` command-line option for `polymer build`.
+		<meta content="yes" name="mobile-web-app-capable">
+		<meta content="Invaded Map" name="application-name">
 
-      Note: If you intend to serve from a non-root path, see [polymer-root-path] below.
-    -->
-    <base href="/">
+		<!-- Add to homescreen for Safari on iOS -->
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+		<meta content="Invaded Map" name="apple-mobile-web-app-title">
 
-    <link rel="icon" href="images/favicon.ico">
+		<!-- Homescreen icons -->
+		<link rel="apple-touch-icon" sizes="57x57" href="images/manifest/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="images/manifest/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="images/manifest/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="images/manifest/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="images/manifest/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="images/manifest/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="images/manifest/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="images/manifest/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="images/manifest/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="images/manifest/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="images/manifest/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="images/manifest/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="images/manifest/favicon-16x16.png">
 
-    <!-- See https://goo.gl/OOhYW5 -->
-    <link rel="manifest" href="manifest.json">
+		<!-- PWA splash screens -->
+		<link href="images/splashscreens/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+		<link href="images/splashscreens/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+		<link href="images/splashscreens/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+		<link href="images/splashscreens/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+		<link href="images/splashscreens/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+		<link href="images/splashscreens/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+		<link href="images/splashscreens/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+		<link href="images/splashscreens/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+		<link href="images/splashscreens/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+		<link href="images/splashscreens/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
 
-    <!-- See https://goo.gl/qRE0vM -->
-    <meta name="theme-color" content="#3f51b5">
+		<!-- Tile icon for Windows 8 (144x144 + tile color) -->
+		<meta content="images/manifest/icon-144x144.png" name="msapplication-TileImage">
+		<meta content="#4285f4" name="msapplication-TileColor">
+		<meta content="no" name="msapplication-tap-highlight">
 
-    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Invaded Map">
+		<script>
+			window.Polymer = {rootPath: '/'};
+			if ('serviceWorker' in navigator) {
+				window.addEventListener('load', function () {
+					navigator.serviceWorker.register('service-worker.js', {
+						scope: Polymer.rootPath,
+					});
+				});
+			}
+		</script>
 
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Invaded Map">
 
-    <!-- Homescreen icons -->
-    <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/manifest/icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="96x96" href="images/manifest/icon-96x96.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="images/manifest/icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="images/manifest/icon-192x192.png">
+		<script src="https://cdn.polyfill.io/v2/polyfill.js?features=fetch" async></script>
+		<script src="bower_components/webcomponentsjs/webcomponents-loader.js" async></script>
+		<link href="src/my-app.html" rel="import" async>
 
-    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#3f51b5">
-    <meta name="msapplication-tap-highlight" content="no">
-
-    <script>
-      /**
-      * [polymer-root-path]
-      *
-      * By default, we set `Polymer.rootPath` to the server root path (`/`).
-      * Leave this line unchanged if you intend to serve your app from the root
-      * path (e.g., with URLs like `my.domain/` and `my.domain/view1`).
-      *
-      * If you intend to serve your app from a non-root path (e.g., with URLs
-      * like `my.domain/my-app/` and `my.domain/my-app/view1`), edit this line
-      * to indicate the path from which you'll be serving, including leading
-      * and trailing slashes (e.g., `/my-app/`).
-      */
-      window.Polymer = {rootPath: '/'};
-
-      // Load and register pre-caching Service Worker
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('service-worker.js', {
-            scope: Polymer.rootPath,
-          });
-        });
-      }
-    </script>
-
-    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
-	  <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
-
-    <!-- Load your application shell -->
-    <link rel="import" href="src/my-app.html">
-
-    <!-- Add any global styles for body, document, etc. -->
-    <style>
-      body {
-        margin: 0;
-        font-family: 'Roboto', 'Noto', sans-serif;
-        line-height: 1.5;
-        min-height: 100vh;
-        background-color: #eeeeee;
-      }
-    </style>
-  </head>
-  <body>
-    <my-app></my-app>
-    <noscript>
-      Please enable JavaScript to view this website.
-    </noscript>
-    <!-- Built with love using Polymer Starter Kit -->
-  </body>
+		<style>
+			body {
+				margin: 0;
+				font-family: 'Roboto', 'Noto', sans-serif;
+				line-height: 1.5;
+				min-height: 100vh;
+				background-color: #4285f4;
+			}
+		</style>
+	</head>
+	<body>
+		<my-app></my-app>
+		<noscript>Please enable JavaScript to view this website.</noscript>
+	</body>
 </html>

@@ -37,7 +37,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			<template as="invader" is="dom-repeat" items="{{invaders}}">
 				<google-map-marker latitude="[[invader.latitude]]"
 								   longitude="[[invader.longitude]]"
-								   icon="[[computeIcon(invader)]]"
+								   icon="[[resolveUrl('../images/invader.svg')]]"
 								   animation="DROP"
 								   on-marker-changed="_clusterMarker"
 								   slot="markers">
@@ -76,10 +76,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			_clusterMarker(e) {
 				this.push('markers', e.detail.value);
-			}
-
-			computeIcon(e) {
-				return this.resolveUrl('../invader.svg');
 			}
 		}
 
