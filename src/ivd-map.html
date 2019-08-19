@@ -1,0 +1,88 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link href="../bower_components/polymer/polymer-element.html" rel="import">
+<!--<link href="../bower_components/polymer/lib/elements/dom-repeat.html" rel="import">-->
+<!--<link href="../bower_components/polymer/lib/elements/dom-if.html" rel="import">-->
+<link href="../bower_components/google-map/google-map.html" rel="import">
+<link href="../bower_components/google-map/google-map-marker.html" rel="import">
+<link href="../bower_components/google-map-markerclusterer/google-map-markerclusterer.html" rel="import">
+<link href="shared-styles.html" rel="import">
+
+<dom-module id="ivd-map">
+	<template>
+		<style include="shared-styles">
+			:host {
+				display: block;
+				margin: 0;
+				height: calc(100vh - 64px);
+			}
+		</style>
+		<google-map-markerclusterer map="[[map]]" markers="[[markers]]"
+									minimum-cluster-size="4"></google-map-markerclusterer>
+		<google-map id="map"
+					api-key="AIzaSyCWXoAx0CvojqwW_3mzkccc0wfbUXgXW4k"
+					debug
+					fit-to-markers
+					latitude="48.861071"
+					longitude="2.350494"
+					map="{{map}}">
+			<template as="invader" is="dom-repeat" items="{{invaders}}">
+				<google-map-marker latitude="[[invader.latitude]]"
+								   longitude="[[invader.longitude]]"
+								   icon="[[computeIcon(invader)]]"
+								   animation="DROP"
+								   on-marker-changed="_clusterMarker"
+								   slot="markers">
+					<img alt="[[invader.name]]" src="[[invader.url]]"/>
+					<p>[[invader.name]]</p>
+					<p>[[invader.address]]</p>
+				</google-map-marker>
+			</template>
+		</google-map>
+	</template>
+
+	<script>
+		class IVDMap extends Polymer.Element {
+			static get is() {
+				return 'ivd-map';
+			}
+
+			static get properties() {
+				return {
+					invaders: {
+						type: Array,
+						value: [],
+						notify: true
+					},
+					markers: {
+						type: Array,
+						value: [],
+						notify: true
+					}
+				};
+			}
+
+			connectedCallback() {
+				super.connectedCallback();
+			}
+
+			_clusterMarker(e) {
+				this.push('markers', e.detail.value);
+			}
+
+			computeIcon(e) {
+				return this.resolveUrl('../invader.svg');
+			}
+		}
+
+		window.customElements.define(IVDMap.is, IVDMap);
+	</script>
+</dom-module>

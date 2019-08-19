@@ -3,23 +3,30 @@
   "license": "BSD-3-Clause",
   "dependencies": {
     "bower": "1.8.8",
+    "polymer-cli": "1.6.0",
+    "prpl-server": "1.4.0",
+    "compression": "^1.7.2",
+    "cors": "2.8.1",
+    "express": "4.15.2",
+    "express-https-redirect": "^1.0.0",
+    "morgan": "1.8.1"
+  },
+  "devDependencies": {
     "browser-sync": "^2.26.7",
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.7.0",
-    "eslint-plugin-html": "^2.0.0",
-    "polymer-cli": "1.6.0",
-    "prpl-server": "1.4.0"
+    "eslint-plugin-html": "^2.0.0"
   },
   "scripts": {
-    "start": "npm run dev",
-    "postinstall": "bower update && npm run build",
+    "start": "npm run prpl",
+    "postinstall": "bower update",
     "build": "polymer build -v",
-    "dev": "polymer serve --open-path ./ | npm run watch",
-    "prpl": "prpl-server --config polymer.json --port 5002 --root build",
+    "dev": "polymer serve --open-path --port 3002 ./ | npm run watch",
+    "prpl": "prpl-server --config polymer.json --port $PORT --root build",
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
-    "test:integration": "polymer build # test that psk builds without error with the CLI",
-    "watch": "browser-sync start --no-ui -w --proxy localhost:8081 --files \"src/**/*.*, index.html, *.js\""
+    "test:integration": "polymer build",
+    "watch": "browser-sync start --no-ui -w --port 4242 --proxy localhost:3002 --files \"src/**/*.*, index.html, *.js\""
   }
 }

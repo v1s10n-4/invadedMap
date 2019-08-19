@@ -2,16 +2,18 @@
   "entrypoint": "index.html",
   "shell": "src/my-app.html",
   "fragments": [
-    "src/my-view1.html",
+    "src/ivd-map.html",
     "src/my-view404.html"
   ],
   "sources": [
     "src/**/*",
     "images/**/*",
+    "locations.json",
     "bower.json"
   ],
   "extraDependencies": [
     "manifest.json",
+    "invader.svg",
     "bower_components/webcomponentsjs/*.js"
   ],
   "lint": {

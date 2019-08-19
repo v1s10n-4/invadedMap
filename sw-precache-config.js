@@ -11,10 +11,13 @@
 /* eslint-env node */
 
 module.exports = {
-  staticFileGlobs: [
-    'index.html',
-    'manifest.json',
-    'bower_components/webcomponentsjs/*',
-  ],
-  navigateFallback: 'index.html',
+	staticFileGlobs: [
+		'index.html',
+		'locations.json',
+		'manifest.json',
+		'bower_components/webcomponentsjs/*',
+		'bower_components/google-map/*',
+		'bower_components/google-map-markerclusterer/*',
+	],
+	navigateFallback: 'index.html',
 };
