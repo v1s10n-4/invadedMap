@@ -16,7 +16,10 @@
     "polymer": "Polymer/polymer#^2.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
     "google-map": "2.0.5",
-    "google-map-markerclusterer": "XavierEr/google-map-markerclusterer#polymer-2"
+    "google-map-markerclusterer": "XavierEr/google-map-markerclusterer#polymer-2",
+    "bottom-sheet": "advanced-rest-client/bottom-sheet#2.0.2",
+    "paper-item": "PolymerElements/paper-item#2.1.0",
+    "iron-image": "PolymerElements/iron-image#^2.0.0"
   },
   "resolutions": {
     "polymer": "2.0.0"
