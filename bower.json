@@ -19,10 +19,13 @@
     "google-map-markerclusterer": "XavierEr/google-map-markerclusterer#polymer-2",
     "bottom-sheet": "advanced-rest-client/bottom-sheet#2.0.2",
     "paper-item": "PolymerElements/paper-item#2.1.0",
-    "iron-image": "PolymerElements/iron-image#^2.0.0"
+    "iron-image": "PolymerElements/iron-image#^2.0.0",
+    "geo-location": "ebidel/geo-location#2.0.2",
+    "skeleton-carousel": "FabricElements/skeleton-carousel#2.0.7"
   },
   "resolutions": {
-    "polymer": "2.0.0"
+    "polymer": "2.0.0",
+    "skeleton-carousel": "2.0.7"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0"

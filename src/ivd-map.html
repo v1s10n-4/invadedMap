@@ -9,8 +9,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link href="../bower_components/polymer/polymer-element.html" rel="import">
-<!--<link href="../bower_components/polymer/lib/elements/dom-repeat.html" rel="import">-->
-<!--<link href="../bower_components/polymer/lib/elements/dom-if.html" rel="import">-->
 <link href="../bower_components/google-map/google-map.html" rel="import">
 <link href="../bower_components/google-map/google-map-marker.html" rel="import">
 <link href="../bower_components/google-map-markerclusterer/google-map-markerclusterer.html" rel="import">
@@ -18,6 +16,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link href="../bower_components/paper-item/paper-item.html" rel="import">
 <link href="../bower_components/iron-icon/iron-icon.html" rel="import">
 <link href="../bower_components/iron-image/iron-image.html" rel="import">
+<link href="../bower_components/geo-location/geo-location.html" rel="import">
+<link href="../bower_components/skeleton-carousel/skeleton-carousel.html" rel="import">
 <link href="shared-styles.html" rel="import">
 
 <dom-module id="ivd-map">
@@ -28,12 +28,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				margin: 0;
 				height: calc(100vh - 64px);
 			}
-			:host[narrow] {
-				--bottom-sheet-max-width: 50%
+			:host[mobile] {
+				--bottom-sheet-max-height: 60%;
+				--bottom-sheet-max-width: 50%;
+			}
+			iron-image {
+				--iron-image-width: 300px;
+				--iron-image-height: 300px;
+			}
+			cosmoz-image-viewer {
+
 			}
 		</style>
 		<google-map-markerclusterer map="[[map]]" markers="[[markers]]"
 									minimum-cluster-size="4"></google-map-markerclusterer>
+		<geo-location watch-pos high-accuracy latitude="{{latitude}}" longitude="{{longitude}}"></geo-location>
 		<google-map api-key="AIzaSyCWXoAx0CvojqwW_3mzkccc0wfbUXgXW4k"
 					debug
 					fit-to-markers
@@ -41,6 +50,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					latitude="48.861071"
 					longitude="2.350494"
 					map="{{map}}">
+			<google-map-marker animation="DROP"
+							   icon="[[resolveUrl('../images/userPosition.svg')]]"
+							   latitude="[[latitude]]"
+							   longitude="[[longitude]]"></google-map-marker>
 			<template as="invader" is="dom-repeat" items="{{invaders}}">
 				<google-map-marker animation="DROP"
 								   icon="[[resolveUrl('../images/invader.svg')]]"
@@ -52,16 +65,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 								   slot="markers">
 				</google-map-marker>
 			</template>
-		</google-map>
 		<bottom-sheet id="sheet" class="center-bottom" label="[[currentInvader.name]]">
-			<iron-image src="[[currentInvader.url]]"></iron-image>
-			<paper-item>
-				[[currentInvader.address]]
-			</paper-item>
-			<paper-item>
-				lat:[[currentInvader.latitude]] - lon:[[currentInvader.longitude]]
-			</paper-item>
+			<skeleton-carousel dots="[[!mobile]]" nav="[[!mobile]]" loop auto direction="[[getDirection(mobile)]]">
+				<template as="photoUrl" is="dom-repeat" items="[[currentInvader.url]]">
+					<iron-image placeholder="[[resolveUrl('../images/icons/icon-192x192.png')]]"
+								src="[[photoUrl]]"
+								data-src="[[photoUrl]]"
+								sizing="cover"
+								preload
+								fade>
+					</iron-image>
+				</template>
+			</skeleton-carousel>
+			<paper-item>[[currentInvader.address]]</paper-item>
+			<paper-item>lat:[[currentInvader.latitude]] - lon:[[currentInvader.longitude]]</paper-item>
 		</bottom-sheet>
+		</google-map>
 	</template>
 
 	<script>
@@ -82,7 +101,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 						value: [],
 						notify: true
 					},
-					narrow: Boolean,
+					mobile: Boolean,
 					currentInvader: Object,
 					map: Object
 				};
@@ -98,13 +117,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			_markerClicked(e) {
 				console.log(e);
-				if (!this.$.sheet.opened)
+				if (!this.$.sheet.opened) {
 					this.$.sheet.open();
-				else {
+				} else {
 					e.stopPropagation();
 					e.preventDefault();
 				}
 				this.set('currentInvader', e.model.__data.invader);
+			}
+
+			getDirection(mobile) {
+				return mobile ? 'vertical' : 'horizontal';
 			}
 		}
 
