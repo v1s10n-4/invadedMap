@@ -49,7 +49,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					id="map"
 					latitude="48.861071"
 					longitude="2.350494"
-					map="{{map}}">
+					map="{{map}}"
+					click-events
+					drag-events
+					on-google-map-ready="_fetchData"
+					on-google-map-dragstart="_closeSheet"
+					on-google-map-click="_closeSheet">
 			<google-map-marker animation="DROP"
 							   icon="[[resolveUrl('../images/userPosition.svg')]]"
 							   latitude="[[latitude]]"
@@ -65,12 +70,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 								   slot="markers">
 				</google-map-marker>
 			</template>
-		<bottom-sheet id="sheet" class="center-bottom" label="[[currentInvader.name]]">
+		<bottom-sheet id="sheet" class="center-bottom" label="[[currentInvader.name]]" no-cancel-on-outside-click>
 			<skeleton-carousel dots="[[!mobile]]" nav="[[!mobile]]" loop auto direction="[[getDirection(mobile)]]">
 				<template as="photoUrl" is="dom-repeat" items="[[currentInvader.url]]">
 					<iron-image placeholder="[[resolveUrl('../images/icons/icon-192x192.png')]]"
-								src="[[photoUrl]]"
-								data-src="[[photoUrl]]"
+								src="[[getUrl(photoUrl)]]"
+								data-src="[[getUrl(photoUrl)]]"
 								sizing="cover"
 								preload
 								fade>
@@ -111,23 +116,41 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				super.connectedCallback();
 			}
 
+			_fetchData() {
+				fetch('locations.json').then(x => x.json().then(res => {
+					res.forEach(x => {
+						x.latitude = Number(x.latitude);
+						x.longitude = Number(x.longitude);
+						this.push('invaders', x);
+					});
+				})).catch(x => x.json().then(res => console.log(res)))
+			}
+
 			_clusterMarker(e) {
 				this.push('markers', e.detail.value);
 			}
 
 			_markerClicked(e) {
 				console.log(e);
+				this.set('currentInvader', e.model.__data.invader);
 				if (!this.$.sheet.opened) {
 					this.$.sheet.open();
 				} else {
 					e.stopPropagation();
 					e.preventDefault();
 				}
-				this.set('currentInvader', e.model.__data.invader);
 			}
 
 			getDirection(mobile) {
 				return mobile ? 'vertical' : 'horizontal';
+			}
+
+			getUrl(name) {
+				return this.resolveUrl(`/images/invaders/${name}`);
+			}
+
+			_closeSheet(e) {
+				this.$.sheet.close();
 			}
 		}
 

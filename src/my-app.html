@@ -138,17 +138,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			connectedCallback() {
 				super.connectedCallback();
-				this._fetchData();
-			}
-
-			_fetchData() {
-				fetch('locations.json').then(x => x.json().then(res => {
-					res.forEach(x => {
-						x.latitude = Number(x.latitude);
-						x.longitude = Number(x.longitude);
-						this.push('invaders', x);
-					});
-				})).catch(x => x.json().then(res => console.log(res)))
 			}
 
 			_routePageChanged(page) {

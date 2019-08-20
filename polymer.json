@@ -8,6 +8,8 @@
   "sources": [
     "src/**/*",
     "images/**/*",
+    "!images/invaders/*",
+    "!images/invaders/",
     "locations.json",
     "bower.json"
   ],
