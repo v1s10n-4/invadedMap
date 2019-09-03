@@ -39,6 +39,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			cosmoz-image-viewer {
 
 			}
+
+			google-map {
+				width: 100%;
+				position: fixed;
+			}
+
+			@media (min-width: 640px) {
+				google-map {
+					width: calc(100% - 256px);
+				}
+			}
 		</style>
 		<google-map-markerclusterer map="[[map]]" markers="[[markers]]"
 									minimum-cluster-size="4"></google-map-markerclusterer>
@@ -54,14 +65,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					drag-events
 					on-google-map-ready="_fetchData"
 					on-google-map-dragstart="_closeSheet"
-					on-google-map-click="_closeSheet">
+					on-google-map-click="_closeSheet"
+					style$="height: [[height]]px">
 			<google-map-marker animation="DROP"
 							   icon="[[resolveUrl('../images/userPosition.svg')]]"
 							   latitude="[[latitude]]"
 							   longitude="[[longitude]]"></google-map-marker>
 			<template as="invader" is="dom-repeat" items="{{invaders}}">
 				<google-map-marker animation="DROP"
-								   icon="[[resolveUrl('../images/invader.svg')]]"
+								   icon="[[resolveUrl('../images/marker.png')]]"
 								   latitude="[[invader.latitude]]"
 								   longitude="[[invader.longitude]]"
 								   click-events
@@ -117,6 +129,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			_fetchData() {
+				this.getMapStyles();
+				this.height = window.innerHeight - 64;
 				fetch('locations.json').then(x => x.json().then(res => {
 					res.forEach(x => {
 						x.latitude = Number(x.latitude);
@@ -151,6 +165,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			_closeSheet(e) {
 				this.$.sheet.close();
+			}
+
+			getMapStyles() {
+				let hours = new Date()
+					.getHours();
+				const isDayTime = hours > 7 && hours < 19;
+				fetch(this.resolveUrl('../mapStyles.json'))
+					.then(e => e.json()
+						.then(e => {
+							console.log(e);
+							this.height = window.innerHeight - 64;
+							if (this.$.map && this.$.map.map) {
+								this.$.map.map.setOptions({
+									styles: isDayTime ? e.day : e.night
+								});
+							} else {
+								this.set('mapStyles', isDayTime ? e.day : e.night);
+							}
+						}))
+					.catch(error => {
+						console.warn(error);
+					});
 			}
 		}
 
