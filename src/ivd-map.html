@@ -51,7 +51,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				}
 			}
 		</style>
-		<google-map-markerclusterer map="[[map]]" markers="[[markers]]"
+		<google-map-markerclusterer map="[[map]]" markers="[[markers]]" styles="[[clusterStyles]]"
 									minimum-cluster-size="4"></google-map-markerclusterer>
 		<geo-location watch-pos high-accuracy latitude="{{latitude}}" longitude="{{longitude}}"></geo-location>
 		<google-map api-key="AIzaSyCWXoAx0CvojqwW_3mzkccc0wfbUXgXW4k"
@@ -68,12 +68,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					on-google-map-click="_closeSheet"
 					style$="height: [[height]]px">
 			<google-map-marker animation="DROP"
-							   icon="[[resolveUrl('../images/userPosition.svg')]]"
+							   icon="[[resolveUrl('../images/map/userPosition.png')]]"
 							   latitude="[[latitude]]"
-							   longitude="[[longitude]]"></google-map-marker>
+							   longitude="[[longitude]]"
+							   on-google-map-marker-click="_userMarkerClicked"
+							   click-events
+							   ></google-map-marker>
 			<template as="invader" is="dom-repeat" items="{{invaders}}">
 				<google-map-marker animation="DROP"
-								   icon="[[resolveUrl('../images/marker.png')]]"
+								   icon="[[resolveUrl('../images/map/marker.png')]]"
 								   latitude="[[invader.latitude]]"
 								   longitude="[[invader.longitude]]"
 								   click-events
@@ -126,6 +129,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			connectedCallback() {
 				super.connectedCallback();
+				this.set('clusterStyles', [{
+					url: this.resolveUrl('../images/map/cluster_blue.png'),
+					width: "42px",
+					height: "18px",
+					anchorText: ["-4px", "0px"],
+					textColor: '#0D0D0D',
+					textSize: "10px"
+				}, {
+					url: this.resolveUrl('../images/map/cluster_yellow.png'),
+					width: "62px",
+					height: "27px",
+					anchorText: ["-7px", "0px"],
+					textColor: '#0D0D0D',
+					textSize: "11px"
+				}, {
+					url: this.resolveUrl('../images/map/cluster_red.png'),
+					width: "82px",
+					height: "36px",
+					anchorText: ["-10px", "0px"],
+					textColor: '#0D0D0D',
+					textSize: "12px"
+				}, {
+					url: this.resolveUrl('../images/map/cluster_purple.png'),
+					width: "102px",
+					height: "44px",
+					anchorText: ["-15px", "0px"],
+					textColor: '#0D0D0D',
+					textSize: "15px"
+				}])
 			}
 
 			_fetchData() {
@@ -145,14 +177,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			_markerClicked(e) {
-				console.log(e);
 				this.set('currentInvader', e.model.__data.invader);
+				this.smoothZoom(this.$.map.map, 15, this.$.map.zoom);
+				this.$.map.map.panTo(new google.maps.LatLng(this.currentInvader.latitude, this.currentInvader.longitude));
 				if (!this.$.sheet.opened) {
 					this.$.sheet.open();
 				} else {
 					e.stopPropagation();
 					e.preventDefault();
 				}
+			}
+
+			_userMarkerClicked(e) {
+				this.smoothZoom(this.$.map.map, 14, this.$.map.zoom);
+				this.$.map.map.panTo(new google.maps.LatLng(this.latitude, this.longitude));
 			}
 
 			getDirection(mobile) {
@@ -172,10 +210,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					.getHours();
 				const isDayTime = hours > 7 && hours < 19;
 				fetch(this.resolveUrl('../mapStyles.json'))
-					.then(e => e.json()
-						.then(e => {
-							console.log(e);
-							this.height = window.innerHeight - 64;
+					.then(e => e.json().then(e => {
+							this.set('height', window.innerHeight - 64);
 							if (this.$.map && this.$.map.map) {
 								this.$.map.map.setOptions({
 									styles: isDayTime ? e.day : e.night
@@ -183,12 +219,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 							} else {
 								this.set('mapStyles', isDayTime ? e.day : e.night);
 							}
-						}))
-					.catch(error => {
+					})).catch(error => {
 						console.warn(error);
 					});
 			}
+
+			smoothZoom(map, max, cnt) {
+				if (cnt >= max) return;
+				var z = google.maps.event.addListener(map, 'zoom_changed', () => {
+					google.maps.event.removeListener(z);
+					this.smoothZoom(map, max, cnt + 1);
+				});
+				setTimeout(() => map.setZoom(cnt), 80);
+			}
 		}
+
+
 
 		window.customElements.define(IVDMap.is, IVDMap);
 	</script>
