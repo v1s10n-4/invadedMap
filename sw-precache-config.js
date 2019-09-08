@@ -15,6 +15,7 @@ module.exports = {
 		'index.html',
 		'locations.json',
 		'images/**/*',
+		'!images/invaders/*',
 		'images/*.svg',
 		'manifest.json',
 		'bower_components/webcomponentsjs/*',
@@ -52,15 +53,6 @@ module.exports = {
 		},
 		{
 			urlPattern: /https:\/\/maps.googleapis.com\/maps\/vt?pb=*/g,
-			handler: 'fastest',
-			options: {
-				cache: {
-					name: 'google-map-cache'
-				}
-			}
-		},
-		{
-			urlPattern: /http:\/\/invader.spotter.free.fr\/images\/.*.png/g,
 			handler: 'fastest',
 			options: {
 				cache: {

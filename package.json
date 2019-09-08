@@ -1,5 +1,9 @@
 {
   "name": "polymer-starter-kit",
+  "engines": {
+    "npm": "6.4.1",
+    "node": "10.15.3"
+  },
   "license": "BSD-3-Clause",
   "dependencies": {
     "bower": "1.8.8",

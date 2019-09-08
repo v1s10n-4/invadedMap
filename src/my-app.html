@@ -17,12 +17,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link href="../bower_components/app-layout/app-toolbar/app-toolbar.html" rel="import">
 <link href="../bower_components/app-route/app-location.html" rel="import">
 <link href="../bower_components/app-route/app-route.html" rel="import">
-<link href="../bower_components/iron-pages/iron-pages.html" rel="import">
+<link href="../bower_components/iron-lazy-pages/iron-lazy-pages.html" rel="import">
 <link href="../bower_components/iron-selector/iron-selector.html" rel="import">
 <link href="../bower_components/paper-icon-button/paper-icon-button.html" rel="import">
+<link href="../bower_components/paper-spinner/paper-spinner.html" rel="import">
 <link href="my-icons.html" rel="import">
 
-<link href="ivd-map.html" rel="lazy-import">
+<!--<link href="ivd-map.html" rel="lazy-import">-->
 <link href="my-view404.html" rel="lazy-import">
 
 <dom-module id="my-app">
@@ -64,6 +65,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				color: black;
 				font-weight: bold;
 			}
+
+			paper-spinner {
+				margin: auto;
+				width: 22vw;
+				height: 22vw;
+				--paper-spinner-stroke-width: 20px;
+				--paper-spinner-layer-1-color: var(--paper-purple-500);
+				--paper-spinner-layer-2-color: var(--paper-cyan-500);
+				--paper-spinner-layer-3-color: var(--paper-blue-grey-500);
+				--paper-spinner-layer-4-color: var(--paper-amber-500);
+			}
 		</style>
 
 		<app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
@@ -83,23 +95,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			</app-drawer>
 
 			<!-- Main content -->
-			<app-header-layout has-scrolling-region>
+			<app-header-layout fullbleed>
 
-				<app-header condenses effects="waterfall" reveals slot="header">
+				<app-header fixed slot="header">
 					<app-toolbar>
 						<paper-icon-button drawer-toggle icon="my-icons:menu"></paper-icon-button>
 						<div main-title>Invaded Map</div>
 					</app-toolbar>
 				</app-header>
 
-				<iron-pages
+				<iron-lazy-pages
 						attr-for-selected="name"
 						fallback-selection="view404"
 						role="main"
-						selected="[[page]]">
-					<ivd-map name="map" invaders="{{invaders}}" mobile="{{mobile}}"></ivd-map>
+						selected="[[page]]"
+						loading="{{loading}}"
+						hide-immediately>
+					<ivd-map data-path="ivd-map.html" name="map" invaders="{{invaders}}" mobile="{{mobile}}"></ivd-map>
 					<my-view404 name="view404"></my-view404>
-				</iron-pages>
+				</iron-lazy-pages>
+
+				<template is="dom-if" if="[[loading]]">
+					<paper-spinner active></paper-spinner>
+				</template>
 			</app-header-layout>
 		</app-drawer-layout>
 	</template>
@@ -114,13 +132,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				return {
 					page: {
 						type: String,
-						reflectToAttribute: true,
-						observer: '_pageChanged',
+						reflectToAttribute: true
 					},
 					routeData: Object,
 					subroute: String,
-					// This shouldn't be neccessary, but the Analyzer isn't picking up
-					// Polymer.Element#rootPath
 					rootPath: String,
 					invaders: {
 						type: Array,
@@ -138,17 +153,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			connectedCallback() {
 				super.connectedCallback();
-				this._fetchData();
-			}
-
-			_fetchData() {
-				fetch('locations.json').then(x => x.json().then(res => {
-					res.forEach(x => {
-						x.latitude = Number(x.latitude);
-						x.longitude = Number(x.longitude);
-						this.push('invaders', x);
-					});
-				})).catch(x => x.json().then(res => console.log(res)))
 			}
 
 			_routePageChanged(page) {
@@ -160,16 +164,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				if (!this.$.drawer.persistent) {
 					this.$.drawer.close();
 				}
-			}
-
-			_pageChanged(page) {
-				// Load page import on demand. Show 404 page if fails
-				var resolvedPageUrl = this.resolveUrl('ivd-' + page + '.html');
-				Polymer.importHref(
-					resolvedPageUrl,
-					null,
-					this._showPage404.bind(this),
-					true);
 			}
 
 			_showPage404() {

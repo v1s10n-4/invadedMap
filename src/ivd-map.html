@@ -23,6 +23,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="ivd-map">
 	<template>
 		<style include="shared-styles">
+			body {
+				background-color: #4285f4;
+			}
+
 			:host {
 				display: block;
 				margin: 0;
@@ -32,6 +36,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				--bottom-sheet-max-height: 60%;
 				--bottom-sheet-max-width: 50%;
 			}
+
 			iron-image {
 				--iron-image-width: 300px;
 				--iron-image-height: 300px;
@@ -39,8 +44,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			cosmoz-image-viewer {
 
 			}
+
+			google-map {
+				width: 100%;
+				height: calc(100% - 64px);
+				position: fixed;
+			}
+
+			@media (min-width: 640px) {
+				google-map {
+					width: calc(100% - 256px);
+				}
+			}
 		</style>
-		<google-map-markerclusterer map="[[map]]" markers="[[markers]]"
+		<google-map-markerclusterer map="[[map]]" markers="[[markers]]" styles="[[clusterStyles]]"
 									minimum-cluster-size="4"></google-map-markerclusterer>
 		<geo-location watch-pos high-accuracy latitude="{{latitude}}" longitude="{{longitude}}"></geo-location>
 		<google-map api-key="AIzaSyCWXoAx0CvojqwW_3mzkccc0wfbUXgXW4k"
@@ -49,14 +66,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					id="map"
 					latitude="48.861071"
 					longitude="2.350494"
-					map="{{map}}">
+					map="{{map}}"
+					click-events
+					drag-events
+					on-google-map-ready="_fetchData"
+					on-google-map-dragstart="_closeSheet"
+					on-google-map-click="_closeSheet">
 			<google-map-marker animation="DROP"
-							   icon="[[resolveUrl('../images/userPosition.svg')]]"
+							   icon="[[resolveUrl('../images/map/userPosition.png')]]"
 							   latitude="[[latitude]]"
-							   longitude="[[longitude]]"></google-map-marker>
+							   longitude="[[longitude]]"
+							   on-google-map-marker-click="_userMarkerClicked"
+							   click-events
+							   ></google-map-marker>
 			<template as="invader" is="dom-repeat" items="{{invaders}}">
 				<google-map-marker animation="DROP"
-								   icon="[[resolveUrl('../images/invader.svg')]]"
+								   icon="[[resolveUrl('../images/map/marker.png')]]"
 								   latitude="[[invader.latitude]]"
 								   longitude="[[invader.longitude]]"
 								   click-events
@@ -65,12 +90,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 								   slot="markers">
 				</google-map-marker>
 			</template>
-		<bottom-sheet id="sheet" class="center-bottom" label="[[currentInvader.name]]">
+		<bottom-sheet id="sheet" class="center-bottom" label="[[currentInvader.name]]" no-cancel-on-outside-click>
 			<skeleton-carousel dots="[[!mobile]]" nav="[[!mobile]]" loop auto direction="[[getDirection(mobile)]]">
 				<template as="photoUrl" is="dom-repeat" items="[[currentInvader.url]]">
-					<iron-image placeholder="[[resolveUrl('../images/icons/icon-192x192.png')]]"
-								src="[[photoUrl]]"
-								data-src="[[photoUrl]]"
+					<iron-image placeholder="[[resolveUrl('../images/sliding_invaders.gif')]]"
+								src="[[getUrl(photoUrl)]]"
+								data-src="[[getUrl(photoUrl)]]"
 								sizing="cover"
 								preload
 								fade>
@@ -109,6 +134,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			connectedCallback() {
 				super.connectedCallback();
+				this.set('clusterStyles', [{
+					url: this.resolveUrl('../images/map/cluster_blue.png'),
+					width: "42px",
+					height: "18px",
+					anchorText: ["-4px", "0px"],
+					textColor: '#0D0D0D',
+					textSize: "10px"
+				}, {
+					url: this.resolveUrl('../images/map/cluster_yellow.png'),
+					width: "62px",
+					height: "27px",
+					anchorText: ["-7px", "0px"],
+					textColor: '#0D0D0D',
+					textSize: "11px"
+				}, {
+					url: this.resolveUrl('../images/map/cluster_red.png'),
+					width: "82px",
+					height: "36px",
+					anchorText: ["-10px", "0px"],
+					textColor: '#0D0D0D',
+					textSize: "12px"
+				}, {
+					url: this.resolveUrl('../images/map/cluster_purple.png'),
+					width: "102px",
+					height: "44px",
+					anchorText: ["-15px", "0px"],
+					textColor: '#0D0D0D',
+					textSize: "15px"
+				}]);
+			}
+
+			_fetchData() {
+				this.getMapStyles();
+				this.height = window.innerHeight - 64;
+				fetch('locations.json').then(x => x.json().then(res => {
+					res.forEach(x => {
+						x.latitude = Number(x.latitude);
+						x.longitude = Number(x.longitude);
+						this.push('invaders', x);
+					});
+				})).catch(x => x.json().then(res => console.log(res)))
 			}
 
 			_clusterMarker(e) {
@@ -116,20 +182,63 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			_markerClicked(e) {
-				console.log(e);
+				this.set('currentInvader', e.model.__data.invader);
+				this.smoothZoom(this.$.map.map, 15, this.$.map.zoom);
+				this.$.map.map.panTo(new google.maps.LatLng(this.currentInvader.latitude, this.currentInvader.longitude));
 				if (!this.$.sheet.opened) {
 					this.$.sheet.open();
 				} else {
 					e.stopPropagation();
 					e.preventDefault();
 				}
-				this.set('currentInvader', e.model.__data.invader);
+			}
+
+			_userMarkerClicked(e) {
+				this.smoothZoom(this.$.map.map, 14, this.$.map.zoom);
+				this.$.map.map.panTo(new google.maps.LatLng(this.latitude, this.longitude));
 			}
 
 			getDirection(mobile) {
 				return mobile ? 'vertical' : 'horizontal';
 			}
+
+			getUrl(name) {
+				return this.resolveUrl(`/images/invaders/${name}`);
+			}
+
+			_closeSheet(e) {
+				this.$.sheet.close();
+			}
+
+			getMapStyles() {
+				let hours = new Date()
+					.getHours();
+				const isDayTime = hours > 7 && hours < 19;
+				fetch(this.resolveUrl('../mapStyles.json'))
+					.then(e => e.json().then(e => {
+							if (this.$.map && this.$.map.map) {
+								this.$.map.map.setOptions({
+									styles: isDayTime ? e.day : e.night
+								});
+							} else {
+								this.set('mapStyles', isDayTime ? e.day : e.night);
+							}
+					})).catch(error => {
+						console.warn(error);
+					});
+			}
+
+			smoothZoom(map, max, cnt) {
+				if (cnt >= max) return;
+				var z = google.maps.event.addListener(map, 'zoom_changed', () => {
+					google.maps.event.removeListener(z);
+					this.smoothZoom(map, max, cnt + 1);
+				});
+				setTimeout(() => map.setZoom(cnt), 80);
+			}
 		}
+
+
 
 		window.customElements.define(IVDMap.is, IVDMap);
 	</script>
