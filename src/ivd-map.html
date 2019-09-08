@@ -23,10 +23,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="ivd-map">
 	<template>
 		<style include="shared-styles">
-			body {
-				background-color: #4285f4;
-			}
-
 			:host {
 				display: block;
 				margin: 0;
@@ -59,7 +55,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 		</style>
 		<google-map-markerclusterer map="[[map]]" markers="[[markers]]" styles="[[clusterStyles]]"
 									minimum-cluster-size="4"></google-map-markerclusterer>
-		<geo-location watch-pos high-accuracy latitude="{{latitude}}" longitude="{{longitude}}"></geo-location>
+		<geo-location watch-pos high-accuracy latitude="{{latitude}}" longitude="{{longitude}}" timeout="500"></geo-location>
 		<google-map api-key="AIzaSyCWXoAx0CvojqwW_3mzkccc0wfbUXgXW4k"
 					debug
 					fit-to-markers
