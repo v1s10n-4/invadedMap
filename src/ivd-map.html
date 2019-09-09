@@ -18,11 +18,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link href="../bower_components/iron-image/iron-image.html" rel="import">
 <link href="../bower_components/geo-location/geo-location.html" rel="import">
 <link href="../bower_components/skeleton-carousel/skeleton-carousel.html" rel="import">
+<link href="../bower_components/cosmoz-image-viewer/cosmoz-image-viewer.html" rel="import">
 <link href="shared-styles.html" rel="import">
 
 <dom-module id="ivd-map">
 	<template>
 		<style include="shared-styles">
+			body {
+				background-color: #4285f4;
+			}
+
 			:host {
 				display: block;
 				margin: 0;
@@ -37,9 +42,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				--iron-image-width: 300px;
 				--iron-image-height: 300px;
 			}
-			cosmoz-image-viewer {
-
-			}
 
 			google-map {
 				width: 100%;
@@ -50,6 +52,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			@media (min-width: 640px) {
 				google-map {
 					width: calc(100% - 256px);
+				}
+			}
+
+			cosmoz-image-viewer {
+				--cosmoz-image-viewer-image-zoom: {
+					height: 60%;
+				};
+			}
+
+			#sheet {
+				--bottom-sheet-max-height: calc(100% - 64px);
+				--arc-font-common-base: {
+					overflow: inherit;
+				}
+			}
+
+			@media (max-width: 640px) {
+				#sheet {
+					--arc-font-common-base: {
+						overflow: scroll;
+						height: 75vh;
+					};
+					--bottom-sheet-scrollable: {
+						padding-top: 0;
+					}
 				}
 			}
 		</style>
@@ -87,17 +114,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				</google-map-marker>
 			</template>
 		<bottom-sheet id="sheet" class="center-bottom" label="[[currentInvader.name]]" no-cancel-on-outside-click>
-			<skeleton-carousel dots="[[!mobile]]" nav="[[!mobile]]" loop auto direction="[[getDirection(mobile)]]">
-				<template as="photoUrl" is="dom-repeat" items="[[currentInvader.url]]">
-					<iron-image placeholder="[[resolveUrl('../images/sliding_invaders.gif')]]"
-								src="[[getUrl(photoUrl)]]"
-								data-src="[[getUrl(photoUrl)]]"
-								sizing="cover"
-								preload
-								fade>
-					</iron-image>
-				</template>
-			</skeleton-carousel>
+			<cosmoz-image-viewer direction="[[getDirection(mobile)]]"
+								 show-nav="[[!mobile]]"
+								 show-dots="[[!mobile]]"
+								 show-fullscreen
+								 show-zoom
+								 loop
+								 auto
+								 sizing="cover"
+								 preload
+								 fade
+								 images="[[ImgArray]]"
+								 placeholder="[[resolveUrl('../images/sliding_invaders.webp')]]">
+			</cosmoz-image-viewer>
 			<paper-item>[[currentInvader.address]]</paper-item>
 			<paper-item>lat:[[currentInvader.latitude]] - lon:[[currentInvader.longitude]]</paper-item>
 		</bottom-sheet>
@@ -179,6 +208,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			_markerClicked(e) {
 				this.set('currentInvader', e.model.__data.invader);
+				this.set('ImgArray', this.currentInvader.url.map(url => this.resolveUrl(`/images/invaders/${url}`)));
 				this.smoothZoom(this.$.map.map, 15, this.$.map.zoom);
 				this.$.map.map.panTo(new google.maps.LatLng(this.currentInvader.latitude, this.currentInvader.longitude));
 				if (!this.$.sheet.opened) {
@@ -196,10 +226,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			getDirection(mobile) {
 				return mobile ? 'vertical' : 'horizontal';
-			}
-
-			getUrl(name) {
-				return this.resolveUrl(`/images/invaders/${name}`);
 			}
 
 			_closeSheet(e) {

@@ -1,5 +1,5 @@
 {
-  "name": "polymer-starter-kit",
+  "name": "invaded-map",
   "authors": [
     "The Polymer Authors"
   ],
@@ -22,11 +22,17 @@
     "skeleton-carousel": "FabricElements/skeleton-carousel#2.0.7",
     "paper-item": "PolymerElements/paper-item#2.1.0",
     "iron-image": "PolymerElements/iron-image#^2.0.0",
-    "paper-spinner": "^2.1.0"
+    "paper-spinner": "^2.1.0",
+    "cosmoz-image-viewer": "Neovici/cosmoz-image-viewer#v2.1.4",
+    "img-pan-zoom": "ryanburns23/img-pan-zoom#2.0.0"
   },
   "resolutions": {
-    "polymer": "2.0.0",
-    "skeleton-carousel": "2.0.7"
+    "polymer": "2.2.0",
+    "skeleton-carousel": "2.0.7",
+    "cosmoz-behaviors": "^2.0.1",
+    "cosmoz-moment": "^2.0.0",
+    "cosmoz-i18next": "^2.0.0",
+    "img-pan-zoom": "2.0.0"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0"
