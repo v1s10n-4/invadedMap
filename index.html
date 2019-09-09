@@ -80,9 +80,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 		<link href="src/my-app.html" rel="import" async>
 
 		<style>
+			@font-face {
+				font-family: 'VG5000';
+				src:    url('fonts/VG5000-Regular_web.eot');
+				src:    url('fonts/VG5000-Regular_web.eot?#iefix') format('embedded-opentype'),
+				url('fonts/VG5000-Regular_web.woff') format('woff'),
+				url('fonts/VG5000-Regular_web.woff2') format('woff2'),
+				url('fonts/VG5000-Regular_web.ttf') format('truetype');
+				font-weight: normal;
+				font-style: normal;
+			}
+
 			body {
 				margin: 0;
-				font-family: 'Roboto', 'Noto', sans-serif;
+				font-family: 'VG5000', 'Roboto', 'Noto', sans-serif;
 				line-height: 1.5;
 				min-height: 100vh;
 				max-height: 100vh;

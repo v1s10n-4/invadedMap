@@ -7,15 +7,16 @@
   ],
   "sources": [
     "src/**/*",
-    "images/**/*",
-    "!images/invaders/*",
-    "!images/invaders/",
     "locations.json",
     "mapStyles.json",
     "bower.json"
   ],
   "extraDependencies": [
     "manifest.json",
+    "images/**/*",
+    "!images/invaders/*",
+    "!images/invaders/",
+    "fonts/*",
     "bower_components/webcomponentsjs/*.js"
   ],
   "lint": {
