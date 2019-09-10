@@ -13,6 +13,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link href="../bower_components/paper-item/paper-item-body.html" rel="import">
 <link href="../bower_components/iron-icon/iron-icon.html" rel="import">
 <link href="../bower_components/paper-button/paper-button.html" rel="import">
+<link href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html" rel="import">
+<link href="../bower_components/paper-listbox/paper-listbox.html" rel="import">
+<link href="../bower_components/neon-animation/web-animations.html" rel="import">
 <link href="shared-styles.html" rel="import">
 
 <dom-module id="ivd-cities">
@@ -31,29 +34,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			h1 {
 				color: var(--app-secondary-color);
-				margin-left: 20px;
 			}
 
-			paper-item {
+			paper-item.list {
 				padding: 1em;
 				position: relative;
 			}
 
-			paper-item::before, paper-item::after {
+			paper-item.list::before, paper-item.list::after {
 				content: '';
 				display: block;
 				position: absolute;
 				background: var(--app-secondary-color);
 			}
 
-			paper-item::before {
+			paper-item.list::before {
 				top: 12px;
 				bottom: 12px;
 				left: 1em;
 				right: 1em;
 			}
 
-			paper-item::after {
+			paper-item.list::after {
 				left: 12px;
 				right: 12px;
 				top: 1em;
@@ -72,9 +74,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				color: var(--app-title-color);
 			}
 		</style>
-		<h1>1NV4D3D C17135</h1>
-		<template as="city" is="dom-repeat" items="[[cities]]">
-			<paper-item>
+		<app-toolbar class="head">
+			<div main-title><h1>1NV4D3D C17135</h1></div>
+			<paper-dropdown-menu label="S0R7" id="sort" selected-item-label="{{selected}}">
+				<paper-listbox slot="dropdown-content" selected="-1">
+					<paper-item label="name">Name (Alphabetically)</paper-item>
+					<paper-item label="points">Total Points</paper-item>
+					<paper-item label="nbSpaceInvader">Invaders Count</paper-item>
+					<paper-item label="waveCount">Wave Count</paper-item>
+				</paper-listbox>
+			</paper-dropdown-menu>
+		</app-toolbar>
+		<template id="list" as="city" is="dom-repeat" items="[[cities]]">
+			<paper-item class="list">
 				<paper-item-body three-line>
 					<span>[[city.name]]</span>
 					<span secondary>1NV4D3R5: <em>[[city.nbSpaceInvader]]</em>, W4V35: <em>[[city.waveCount]]</em></span>
@@ -97,19 +109,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 						value: [],
 						notify: true
 					},
+					selected: {
+						type: String,
+						observer: '_sort'
+					},
 					mobile: Boolean
 				};
 			}
 
 			connectedCallback() {
 				super.connectedCallback();
+				this.$.sort
+					.$.menuButton.querySelector('paper-input')
+					.$.container.shadowRoot.querySelector('.focused-line')
+					.style.borderBottomColor = '#5f5';
 				fetch('cities.json')
 					.then(res => res.json()
-						.then(json => {
-							this.set('cities', json);
-							console.log(json);
-						})
+						.then(json => this.set('cities', json))
 						.catch(err => this.set('json', json)));
+			}
+
+			_sort(type) {
+				this.$.sort
+					.$.menuButton.querySelector('paper-input')
+					.$.input.querySelector('input')
+					.style.color = '#5f5';
+				if (type) {
+					this.set('cities', this.cities.sort((a, b) => {
+						const i = (typeof a[type] == 'number') ? -1 : 1;
+						return a[type] > b[type] ? i : a[type] < b[type] ? -i : 0;
+					}));
+					this.$.list.render();
+				}
 			}
 		}
 
