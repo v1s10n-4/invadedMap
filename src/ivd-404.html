@@ -9,98 +9,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link href="../bower_components/polymer/polymer-element.html" rel="import">
-<link href="../bower_components/app-layout/app-drawer/app-drawer.html" rel="import">
-<link href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html" rel="import">
-<link href="../bower_components/app-layout/app-header/app-header.html" rel="import">
-<link href="../bower_components/app-layout/app-header-layout/app-header-layout.html" rel="import">
-<link href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html" rel="import">
-<link href="../bower_components/app-layout/app-toolbar/app-toolbar.html" rel="import">
-<link href="../bower_components/app-route/app-location.html" rel="import">
-<link href="../bower_components/app-route/app-route.html" rel="import">
-<link href="../bower_components/iron-lazy-pages/iron-lazy-pages.html" rel="import">
-<link href="../bower_components/iron-selector/iron-selector.html" rel="import">
-<link href="../bower_components/paper-icon-button/paper-icon-button.html" rel="import">
-<link href="../bower_components/paper-spinner/paper-spinner.html" rel="import">
-<link href="my-icons.html" rel="import">
 
-<dom-module id="my-app">
+<dom-module id="ivd-404">
 	<template>
 		<style>
 			:host {
-				--app-primary-color: black;
-				--app-secondary-color: white;
-				--secondary-text-color: #777777;
-				--app-title-color: #5f5;
-				--app-primary-layout-background-color: #2A2A2A;
-				--paper-font-common-base: {
-					font-family: 'VG5000', Helvetica, Arial, sans-serif;
-				};
 				display: block;
-			}
-
-			:host * {
-				font-family: 'VG5000', Helvetica, Arial, sans-serif;
-			}
-
-			app-drawer-layout:not([narrow]) [drawer-toggle] {
-				display: none;
-			}
-
-			app-drawer {
-				--app-drawer-content-container: {
-					background-color: var(--app-primary-layout-background-color);
-					color: var(--app-title-color);
-				}
-			}
-
-			.drawer-list a {
-				color: var(--app-primary-color);
-			}
-
-			.drawer-list a.iron-selected {
-				color: var(--app-title-color);
-				font-weight: bold;
-			}
-
-			app-header {
-				color: var(--app-title-color);
-				background-color: var(--app-primary-color);
-			}
-
-			app-header paper-icon-button {
-				color: white;
-				--paper-icon-button-ink-color: var(--app-secondary-color);
-			}
-
-			.drawer-list {
-				margin: 0 20px;
-			}
-
-			.drawer-list a {
-				display: block;
-				padding: 0 16px;
-				text-decoration: none;
-				color: var(--app-secondary-color);
-				line-height: 40px;
-			}
-
-			paper-spinner {
-				margin: auto;
-				width: 22vw;
-				height: 22vw;
-				--paper-spinner-stroke-width: 20px;
-				--paper-spinner-layer-1-color: var(--paper-purple-500);
-				--paper-spinner-layer-2-color: var(--paper-cyan-500);
-				--paper-spinner-layer-3-color: var(--paper-blue-grey-500);
-				--paper-spinner-layer-4-color: var(--paper-amber-500);
+				text-align: center;
+				padding: 10px 20px;
 			}
 
 			#loader {
 				position: absolute;
-				animation: x 1.5s infinite;
-				-webkit-animation: x 1.5s infinite;
-				-moz-animation: x 1.5s infinite;
-				-o-animation: x 1.5s infinite;
+				animation: x 2s infinite;
+				-webkit-animation: x 2s infinite;
+				-moz-animation: x 2s infinite;
+				-o-animation: x 2s infinite;
+				display: inline-block;
 			}
 
 			@keyframes x {
@@ -209,98 +134,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 		</style>
 
-		<app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
-		<app-route
-				data="{{routeData}}"
-				pattern="[[rootPath]]:page"
-				route="{{route}}"
-				tail="{{subroute}}"></app-route>
-
-		<app-drawer-layout fullbleed narrow="{{mobile}}">
-			<!-- Drawer content -->
-			<app-drawer id="drawer" slot="drawer" swipe-open="[[mobile]]">
-				<app-toolbar>M3NU</app-toolbar>
-				<iron-selector attr-for-selected="name" class="drawer-list" role="navigation" selected="[[page]]">
-					<a href="[[rootPath]]map" name="map">1NV4D3R5 M4P</a>
-					<a href="[[rootPath]]highscore" name="highscore">H1GH5C0R3</a>
-				</iron-selector>
-			</app-drawer>
-
-			<!-- Main content -->
-			<app-header-layout fullbleed>
-
-				<app-header fixed slot="header">
-					<app-toolbar>
-						<paper-icon-button drawer-toggle icon="my-icons:menu"></paper-icon-button>
-						<div main-title>1NV4D3D M4P</div>
-					</app-toolbar>
-				</app-header>
-
-				<iron-lazy-pages
-						attr-for-selected="name"
-						fallback-selection="view404"
-						role="main"
-						selected="[[page]]"
-						loading="{{loading}}"
-						hide-immediately>
-					<ivd-map data-path="ivd-map.html" name="map" invaders="{{invaders}}" mobile="{{mobile}}"></ivd-map>
-					<ivd-highscore data-path="ivd-highscore.html" name="highscore" mobile="{{mobile}}"></ivd-highscore>
-					<ivd-404 data-path="ivd-404.html" name="404"></ivd-404>
-				</iron-lazy-pages>
-
-				<template is="dom-if" if="[[loading]]">
-					<div id="loader"></div>
-				</template>
-			</app-header-layout>
-		</app-drawer-layout>
+		<h1>Oops you hit a 404. <a href="[[rootPath]]map">Head back to map.</a></h1>
+		<div id="loader"></div>
 	</template>
 
 	<script>
-		class MyApp extends Polymer.Element {
+		class IVD404 extends Polymer.Element {
 			static get is() {
-				return 'my-app';
+				return 'ivd-404';
 			}
 
 			static get properties() {
 				return {
-					page: {
-						type: String,
-						reflectToAttribute: true
-					},
-					routeData: Object,
-					subroute: String,
+					// This shouldn't be neccessary, but the Analyzer isn't picking up
+					// Polymer.Element#rootPath
 					rootPath: String,
-					invaders: {
-						type: Array,
-						value: [],
-						notify: true
-					}
 				};
-			}
-
-			static get observers() {
-				return [
-					'_routePageChanged(routeData.page)',
-				];
-			}
-
-			connectedCallback() {
-				super.connectedCallback();
-				window.document.body.className = '';
-			}
-
-			_routePageChanged(page) {
-				this.page = page || 'map';
-				if (!this.$.drawer.persistent) {
-					this.$.drawer.close();
-				}
-			}
-
-			_showPage404() {
-				this.page = 'view404';
 			}
 		}
 
-		window.customElements.define(MyApp.is, MyApp);
+		window.customElements.define(IVD404.is, IVD404);
 	</script>
 </dom-module>

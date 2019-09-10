@@ -72,19 +72,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				min-width: inherit;
 				min-height: inherit;
 				width: 45px;
+				height: 45px;
 				border-radius: 25px;
 				margin: 10px 0 0 0;
 				padding: 0;
 				background-color: var(--app-primary-color);
-				color: white;
+				color: var(--app-secondary-color);
 				--paper-button-raised-keyboard-focus: {
 					font-weight: inherit;
 				}
 			}
 
+			.control[pressed] {
+				color: var(--app-title-color);
+			}
+
 			.control span {
 				position: relative;
-				top: 3px;
+				top: 1px;
+			}
+
+			.control p {
+				position: relative;
+				top: -1px;
 			}
 		</style>
 		<google-map-markerclusterer map="[[map]]"
@@ -151,8 +161,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!--				<paper-button class="control" raised><span>&#x29BF;</span></paper-button>-->
 				<paper-button class="control" raised on-click="_centerMapOnUser"><span>&#x263C;</span></paper-button>
 <!--				<paper-button class="control" raised><span>&#x2600;</span></paper-button>-->
-				<paper-button class="control" raised on-click="increaseZoom">+</paper-button>
-				<paper-button class="control" raised on-click="decreaseZoom">-</paper-button>
+				<paper-button class="control" raised on-click="increaseZoom"><p>+</p></paper-button>
+				<paper-button class="control" raised on-click="decreaseZoom"><p>-</p></paper-button>
 			</div>
 		</google-map>
 	</template>

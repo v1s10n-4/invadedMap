@@ -3,7 +3,8 @@
   "shell": "src/my-app.html",
   "fragments": [
     "src/ivd-map.html",
-    "src/my-view404.html"
+    "src/ivd-highscore.html",
+    "src/ivd-404.html"
   ],
   "sources": [
     "src/**/*",
