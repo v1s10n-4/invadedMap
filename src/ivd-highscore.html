@@ -13,6 +13,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link href="../bower_components/paper-item/paper-item-body.html" rel="import">
 <link href="../bower_components/iron-icon/iron-icon.html" rel="import">
 <link href="../bower_components/paper-button/paper-button.html" rel="import">
+<link href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html" rel="import">
+<link href="../bower_components/paper-listbox/paper-listbox.html" rel="import">
+<link href="../bower_components/neon-animation/web-animations.html" rel="import">
 <link href="shared-styles.html" rel="import">
 
 <dom-module id="ivd-highscore">
@@ -26,7 +29,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			:host * {
-				font-family: 'VG5000', Helvetica, Arial, sans-serif;
+				font-family: var(--app-fonts);
 			}
 
 			h1 {
@@ -34,26 +37,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				margin-left: 20px;
 			}
 
-			paper-item {
+			paper-item.list {
 				padding: 1em;
 				position: relative;
 			}
 
-			paper-item::before, paper-item::after {
+			paper-item.list::before, paper-item.list::after {
 				content: '';
 				display: block;
 				position: absolute;
 				background: var(--app-secondary-color);
 			}
 
-			paper-item::before {
+			paper-item.list::before {
 				top: 12px;
 				bottom: 12px;
 				left: 1em;
 				right: 1em;
 			}
 
-			paper-item::after {
+			paper-item.list::after {
 				left: 12px;
 				right: 12px;
 				top: 1em;
@@ -71,10 +74,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			paper-item-body em {
 				color: var(--app-title-color);
 			}
+
+			paper-dropdown-menu {
+				--paper-input-container-label: {
+					font-family: var(--app-fonts);
+				};
+				--paper-input-container-input: {
+					font-family: var(--app-fonts);
+					color: var(--app-title-color);;
+				};
+				--paper-input-container-underline-focus: {
+					border-bottom-color: var(--app-title-color);;
+				};
+			}
 		</style>
-		<h1>H1GH5C0R3</h1>
-		<template as="player" is="dom-repeat" items="[[players]]">
-			<paper-item>
+		<app-toolbar class="head">
+			<div main-title><h1>H1GH5C0R3</h1></div>
+			<paper-dropdown-menu label="S0R7" id="sort" selected-item-label="{{selected}}">
+				<paper-listbox slot="dropdown-content" selected="0">
+					<paper-item label="score">Rank</paper-item>
+					<paper-item label="rank">Rank (reverse)</paper-item>
+					<paper-item label="invaders_count">Invaders Count</paper-item>
+					<paper-item label="nbCity">City Count</paper-item>
+					<paper-item label="nbShots">Total shots</paper-item>
+					<paper-item label="name">Name (Alphabetically)</paper-item>
+				</paper-listbox>
+			</paper-dropdown-menu>
+		</app-toolbar>
+		<template id="list" as="player" is="dom-repeat" items="[[players]]">
+			<paper-item class="list">
 				<paper-item-body three-line>
 					<span>#[[player.rank]] :  [[player.name]]</span>
 					<span secondary>Score: <em>[[player.score]]</em>, Invaders flashed: <em>[[player.invaders_count]]</em></span>
@@ -92,24 +120,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			static get properties() {
 				return {
-					invaders: {
+					players: {
 						type: Array,
 						value: [],
 						notify: true
 					},
-					markers: {
-						type: Array,
-						value: [],
-						notify: true
+					selected: {
+						type: String,
+						observer: '_sort'
 					},
-					mobile: Boolean,
-					currentInvader: Object,
-					map: Object
+					mobile: Boolean
 				};
 			}
 
 			connectedCallback() {
 				super.connectedCallback();
+				let icon = this.$.sort.$.menuButton.querySelector('paper-input').querySelector('iron-icon');
+				icon.shadowRoot.innerHTML = '&#x25BC;';
+				icon.style.fontFamily = 'VG5000';
+				icon.style.fontSize = '30px';
 				fetch('https://space-invaders.com/api/highscore/?uid=false')
 					.then(res => res.json()
 						.then(json => {
@@ -117,6 +146,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 							console.log(json);
 						})
 						.catch(err => this.set('json', json)));
+			}
+
+			_sort(type) {
+				if (type) {
+					this.set('players', this.players.sort((a, b) => {
+						const i = (typeof a[type] == 'number') ? -1 : 1;
+						return a[type] > b[type] ? i : a[type] < b[type] ? -i : 0;
+					}));
+					this.$.list.render();
+				}
 			}
 		}
 

@@ -29,7 +29,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			:host * {
-				font-family: 'VG5000', Helvetica, Arial, sans-serif;
+				font-family: var(--app-fonts);
 			}
 
 			h1 {
@@ -72,6 +72,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			paper-item-body em {
 				color: var(--app-title-color);
+			}
+
+			paper-dropdown-menu {
+				--paper-input-container-label: {
+					font-family: var(--app-fonts);
+				};
+				--paper-input-container-input: {
+					font-family: var(--app-fonts);
+					color: var(--app-title-color);;
+				};
+				--paper-input-container-underline-focus: {
+					border-bottom-color: var(--app-title-color);;
+				}
 			}
 		</style>
 		<app-toolbar class="head">
@@ -119,10 +132,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			connectedCallback() {
 				super.connectedCallback();
-				this.$.sort
-					.$.menuButton.querySelector('paper-input')
-					.$.container.shadowRoot.querySelector('.focused-line')
-					.style.borderBottomColor = '#5f5';
+				let icon = this.$.sort.$.menuButton.querySelector('paper-input').querySelector('iron-icon');
+				icon.shadowRoot.innerHTML = '&#x25BC;';
+				icon.style.fontFamily = 'VG5000';
+				icon.style.fontSize = '30px';
 				fetch('cities.json')
 					.then(res => res.json()
 						.then(json => this.set('cities', json))
@@ -130,10 +143,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			_sort(type) {
-				this.$.sort
-					.$.menuButton.querySelector('paper-input')
-					.$.input.querySelector('input')
-					.style.color = '#5f5';
 				if (type) {
 					this.set('cities', this.cities.sort((a, b) => {
 						const i = (typeof a[type] == 'number') ? -1 : 1;
