@@ -1,0 +1,704 @@
+[
+  {
+    "longitude": 2.349993,
+    "latitude": 48.856132,
+    "url": "paris",
+    "waveCount": 10,
+    "points": 37960,
+    "nbSpaceInvader": 1423,
+    "name": "Paris"
+  },
+  {
+    "longitude": -74.001366,
+    "latitude": 40.71916,
+    "url": "new-york",
+    "waveCount": 8,
+    "points": 6760,
+    "nbSpaceInvader": 219,
+    "name": "New York"
+  },
+  {
+    "longitude": 5.042005,
+    "latitude": 47.321311,
+    "url": "dijon",
+    "waveCount": 1,
+    "points": 230,
+    "nbSpaceInvader": 6,
+    "name": "Dijon"
+  },
+  {
+    "longitude": 7.596348,
+    "latitude": 47.562087,
+    "url": "basel",
+    "waveCount": 2,
+    "points": 840,
+    "nbSpaceInvader": 25,
+    "name": "Basel"
+  },
+  {
+    "longitude": 2.120829,
+    "latitude": 48.804702,
+    "url": "versailles",
+    "waveCount": 12,
+    "points": 1520,
+    "nbSpaceInvader": 42,
+    "name": "Versailles"
+  },
+  {
+    "longitude": -118.24077,
+    "latitude": 34.059486,
+    "url": "los-angeles",
+    "waveCount": 10,
+    "points": 5810,
+    "nbSpaceInvader": 214,
+    "name": "Los Angeles"
+  },
+  {
+    "longitude": 3.1380701,
+    "latitude": 45.7812004,
+    "url": "clermont-ferrand",
+    "waveCount": 3,
+    "points": 1530,
+    "nbSpaceInvader": 40,
+    "name": "Clermont-Ferrand"
+  },
+  {
+    "longitude": 5.332578,
+    "latitude": 43.877837,
+    "url": "luberon",
+    "waveCount": 2,
+    "points": 290,
+    "nbSpaceInvader": 8,
+    "name": "luberon"
+  },
+  {
+    "longitude": 89.635257,
+    "latitude": 27.478996,
+    "url": "bhutan",
+    "waveCount": 1,
+    "points": 490,
+    "nbSpaceInvader": 11,
+    "name": "Bhutan"
+  },
+  {
+    "longitude": -1.252248,
+    "latitude": 44.648678,
+    "url": "capferret",
+    "waveCount": 1,
+    "points": 310,
+    "nbSpaceInvader": 10,
+    "name": "Cap Ferret"
+  },
+  {
+    "longitude": 114.1869659,
+    "latitude": 22.3361568,
+    "url": "hong-kong",
+    "waveCount": 7,
+    "points": 4800,
+    "nbSpaceInvader": 132,
+    "name": "Hong-Kong"
+  },
+  {
+    "longitude": 6.715897,
+    "latitude": 43.347213,
+    "url": "caz",
+    "waveCount": 3,
+    "points": 1120,
+    "nbSpaceInvader": 40,
+    "name": "Côte d'Azur"
+  },
+  {
+    "longitude": 6.443175,
+    "latitude": 45.461545,
+    "url": "valmorel",
+    "waveCount": 1,
+    "points": 80,
+    "nbSpaceInvader": 3,
+    "name": "Valmorel"
+  },
+  {
+    "longitude": -4.421687,
+    "latitude": 36.720749,
+    "url": "malaga",
+    "waveCount": 1,
+    "points": 1020,
+    "nbSpaceInvader": 29,
+    "name": "Malaga"
+  },
+  {
+    "longitude": 13.3769798,
+    "latitude": 52.5160713,
+    "url": "berlin",
+    "waveCount": 2,
+    "points": 300,
+    "nbSpaceInvader": 12,
+    "name": "Berlin"
+  },
+  {
+    "longitude": 5.792273,
+    "latitude": 43.958003,
+    "url": "forcalquier",
+    "waveCount": 1,
+    "points": 100,
+    "nbSpaceInvader": 4,
+    "name": "Forcalquier"
+  },
+  {
+    "longitude": 1.440692,
+    "latitude": 43.60304,
+    "url": "toulouse",
+    "waveCount": 2,
+    "points": 360,
+    "nbSpaceInvader": 11,
+    "name": "Toulouse"
+  },
+  {
+    "longitude": -6.837181,
+    "latitude": 34.032854,
+    "url": "rabat",
+    "waveCount": 1,
+    "points": 700,
+    "nbSpaceInvader": 20,
+    "name": "Rabat"
+  },
+  {
+    "longitude": -7.983842,
+    "latitude": 31.628999,
+    "url": "marrakech",
+    "waveCount": 1,
+    "points": 120,
+    "nbSpaceInvader": 4,
+    "name": "Marrakech"
+  },
+  {
+    "longitude": -7.930378,
+    "latitude": 37.017723,
+    "url": "faro",
+    "waveCount": 1,
+    "points": 110,
+    "nbSpaceInvader": 4,
+    "name": "Faro"
+  },
+  {
+    "longitude": -0.116936,
+    "latitude": 51.512161,
+    "url": "london",
+    "waveCount": 18,
+    "points": 3630,
+    "nbSpaceInvader": 150,
+    "name": "London"
+  },
+  {
+    "longitude": 5.6063499,
+    "latitude": 43.1838989,
+    "url": "la-ciotat",
+    "waveCount": 4,
+    "points": 280,
+    "nbSpaceInvader": 9,
+    "name": "La Ciotat"
+  },
+  {
+    "longitude": 12.4764004,
+    "latitude": 41.8959007,
+    "url": "rome",
+    "waveCount": 3,
+    "points": 2370,
+    "nbSpaceInvader": 75,
+    "name": "Rome"
+  },
+  {
+    "longitude": 12.20207,
+    "latitude": 44.415724,
+    "url": "ravenna",
+    "waveCount": 2,
+    "points": 1550,
+    "nbSpaceInvader": 40,
+    "name": "Ravenna"
+  },
+  {
+    "longitude": 4.441152,
+    "latitude": 52.233036,
+    "url": "noordwijk",
+    "waveCount": 1,
+    "points": 480,
+    "nbSpaceInvader": 10,
+    "name": "Noordwijk"
+  },
+  {
+    "longitude": 8.678449,
+    "latitude": 50.122533,
+    "url": "frankfurt",
+    "waveCount": 1,
+    "points": 430,
+    "nbSpaceInvader": 14,
+    "name": "Frankfurt"
+  },
+  {
+    "longitude": 5.15957,
+    "latitude": 50.007367,
+    "url": "redu",
+    "waveCount": 1,
+    "points": 280,
+    "nbSpaceInvader": 6,
+    "name": "Redu"
+  },
+  {
+    "longitude": 6.959426,
+    "latitude": 50.938859,
+    "url": "cologne",
+    "waveCount": 3,
+    "points": 670,
+    "nbSpaceInvader": 27,
+    "name": "Cologne"
+  },
+  {
+    "longitude": 34.3333,
+    "latitude": -2.16667,
+    "url": "grumeti",
+    "waveCount": 1,
+    "points": 280,
+    "nbSpaceInvader": 8,
+    "name": "Grumeti"
+  },
+  {
+    "longitude": 5.3724699,
+    "latitude": 43.2937012,
+    "url": "marseille",
+    "waveCount": 3,
+    "points": 220,
+    "nbSpaceInvader": 13,
+    "name": "Marseille"
+  },
+  {
+    "longitude": 4.444261,
+    "latitude": 50.407949,
+    "url": "charleroi",
+    "waveCount": 1,
+    "points": 100,
+    "nbSpaceInvader": 1,
+    "name": "Charleroi"
+  },
+  {
+    "longitude": 139.8089447,
+    "latitude": 35.6832085,
+    "url": "tokyo",
+    "waveCount": 6,
+    "points": 3240,
+    "nbSpaceInvader": 138,
+    "name": "Tokyo"
+  },
+  {
+    "longitude": 7.395147,
+    "latitude": 46.295328,
+    "url": "anzere",
+    "waveCount": 1,
+    "points": 110,
+    "nbSpaceInvader": 4,
+    "name": "Anzère"
+  },
+  {
+    "longitude": 2.90764,
+    "latitude": 42.6767006,
+    "url": "perpignan",
+    "waveCount": 1,
+    "points": 230,
+    "nbSpaceInvader": 8,
+    "name": "Perpignan"
+  },
+  {
+    "longitude": -80.224623,
+    "latitude": 25.787527,
+    "url": "miami",
+    "waveCount": 3,
+    "points": 2850,
+    "nbSpaceInvader": 85,
+    "name": "Miami"
+  },
+  {
+    "longitude": -86.762405,
+    "latitude": 21.200707,
+    "url": "cancun",
+    "waveCount": 1,
+    "points": 80,
+    "nbSpaceInvader": 3,
+    "name": "Cancun"
+  },
+  {
+    "longitude": 17.41239,
+    "latitude": 43.375187,
+    "url": "grude",
+    "waveCount": 1,
+    "points": 40,
+    "nbSpaceInvader": 3,
+    "name": "Grude"
+  },
+  {
+    "longitude": 4.3766098,
+    "latitude": 50.8468018,
+    "url": "bruxelles",
+    "waveCount": 1,
+    "points": 1130,
+    "nbSpaceInvader": 40,
+    "name": "Bruxelles"
+  },
+  {
+    "longitude": 4.2262502,
+    "latitude": 39.8646202,
+    "url": "menorca",
+    "waveCount": 1,
+    "points": 140,
+    "nbSpaceInvader": 5,
+    "name": "Menorca"
+  },
+  {
+    "longitude": -46.637871,
+    "latitude": -23.559735,
+    "url": "sao-paulo",
+    "waveCount": 1,
+    "points": 2130,
+    "nbSpaceInvader": 52,
+    "name": "Sao Paulo"
+  },
+  {
+    "longitude": -1.32171,
+    "latitude": 44.0909309,
+    "url": "contis-les-bains",
+    "waveCount": 1,
+    "points": 100,
+    "nbSpaceInvader": 2,
+    "name": "Contis-Les-Bains"
+  },
+  {
+    "longitude": -117.1617203,
+    "latitude": 32.7156906,
+    "url": "san-diego",
+    "waveCount": 1,
+    "points": 700,
+    "nbSpaceInvader": 21,
+    "name": "San Diego"
+  },
+  {
+    "longitude": 127.4373093,
+    "latitude": 36.3344917,
+    "url": "daejeon",
+    "waveCount": 1,
+    "points": 500,
+    "nbSpaceInvader": 23,
+    "name": "Daejeon"
+  },
+  {
+    "longitude": 16.3687992,
+    "latitude": 48.2025414,
+    "url": "vienna",
+    "waveCount": 2,
+    "points": 1220,
+    "nbSpaceInvader": 56,
+    "name": "Vienna"
+  },
+  {
+    "longitude": -1.675216,
+    "latitude": 48.112807,
+    "url": "rennes",
+    "waveCount": 1,
+    "points": 60,
+    "nbSpaceInvader": 2,
+    "name": "Rennes"
+  },
+  {
+    "longitude": 1.347046,
+    "latitude": 44.013671,
+    "url": "montauban",
+    "waveCount": 1,
+    "points": 230,
+    "nbSpaceInvader": 11,
+    "name": "Montauban"
+  },
+  {
+    "longitude": 82.9978485,
+    "latitude": 25.3332005,
+    "url": "varanasi",
+    "waveCount": 1,
+    "points": 300,
+    "nbSpaceInvader": 14,
+    "name": "Varanasi"
+  },
+  {
+    "longitude": 85.3225021,
+    "latitude": 27.6933002,
+    "url": "katmandou",
+    "waveCount": 1,
+    "points": 530,
+    "nbSpaceInvader": 28,
+    "name": "Katmandou"
+  },
+  {
+    "longitude": -2.90784,
+    "latitude": 43.2560997,
+    "url": "bilbao",
+    "waveCount": 2,
+    "points": 1110,
+    "nbSpaceInvader": 40,
+    "name": "Bilbao"
+  },
+  {
+    "longitude": 34.9508934,
+    "latitude": 29.5560665,
+    "url": "eilat",
+    "waveCount": 1,
+    "points": 20,
+    "nbSpaceInvader": 2,
+    "name": "Eilat"
+  },
+  {
+    "longitude": -1.6241,
+    "latitude": 54.9684982,
+    "url": "newcastle",
+    "waveCount": 3,
+    "points": 510,
+    "nbSpaceInvader": 25,
+    "name": "Newcastle"
+  },
+  {
+    "longitude": 14.5165997,
+    "latitude": 46.0605011,
+    "url": "ljubjana",
+    "waveCount": 1,
+    "points": 340,
+    "nbSpaceInvader": 20,
+    "name": "Ljubljana"
+  },
+  {
+    "longitude": 39.6627388,
+    "latitude": -4.0573802,
+    "url": "mombasa",
+    "waveCount": 1,
+    "points": 220,
+    "nbSpaceInvader": 10,
+    "name": "Mombasa"
+  },
+  {
+    "longitude": 9.4462004,
+    "latitude": 42.6857986,
+    "url": "bastia",
+    "waveCount": 1,
+    "points": 530,
+    "nbSpaceInvader": 34,
+    "name": "Bastia"
+  },
+  {
+    "longitude": 4.82898,
+    "latitude": 45.7593918,
+    "url": "lyon",
+    "waveCount": 4,
+    "points": 640,
+    "nbSpaceInvader": 48,
+    "name": "Lyon"
+  },
+  {
+    "longitude": 100.542358,
+    "latitude": 13.736384,
+    "url": "bangkok",
+    "waveCount": 1,
+    "points": 890,
+    "nbSpaceInvader": 51,
+    "name": "Bangkok"
+  },
+  {
+    "longitude": 4.35776,
+    "latitude": 43.8404999,
+    "url": "nimes",
+    "waveCount": 1,
+    "points": 90,
+    "nbSpaceInvader": 5,
+    "name": "Nimes"
+  },
+  {
+    "longitude": -2.2458899,
+    "latitude": 53.4874992,
+    "url": "manchester",
+    "waveCount": 1,
+    "points": 970,
+    "nbSpaceInvader": 47,
+    "name": "Manchester"
+  },
+  {
+    "longitude": 90.3995667,
+    "latitude": 23.7132301,
+    "url": "dakha",
+    "waveCount": 1,
+    "points": 200,
+    "nbSpaceInvader": 6,
+    "name": "Dakha"
+  },
+  {
+    "longitude": 28.9857998,
+    "latitude": 41.0409584,
+    "url": "istanbul",
+    "waveCount": 1,
+    "points": 360,
+    "nbSpaceInvader": 20,
+    "name": "Istanbul"
+  },
+  {
+    "longitude": 144.949153,
+    "latitude": -37.828291,
+    "url": "melbourne",
+    "waveCount": 1,
+    "points": 440,
+    "nbSpaceInvader": 25,
+    "name": "Melbourne"
+  },
+  {
+    "longitude": 115.829717,
+    "latitude": -31.970049,
+    "url": "perth",
+    "waveCount": 1,
+    "points": 400,
+    "nbSpaceInvader": 26,
+    "name": "Perth"
+  },
+  {
+    "longitude": 12.848636,
+    "latitude": 56.67217,
+    "url": "halmstad",
+    "waveCount": 1,
+    "points": 60,
+    "nbSpaceInvader": 2,
+    "name": "Halmstad"
+  },
+  {
+    "longitude": 2.1575899,
+    "latitude": 41.375,
+    "url": "barcelone",
+    "waveCount": 1,
+    "points": 290,
+    "nbSpaceInvader": 17,
+    "name": "Barcelone"
+  },
+  {
+    "longitude": 3.0598099,
+    "latitude": 50.6194992,
+    "url": "lille",
+    "waveCount": 2,
+    "points": 110,
+    "nbSpaceInvader": 6,
+    "name": "Lille"
+  },
+  {
+    "longitude": 4.45751,
+    "latitude": 51.915699,
+    "url": "rotterdam",
+    "waveCount": 2,
+    "points": 340,
+    "nbSpaceInvader": 26,
+    "name": "Rotterdam"
+  },
+  {
+    "longitude": 18.298498,
+    "latitude": 57.631601,
+    "url": "visby",
+    "waveCount": 1,
+    "points": 30,
+    "nbSpaceInvader": 3,
+    "name": "Visby"
+  },
+  {
+    "longitude": 3.88311,
+    "latitude": 43.5970993,
+    "url": "montpellier",
+    "waveCount": 2,
+    "points": 720,
+    "nbSpaceInvader": 42,
+    "name": "Montpellier"
+  },
+  {
+    "longitude": -1.5688601,
+    "latitude": 47.200901,
+    "url": "nantes",
+    "waveCount": 1,
+    "points": 40,
+    "nbSpaceInvader": 3,
+    "name": "Nantes"
+  },
+  {
+    "longitude": 7.4087701,
+    "latitude": 46.9416008,
+    "url": "bern",
+    "waveCount": 1,
+    "points": 470,
+    "nbSpaceInvader": 29,
+    "name": "Bern"
+  },
+  {
+    "longitude": -0.36576,
+    "latitude": 43.3110008,
+    "url": "pau",
+    "waveCount": 1,
+    "points": 120,
+    "nbSpaceInvader": 10,
+    "name": "Pau"
+  },
+  {
+    "longitude": 6.1673002,
+    "latitude": 46.2000999,
+    "url": "geneve",
+    "waveCount": 2,
+    "points": 530,
+    "nbSpaceInvader": 33,
+    "name": "Geneve"
+  },
+  {
+    "longitude": 6.6307502,
+    "latitude": 46.5283012,
+    "url": "lausanne",
+    "waveCount": 1,
+    "points": 270,
+    "nbSpaceInvader": 18,
+    "name": "Lausanne"
+  },
+  {
+    "longitude": 4.8228202,
+    "latitude": 43.9452019,
+    "url": "avignon",
+    "waveCount": 1,
+    "points": 710,
+    "nbSpaceInvader": 41,
+    "name": "Avignon"
+  },
+  {
+    "longitude": 5.7143302,
+    "latitude": 45.1838989,
+    "url": "grenoble",
+    "waveCount": 1,
+    "points": 570,
+    "nbSpaceInvader": 57,
+    "name": "Grenoble"
+  },
+  {
+    "longitude": 4.8643398,
+    "latitude": 52.3306999,
+    "url": "amsterdam",
+    "waveCount": 1,
+    "points": 370,
+    "nbSpaceInvader": 26,
+    "name": "Amsterdam"
+  },
+  {
+    "longitude": 5.4503798,
+    "latitude": 43.5135994,
+    "url": "aix-en-provence",
+    "waveCount": 1,
+    "points": 160,
+    "nbSpaceInvader": 10,
+    "name": "Aix-en-Provence"
+  },
+  {
+    "longitude": 4.407502,
+    "latitude": 51.229867,
+    "url": "anvers",
+    "waveCount": 1,
+    "points": 20,
+    "nbSpaceInvader": 2,
+    "name": "Anvers"
+  }
+]

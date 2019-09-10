@@ -4,6 +4,7 @@ module.exports = {
 	staticFileGlobs: [
 		'index.html',
 		'locations.json',
+		'cities.json',
 		'images/**/*',
 		'!images/invaders/*',
 		'images/*.svg',
