@@ -1,9 +1,9 @@
 {
   "name": "Invaded Map",
-  "description": "locate all invaders for Flash Invaders app (made with 🍑 by GrandMasterFesse)",
+  "description": "locate all space invaders for Flash Invaders app (made with 🍑 by GrandMasterFesse)",
   "short_name": "InvadedMap",
-  "theme_color": "#2196f3",
-  "background_color": "#2196f3",
+  "theme_color": "#55f55f",
+  "background_color": "#55f55f",
   "display": "standalone",
   "scope": "/",
   "start_url": "/map",
