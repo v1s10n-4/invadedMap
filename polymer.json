@@ -19,6 +19,8 @@
     "images/**/*",
     "!images/invaders/*",
     "!images/invaders/",
+    "!images/books/",
+    "!images/maps/",
     "fonts/*",
     "bower_components/webcomponentsjs/*.js"
   ],
