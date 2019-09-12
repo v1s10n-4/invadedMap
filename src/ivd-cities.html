@@ -15,145 +15,201 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link href="../bower_components/paper-button/paper-button.html" rel="import">
 <link href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html" rel="import">
 <link href="../bower_components/paper-listbox/paper-listbox.html" rel="import">
+<link href="../bower_components/paper-dialog/paper-dialog.html" rel="import">
+<link href="../bower_components/cosmoz-image-viewer/cosmoz-image-viewer.html" rel="import">
 <link href="../bower_components/neon-animation/web-animations.html" rel="import">
+<link href="../bower_components/neon-animation/animations/slide-from-bottom-animation.html" rel="import">
+<link href="../bower_components/neon-animation/animations/slide-down-animation.html" rel="import">
 <link href="shared-styles.html" rel="import">
 
 <dom-module id="ivd-cities">
-	<template>
-		<style include="shared-styles">
-			:host {
-				display: block;
-				margin: 0;
-				background-color: black;
-				padding-top: 1px;
-			}
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: block;
+                margin: 0;
+                background-color: black;
+                padding-top: 1px;
+            }
 
-			:host * {
-				font-family: var(--app-fonts);
-			}
+            :host * {
+                font-family: var(--app-fonts);
+            }
 
-			h1 {
-				color: var(--app-secondary-color);
-			}
+            h1 {
+                color: var(--app-secondary-color);
+                font-size: 160%;
+            }
 
-			paper-item.list {
-				padding: 1em;
-				position: relative;
-			}
+            paper-item.list {
+                padding: 1em;
+                position: relative;
+                --paper-item-focused-before: {
+                    opacity: inherit;
+                };
+            }
 
-			paper-item.list::before, paper-item.list::after {
-				content: '';
-				display: block;
-				position: absolute;
-				background: var(--app-secondary-color);
-			}
+            paper-item.list::before, paper-item.list::after {
+                content: '';
+                display: block;
+                position: absolute;
+                background: var(--app-secondary-color);
+            }
 
-			paper-item.list::before {
-				top: 12px;
-				bottom: 12px;
-				left: 1em;
-				right: 1em;
-			}
+            paper-item.list::before {
+                top: 12px;
+                bottom: 12px;
+                left: 1em;
+                right: 1em;
+            }
 
-			paper-item.list::after {
-				left: 12px;
-				right: 12px;
-				top: 1em;
-				bottom: 1em;
-			}
+            paper-item.list::after {
+                left: 12px;
+                right: 12px;
+                top: 1em;
+                bottom: 1em;
+            }
 
-			paper-item-body {
-				background-color: black;
-				color: var(--app-title-color);
-				position: relative;
-				z-index: 1;
-				padding: 5px;
-			}
+            paper-item-body {
+                background-color: black;
+                color: var(--app-title-color);
+                position: relative;
+                z-index: 1;
+                padding: 5px;
+            }
 
-			paper-item-body em {
-				color: var(--app-title-color);
-			}
+            paper-item-body em {
+                color: var(--app-title-color);
+            }
 
-			paper-dropdown-menu {
-				--paper-input-container-label: {
-					font-family: var(--app-fonts);
-				};
-				--paper-input-container-input: {
-					font-family: var(--app-fonts);
-					color: var(--app-title-color);;
-				};
-				--paper-input-container-underline-focus: {
-					border-bottom-color: var(--app-title-color);;
-				}
-			}
-		</style>
-		<app-toolbar class="head">
-			<div main-title><h1>1NV4D3D C17135</h1></div>
-			<paper-dropdown-menu label="S0R7" id="sort" selected-item-label="{{selected}}">
-				<paper-listbox slot="dropdown-content" selected="-1">
-					<paper-item label="name">Name (Alphabetically)</paper-item>
-					<paper-item label="points">Total Points</paper-item>
-					<paper-item label="nbSpaceInvader">Invaders Count</paper-item>
-					<paper-item label="waveCount">Wave Count</paper-item>
-				</paper-listbox>
-			</paper-dropdown-menu>
-		</app-toolbar>
-		<template id="list" as="city" is="dom-repeat" items="[[cities]]">
-			<paper-item class="list">
-				<paper-item-body three-line>
-					<span>[[city.name]]</span>
-					<span secondary>1NV4D3R5: <em>[[city.nbSpaceInvader]]</em>, W4V35: <em>[[city.waveCount]]</em></span>
-					<span secondary>7074L P01N75: <em>[[city.points]]</em></span>
-				</paper-item-body>
-			</paper-item>
-		</template>
-	</template>
+            paper-dropdown-menu {
+                --paper-input-container-label: {
+                    font-family: var(--app-fonts);
+                };
+                --paper-input-container-input: {
+                    font-family: var(--app-fonts);
+                    color: var(--app-title-color);;
+                };
+                --paper-input-container-underline-focus: {
+                    border-bottom-color: var(--app-title-color);;
+                }
+            }
 
-	<script>
-		class IVDCities extends Polymer.Element {
-			static get is() {
-				return 'ivd-cities';
-			}
+            paper-dialog {
+                --paper-dialog: {
+                    width: 100%;
+                    height: 50%;
+                    max-width: 80%;
+                    max-height: 80%;
+                }
+            }
 
-			static get properties() {
-				return {
-					cities: {
-						type: Array,
-						value: [],
-						notify: true
-					},
-					selected: {
-						type: String,
-						observer: '_sort'
-					},
-					mobile: Boolean
-				};
-			}
+            cosmoz-image-viewer {
+                --cosmoz-image-viewer-image-zoom: {
+                    height: 100%;
+                    width: 100%;
+                };
+                --cosmoz-image-viewer-image: {
+                    height: 100%;
+                }
+            }
+        </style>
+        <app-toolbar class="head">
+            <div main-title><h1>1NV4D3D C17135</h1></div>
+            <paper-dropdown-menu label="S0R7" id="sort" selected-item-label="{{selected}}">
+                <paper-listbox slot="dropdown-content" selected="-1">
+                    <paper-item label="name">Name (Alphabetically)</paper-item>
+                    <paper-item label="points">Total Points</paper-item>
+                    <paper-item label="nbSpaceInvader">Invaders Count</paper-item>
+                    <paper-item label="waveCount">Wave Count</paper-item>
+                </paper-listbox>
+            </paper-dropdown-menu>
+        </app-toolbar>
+        <template id="list" as="city" is="dom-repeat" items="[[cities]]">
+            <paper-item class="list" city="[[city]]" on-click="openModal">
+                <paper-item-body three-line style="position: relative">
+                    <span>[[city.name]]</span>
+                    <span secondary>1NV4D3R5: <em>[[city.nbSpaceInvader]]</em>, W4V35: <em>[[city.waveCount]]</em></span>
+                    <span secondary>7074L P01N75: <em>[[city.points]]</em></span>
+                    <paper-ripple></paper-ripple>
+                </paper-item-body>
+            </paper-item>
+        </template>
+        <paper-dialog id="animated" fit-into="[[self]]" vertical-align="top" vertical-offset="200"
+                      entry-animation="slide-from-bottom-animation" exit-animation="slide-down-animation">
+            <h2>[[currentCity.name]]</h2>
+            <template is="dom-if" if="[[currentCity.images.length]]">
+                <cosmoz-image-viewer
+                        images="[[currentCity.images]]"
+                        show-nav
+                        show-zoom
+                        show-detach="[[!mobile]]"
+                        show-page-number
+                        show-fullscreen
+                        loop
+                        auto
+                        sizing="contain"
+                        preload
+                        fade>
+                </cosmoz-image-viewer>
+            </template>
+        </paper-dialog>
+    </template>
 
-			connectedCallback() {
-				super.connectedCallback();
-				let icon = this.$.sort.$.menuButton.querySelector('paper-input').querySelector('iron-icon');
-				icon.shadowRoot.innerHTML = '&#x25BC;';
-				icon.style.fontFamily = 'VG5000';
-				icon.style.fontSize = '30px';
-				fetch('cities.json')
-					.then(res => res.json()
-						.then(json => this.set('cities', json))
-						.catch(err => this.set('json', json)));
-			}
+    <script>
+        class IVDCities extends Polymer.Element {
+            static get is() {
+                return 'ivd-cities';
+            }
 
-			_sort(type) {
-				if (type) {
-					this.set('cities', this.cities.sort((a, b) => {
-						const i = (typeof a[type] == 'number') ? -1 : 1;
-						return a[type] > b[type] ? i : a[type] < b[type] ? -i : 0;
-					}));
-					this.$.list.render();
-				}
-			}
-		}
+            static get properties() {
+                return {
+                    cities: {
+                        type: Array,
+                        value: [],
+                        notify: true
+                    },
+                    selected: {
+                        type: String,
+                        observer: '_sort'
+                    },
+                    mobile: {
+                        type: Boolean,
+                        reflectToAttribute: true
+                    }
+                };
+            }
+
+            connectedCallback() {
+                super.connectedCallback();
+                this.set('self', this);
+                let icon = this.$.sort.$.menuButton.querySelector('paper-input').querySelector('iron-icon');
+                icon.shadowRoot.innerHTML = '&#x25BC;';
+                icon.style.fontFamily = 'VG5000';
+                icon.style.fontSize = '30px';
+                fetch('cities.json')
+                    .then(res => res.json()
+                        .then(json => this.set('cities', json))
+                        .catch(err => this.set('err', err)));
+            }
+
+            openModal(e) {
+                this.set('currentCity', e.model.city);
+                this.$.animated.open();
+            }
+
+            _sort(type) {
+                if (type) {
+                    this.set('cities', this.cities.sort((a, b) => {
+                        const i = (typeof a[type] == 'number') ? -1 : 1;
+                        return a[type] > b[type] ? i : a[type] < b[type] ? -i : 0;
+                    }));
+                    this.$.list.render();
+                }
+            }
+        }
 
 
-		window.customElements.define(IVDCities.is, IVDCities);
-	</script>
+        window.customElements.define(IVDCities.is, IVDCities);
+    </script>
 </dom-module>

@@ -6,7 +6,24 @@
     "waveCount": 10,
     "points": 37960,
     "nbSpaceInvader": 1423,
-    "name": "Paris"
+    "name": "Paris",
+    "images": [
+      "../../../images/maps/paris_v1.gif",
+      "../../../images/maps../../../images/maps/paris_v1-hd.jpg",
+      "../../../images/maps../../../images/maps/paris_v1-small.jpg",
+      "../../../images/maps../../../images/maps/paris_v2.jpg",
+      "../../../images/maps../../../images/maps/paris_v2-hd.jpg",
+      "../../../images/maps/paris_v2-small.jpg",
+      "../../../images/books/paris1.gif",
+      "../../../images/books/paris1-1.jpg",
+      "../../../images/books/paris1-2.jpg",
+      "../../../images/books/paris1-3.jpg",
+      "../../../images/books/paris2.jpg",
+      "../../../images/books/paris2-1.jpg",
+      "../../../images/books/paris2-2.jpg",
+      "../../../images/books/paris2-3.jpg",
+      "../../../images/books/paris2-4.jpg"
+    ]
   },
   {
     "longitude": -74.001366,
@@ -15,7 +32,12 @@
     "waveCount": 8,
     "points": 6760,
     "nbSpaceInvader": 219,
-    "name": "New York"
+    "name": "New York",
+    "images": [
+      "../../../images/maps/NY.jpg",
+      "../../../images/maps/NY-hd.jpg",
+      "../../../images/maps/NY-small.jpg"
+    ]
   },
   {
     "longitude": 5.042005,
@@ -24,7 +46,8 @@
     "waveCount": 1,
     "points": 230,
     "nbSpaceInvader": 6,
-    "name": "Dijon"
+    "name": "Dijon",
+    "images": []
   },
   {
     "longitude": 7.596348,
@@ -33,7 +56,8 @@
     "waveCount": 2,
     "points": 840,
     "nbSpaceInvader": 25,
-    "name": "Basel"
+    "name": "Basel",
+    "images": []
   },
   {
     "longitude": 2.120829,
@@ -42,7 +66,8 @@
     "waveCount": 12,
     "points": 1520,
     "nbSpaceInvader": 42,
-    "name": "Versailles"
+    "name": "Versailles",
+    "images": []
   },
   {
     "longitude": -118.24077,
@@ -51,7 +76,16 @@
     "waveCount": 10,
     "points": 5810,
     "nbSpaceInvader": 214,
-    "name": "Los Angeles"
+    "name": "Los Angeles",
+    "images": [
+      "../../../images/maps/LA.jpg",
+      "../../../images/maps/LA-hd.jpg",
+      "../../../images/maps/LA-small.jpg",
+      "../../../images/books/la.jpg",
+      "../../../images/books/la-1.jpg",
+      "../../../images/books/la-2.jpg",
+      "../../../images/books/la-3.jpg"
+    ]
   },
   {
     "longitude": 3.1380701,
@@ -60,7 +94,8 @@
     "waveCount": 3,
     "points": 1530,
     "nbSpaceInvader": 40,
-    "name": "Clermont-Ferrand"
+    "name": "Clermont-Ferrand",
+    "images": []
   },
   {
     "longitude": 5.332578,
@@ -69,7 +104,8 @@
     "waveCount": 2,
     "points": 290,
     "nbSpaceInvader": 8,
-    "name": "luberon"
+    "name": "luberon",
+    "images": []
   },
   {
     "longitude": 89.635257,
@@ -78,7 +114,8 @@
     "waveCount": 1,
     "points": 490,
     "nbSpaceInvader": 11,
-    "name": "Bhutan"
+    "name": "Bhutan",
+    "images": []
   },
   {
     "longitude": -1.252248,
@@ -87,7 +124,8 @@
     "waveCount": 1,
     "points": 310,
     "nbSpaceInvader": 10,
-    "name": "Cap Ferret"
+    "name": "Cap Ferret",
+    "images": []
   },
   {
     "longitude": 114.1869659,
@@ -96,7 +134,8 @@
     "waveCount": 7,
     "points": 4800,
     "nbSpaceInvader": 132,
-    "name": "Hong-Kong"
+    "name": "Hong-Kong",
+    "images": []
   },
   {
     "longitude": 6.715897,
@@ -105,7 +144,12 @@
     "waveCount": 3,
     "points": 1120,
     "nbSpaceInvader": 40,
-    "name": "Côte d'Azur"
+    "name": "Côte d'Azur",
+    "images": [
+      "../../../images/maps../../../images/maps/azur.jpg",
+      "../../../images/maps../../../images/maps/azur-hd.jpg",
+      "../../../images/maps/azur-small.jpg"
+    ]
   },
   {
     "longitude": 6.443175,
@@ -114,7 +158,8 @@
     "waveCount": 1,
     "points": 80,
     "nbSpaceInvader": 3,
-    "name": "Valmorel"
+    "name": "Valmorel",
+    "images": []
   },
   {
     "longitude": -4.421687,
@@ -123,7 +168,8 @@
     "waveCount": 1,
     "points": 1020,
     "nbSpaceInvader": 29,
-    "name": "Malaga"
+    "name": "Malaga",
+    "images": []
   },
   {
     "longitude": 13.3769798,
@@ -132,7 +178,8 @@
     "waveCount": 2,
     "points": 300,
     "nbSpaceInvader": 12,
-    "name": "Berlin"
+    "name": "Berlin",
+    "images": []
   },
   {
     "longitude": 5.792273,
@@ -141,7 +188,8 @@
     "waveCount": 1,
     "points": 100,
     "nbSpaceInvader": 4,
-    "name": "Forcalquier"
+    "name": "Forcalquier",
+    "images": []
   },
   {
     "longitude": 1.440692,
@@ -150,7 +198,8 @@
     "waveCount": 2,
     "points": 360,
     "nbSpaceInvader": 11,
-    "name": "Toulouse"
+    "name": "Toulouse",
+    "images": []
   },
   {
     "longitude": -6.837181,
@@ -159,7 +208,8 @@
     "waveCount": 1,
     "points": 700,
     "nbSpaceInvader": 20,
-    "name": "Rabat"
+    "name": "Rabat",
+    "images": []
   },
   {
     "longitude": -7.983842,
@@ -168,7 +218,8 @@
     "waveCount": 1,
     "points": 120,
     "nbSpaceInvader": 4,
-    "name": "Marrakech"
+    "name": "Marrakech",
+    "images": []
   },
   {
     "longitude": -7.930378,
@@ -177,7 +228,8 @@
     "waveCount": 1,
     "points": 110,
     "nbSpaceInvader": 4,
-    "name": "Faro"
+    "name": "Faro",
+    "images": []
   },
   {
     "longitude": -0.116936,
@@ -186,7 +238,13 @@
     "waveCount": 18,
     "points": 3630,
     "nbSpaceInvader": 150,
-    "name": "London"
+    "name": "London",
+    "images": [
+      "../../../images/books/uk.jpg",
+      "../../../images/books/uk-1.jpg",
+      "../../../images/books/uk-2.jpg",
+      "../../../images/books/uk-3.jpg"
+    ]
   },
   {
     "longitude": 5.6063499,
@@ -195,7 +253,8 @@
     "waveCount": 4,
     "points": 280,
     "nbSpaceInvader": 9,
-    "name": "La Ciotat"
+    "name": "La Ciotat",
+    "images": []
   },
   {
     "longitude": 12.4764004,
@@ -204,7 +263,12 @@
     "waveCount": 3,
     "points": 2370,
     "nbSpaceInvader": 75,
-    "name": "Rome"
+    "name": "Rome",
+    "images": [
+      "../../../images/maps/rome.jpg",
+      "../../../images/maps/rome-hd.jpg",
+      "../../../images/maps/rome-small.jpg"
+    ]
   },
   {
     "longitude": 12.20207,
@@ -213,7 +277,8 @@
     "waveCount": 2,
     "points": 1550,
     "nbSpaceInvader": 40,
-    "name": "Ravenna"
+    "name": "Ravenna",
+    "images": []
   },
   {
     "longitude": 4.441152,
@@ -222,7 +287,8 @@
     "waveCount": 1,
     "points": 480,
     "nbSpaceInvader": 10,
-    "name": "Noordwijk"
+    "name": "Noordwijk",
+    "images": []
   },
   {
     "longitude": 8.678449,
@@ -231,7 +297,8 @@
     "waveCount": 1,
     "points": 430,
     "nbSpaceInvader": 14,
-    "name": "Frankfurt"
+    "name": "Frankfurt",
+    "images": []
   },
   {
     "longitude": 5.15957,
@@ -240,7 +307,8 @@
     "waveCount": 1,
     "points": 280,
     "nbSpaceInvader": 6,
-    "name": "Redu"
+    "name": "Redu",
+    "images": []
   },
   {
     "longitude": 6.959426,
@@ -249,7 +317,8 @@
     "waveCount": 3,
     "points": 670,
     "nbSpaceInvader": 27,
-    "name": "Cologne"
+    "name": "Cologne",
+    "images": []
   },
   {
     "longitude": 34.3333,
@@ -258,7 +327,8 @@
     "waveCount": 1,
     "points": 280,
     "nbSpaceInvader": 8,
-    "name": "Grumeti"
+    "name": "Grumeti",
+    "images": []
   },
   {
     "longitude": 5.3724699,
@@ -267,7 +337,8 @@
     "waveCount": 3,
     "points": 220,
     "nbSpaceInvader": 13,
-    "name": "Marseille"
+    "name": "Marseille",
+    "images": []
   },
   {
     "longitude": 4.444261,
@@ -276,7 +347,8 @@
     "waveCount": 1,
     "points": 100,
     "nbSpaceInvader": 1,
-    "name": "Charleroi"
+    "name": "Charleroi",
+    "images": []
   },
   {
     "longitude": 139.8089447,
@@ -285,7 +357,12 @@
     "waveCount": 6,
     "points": 3240,
     "nbSpaceInvader": 138,
-    "name": "Tokyo"
+    "name": "Tokyo",
+    "images": [
+      "../../../images/maps/tokoy-small.jpg",
+      "../../../images/maps/tokyo.gif",
+      "../../../images/maps/tokyo-hd.gif"
+    ]
   },
   {
     "longitude": 7.395147,
@@ -294,7 +371,8 @@
     "waveCount": 1,
     "points": 110,
     "nbSpaceInvader": 4,
-    "name": "Anzère"
+    "name": "Anzère",
+    "images": []
   },
   {
     "longitude": 2.90764,
@@ -303,7 +381,8 @@
     "waveCount": 1,
     "points": 230,
     "nbSpaceInvader": 8,
-    "name": "Perpignan"
+    "name": "Perpignan",
+    "images": []
   },
   {
     "longitude": -80.224623,
@@ -312,7 +391,14 @@
     "waveCount": 3,
     "points": 2850,
     "nbSpaceInvader": 85,
-    "name": "Miami"
+    "name": "Miami",
+    "images": [
+      "../../../images/maps/miami-hd.png",
+      "../../../images/books/miami.jpg",
+      "../../../images/books/miami-1.jpg",
+      "../../../images/books/miami-2.jpg",
+      "../../../images/books/miami-3.jpg"
+    ]
   },
   {
     "longitude": -86.762405,
@@ -321,7 +407,8 @@
     "waveCount": 1,
     "points": 80,
     "nbSpaceInvader": 3,
-    "name": "Cancun"
+    "name": "Cancun",
+    "images": []
   },
   {
     "longitude": 17.41239,
@@ -330,7 +417,8 @@
     "waveCount": 1,
     "points": 40,
     "nbSpaceInvader": 3,
-    "name": "Grude"
+    "name": "Grude",
+    "images": []
   },
   {
     "longitude": 4.3766098,
@@ -339,7 +427,11 @@
     "waveCount": 1,
     "points": 1130,
     "nbSpaceInvader": 40,
-    "name": "Bruxelles"
+    "name": "Bruxelles",
+    "images": [
+      "../../../images/maps/bruxelles-hd.jpg",
+      "../../../images/maps/bruxelles-small.jpg"
+    ]
   },
   {
     "longitude": 4.2262502,
@@ -348,7 +440,8 @@
     "waveCount": 1,
     "points": 140,
     "nbSpaceInvader": 5,
-    "name": "Menorca"
+    "name": "Menorca",
+    "images": []
   },
   {
     "longitude": -46.637871,
@@ -357,7 +450,12 @@
     "waveCount": 1,
     "points": 2130,
     "nbSpaceInvader": 52,
-    "name": "Sao Paulo"
+    "name": "Sao Paulo",
+    "images": [
+      "../../../images/images/maps/maps../../../images/maps../../../images/maps/sao_paulo.jpg",
+      "../../../images/images/maps/maps../../../images/maps../../../images/maps/sao_paulo-hd.jpg",
+      "../../../images/maps/sao_paulo-small.jpg"
+    ]
   },
   {
     "longitude": -1.32171,
@@ -366,7 +464,8 @@
     "waveCount": 1,
     "points": 100,
     "nbSpaceInvader": 2,
-    "name": "Contis-Les-Bains"
+    "name": "Contis-Les-Bains",
+    "images": []
   },
   {
     "longitude": -117.1617203,
@@ -375,7 +474,8 @@
     "waveCount": 1,
     "points": 700,
     "nbSpaceInvader": 21,
-    "name": "San Diego"
+    "name": "San Diego",
+    "images": []
   },
   {
     "longitude": 127.4373093,
@@ -384,7 +484,8 @@
     "waveCount": 1,
     "points": 500,
     "nbSpaceInvader": 23,
-    "name": "Daejeon"
+    "name": "Daejeon",
+    "images": []
   },
   {
     "longitude": 16.3687992,
@@ -393,7 +494,11 @@
     "waveCount": 2,
     "points": 1220,
     "nbSpaceInvader": 56,
-    "name": "Vienna"
+    "name": "Vienna",
+    "images": [
+      "../../../images/maps/vienne.jpg",
+      "../../../images/images/maps/maps../../../images/maps/vienne-hd.jpg"
+    ]
   },
   {
     "longitude": -1.675216,
@@ -402,7 +507,8 @@
     "waveCount": 1,
     "points": 60,
     "nbSpaceInvader": 2,
-    "name": "Rennes"
+    "name": "Rennes",
+    "images": []
   },
   {
     "longitude": 1.347046,
@@ -411,7 +517,8 @@
     "waveCount": 1,
     "points": 230,
     "nbSpaceInvader": 11,
-    "name": "Montauban"
+    "name": "Montauban",
+    "images": []
   },
   {
     "longitude": 82.9978485,
@@ -420,7 +527,8 @@
     "waveCount": 1,
     "points": 300,
     "nbSpaceInvader": 14,
-    "name": "Varanasi"
+    "name": "Varanasi",
+    "images": []
   },
   {
     "longitude": 85.3225021,
@@ -429,7 +537,12 @@
     "waveCount": 1,
     "points": 530,
     "nbSpaceInvader": 28,
-    "name": "Katmandou"
+    "name": "Katmandou",
+    "images": [
+      "../../../images/images/maps/maps/kathmandu.jpg",
+      "../../../images/images/maps/maps/kathmandu-hd.jpg",
+      "../../../images/maps/kathmandu-small.jpg"
+    ]
   },
   {
     "longitude": -2.90784,
@@ -438,7 +551,10 @@
     "waveCount": 2,
     "points": 1110,
     "nbSpaceInvader": 40,
-    "name": "Bilbao"
+    "name": "Bilbao",
+    "images": [
+      "../../../images/maps/bilbao.jpg"
+    ]
   },
   {
     "longitude": 34.9508934,
@@ -447,7 +563,8 @@
     "waveCount": 1,
     "points": 20,
     "nbSpaceInvader": 2,
-    "name": "Eilat"
+    "name": "Eilat",
+    "images": []
   },
   {
     "longitude": -1.6241,
@@ -456,7 +573,8 @@
     "waveCount": 3,
     "points": 510,
     "nbSpaceInvader": 25,
-    "name": "Newcastle"
+    "name": "Newcastle",
+    "images": []
   },
   {
     "longitude": 14.5165997,
@@ -465,7 +583,8 @@
     "waveCount": 1,
     "points": 340,
     "nbSpaceInvader": 20,
-    "name": "Ljubljana"
+    "name": "Ljubljana",
+    "images": []
   },
   {
     "longitude": 39.6627388,
@@ -474,7 +593,8 @@
     "waveCount": 1,
     "points": 220,
     "nbSpaceInvader": 10,
-    "name": "Mombasa"
+    "name": "Mombasa",
+    "images": []
   },
   {
     "longitude": 9.4462004,
@@ -483,7 +603,12 @@
     "waveCount": 1,
     "points": 530,
     "nbSpaceInvader": 34,
-    "name": "Bastia"
+    "name": "Bastia",
+    "images": [
+      "../../../images/maps/bastia.jpg",
+      "../../../images/maps/bastia-hd.jpg",
+      "../../../images/maps/bastia-small.jpg"
+    ]
   },
   {
     "longitude": 4.82898,
@@ -492,7 +617,12 @@
     "waveCount": 4,
     "points": 640,
     "nbSpaceInvader": 48,
-    "name": "Lyon"
+    "name": "Lyon",
+    "images": [
+      "../../../images/maps/lyon.gif",
+      "../../../images/maps/lyon-hd.gif",
+      "../../../images/maps/lyon-small.jpg"
+    ]
   },
   {
     "longitude": 100.542358,
@@ -501,7 +631,8 @@
     "waveCount": 1,
     "points": 890,
     "nbSpaceInvader": 51,
-    "name": "Bangkok"
+    "name": "Bangkok",
+    "images": []
   },
   {
     "longitude": 4.35776,
@@ -510,7 +641,8 @@
     "waveCount": 1,
     "points": 90,
     "nbSpaceInvader": 5,
-    "name": "Nimes"
+    "name": "Nimes",
+    "images": []
   },
   {
     "longitude": -2.2458899,
@@ -519,7 +651,15 @@
     "waveCount": 1,
     "points": 970,
     "nbSpaceInvader": 47,
-    "name": "Manchester"
+    "name": "Manchester",
+    "images": [
+      "../../../images/maps/manchester.images/maps/jimages/maps/pg",
+      "../../../images/maps/manchester-hd.jpg",
+      "../../../images/books/uk.jpg",
+      "../../../images/books/uk-1.jpg",
+      "../../../images/books/uk-2.jpg",
+      "../../../images/books/uk-3.jpg"
+    ]
   },
   {
     "longitude": 90.3995667,
@@ -528,7 +668,8 @@
     "waveCount": 1,
     "points": 200,
     "nbSpaceInvader": 6,
-    "name": "Dakha"
+    "name": "Dakha",
+    "images": []
   },
   {
     "longitude": 28.9857998,
@@ -537,7 +678,8 @@
     "waveCount": 1,
     "points": 360,
     "nbSpaceInvader": 20,
-    "name": "Istanbul"
+    "name": "Istanbul",
+    "images": []
   },
   {
     "longitude": 144.949153,
@@ -546,7 +688,8 @@
     "waveCount": 1,
     "points": 440,
     "nbSpaceInvader": 25,
-    "name": "Melbourne"
+    "name": "Melbourne",
+    "images": []
   },
   {
     "longitude": 115.829717,
@@ -555,7 +698,16 @@
     "waveCount": 1,
     "points": 400,
     "nbSpaceInvader": 26,
-    "name": "Perth"
+    "name": "Perth",
+    "images": [
+      "../../../images/maps/pimages/maps/erth.gif",
+      "../../../images/maps/pimages/maps/erth-hd.gif",
+      "../../../images/maps/perth-small.jpg",
+      "../../../images/books/uk.jpg",
+      "../../../images/books/uk-1.jpg",
+      "../../../images/books/uk-2.jpg",
+      "../../../images/books/uk-3.jpg"
+    ]
   },
   {
     "longitude": 12.848636,
@@ -564,7 +716,8 @@
     "waveCount": 1,
     "points": 60,
     "nbSpaceInvader": 2,
-    "name": "Halmstad"
+    "name": "Halmstad",
+    "images": []
   },
   {
     "longitude": 2.1575899,
@@ -573,7 +726,8 @@
     "waveCount": 1,
     "points": 290,
     "nbSpaceInvader": 17,
-    "name": "Barcelone"
+    "name": "Barcelone",
+    "images": []
   },
   {
     "longitude": 3.0598099,
@@ -582,7 +736,8 @@
     "waveCount": 2,
     "points": 110,
     "nbSpaceInvader": 6,
-    "name": "Lille"
+    "name": "Lille",
+    "images": []
   },
   {
     "longitude": 4.45751,
@@ -591,7 +746,12 @@
     "waveCount": 2,
     "points": 340,
     "nbSpaceInvader": 26,
-    "name": "Rotterdam"
+    "name": "Rotterdam",
+    "images": [
+      "../../../images/maps/rotterdam.jpg",
+      "../../../images/maps/rotterdam-hd.jpg",
+      "../../../images/maps/rotterdam-small.jpg"
+    ]
   },
   {
     "longitude": 18.298498,
@@ -600,7 +760,8 @@
     "waveCount": 1,
     "points": 30,
     "nbSpaceInvader": 3,
-    "name": "Visby"
+    "name": "Visby",
+    "images": []
   },
   {
     "longitude": 3.88311,
@@ -609,7 +770,12 @@
     "waveCount": 2,
     "points": 720,
     "nbSpaceInvader": 42,
-    "name": "Montpellier"
+    "name": "Montpellier",
+    "images": [
+      "../../../images/maps/montpellier.gif",
+      "../../../images/maps/montpellier-hd.jpeg",
+      "../../../images/maps/montpellier-small.jpg"
+    ]
   },
   {
     "longitude": -1.5688601,
@@ -618,7 +784,8 @@
     "waveCount": 1,
     "points": 40,
     "nbSpaceInvader": 3,
-    "name": "Nantes"
+    "name": "Nantes",
+    "images": []
   },
   {
     "longitude": 7.4087701,
@@ -627,7 +794,12 @@
     "waveCount": 1,
     "points": 470,
     "nbSpaceInvader": 29,
-    "name": "Bern"
+    "name": "Bern",
+    "images": [
+      "../../../images/maps/bern.gif",
+      "../../../images/maps/bern-hd.gif",
+      "../../../images/maps/bern-small.jpg"
+    ]
   },
   {
     "longitude": -0.36576,
@@ -636,7 +808,8 @@
     "waveCount": 1,
     "points": 120,
     "nbSpaceInvader": 10,
-    "name": "Pau"
+    "name": "Pau",
+    "images": []
   },
   {
     "longitude": 6.1673002,
@@ -645,7 +818,12 @@
     "waveCount": 2,
     "points": 530,
     "nbSpaceInvader": 33,
-    "name": "Geneve"
+    "name": "Geneve",
+    "images": [
+      "../../../images/maps/geneve.gif",
+      "../../../images/maps/geneve-hd.jpeg",
+      "../../../images/maps/geneve-small.jpg"
+    ]
   },
   {
     "longitude": 6.6307502,
@@ -654,7 +832,8 @@
     "waveCount": 1,
     "points": 270,
     "nbSpaceInvader": 18,
-    "name": "Lausanne"
+    "name": "Lausanne",
+    "images": []
   },
   {
     "longitude": 4.8228202,
@@ -663,7 +842,12 @@
     "waveCount": 1,
     "points": 710,
     "nbSpaceInvader": 41,
-    "name": "Avignon"
+    "name": "Avignon",
+    "images": [
+      "../../../images/maps/avignon.jpg",
+      "../../../images/maps/avignon-hd.jpg",
+      "../../../images/maps/avignon-small.jpg"
+    ]
   },
   {
     "longitude": 5.7143302,
@@ -672,7 +856,12 @@
     "waveCount": 1,
     "points": 570,
     "nbSpaceInvader": 57,
-    "name": "Grenoble"
+    "name": "Grenoble",
+    "images": [
+      "../../../images/maps/grenoble.gif",
+      "../../../images/maps/grenoble-hd.gif",
+      "../../../images/maps/grenoble-small.jpg"
+    ]
   },
   {
     "longitude": 4.8643398,
@@ -681,7 +870,8 @@
     "waveCount": 1,
     "points": 370,
     "nbSpaceInvader": 26,
-    "name": "Amsterdam"
+    "name": "Amsterdam",
+    "images": []
   },
   {
     "longitude": 5.4503798,
@@ -690,7 +880,8 @@
     "waveCount": 1,
     "points": 160,
     "nbSpaceInvader": 10,
-    "name": "Aix-en-Provence"
+    "name": "Aix-en-Provence",
+    "images": []
   },
   {
     "longitude": 4.407502,
@@ -699,6 +890,7 @@
     "waveCount": 1,
     "points": 20,
     "nbSpaceInvader": 2,
-    "name": "Anvers"
+    "name": "Anvers",
+    "images": []
   }
 ]
