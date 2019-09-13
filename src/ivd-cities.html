@@ -15,11 +15,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link href="../bower_components/paper-button/paper-button.html" rel="import">
 <link href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html" rel="import">
 <link href="../bower_components/paper-listbox/paper-listbox.html" rel="import">
-<link href="../bower_components/paper-dialog/paper-dialog.html" rel="import">
+<link href="../bower_components/bottom-sheet/bottom-sheet.html" rel="import">
 <link href="../bower_components/cosmoz-image-viewer/cosmoz-image-viewer.html" rel="import">
-<link href="../bower_components/neon-animation/web-animations.html" rel="import">
-<link href="../bower_components/neon-animation/animations/slide-from-bottom-animation.html" rel="import">
-<link href="../bower_components/neon-animation/animations/slide-down-animation.html" rel="import">
 <link href="shared-styles.html" rel="import">
 
 <dom-module id="ivd-cities">
@@ -39,6 +36,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             h1 {
                 color: var(--app-secondary-color);
                 font-size: 160%;
+            }
+
+            h2 {
+                color: var(--app-title-color);
             }
 
             paper-item.list {
@@ -95,16 +96,52 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
             }
 
-            paper-dialog {
-                --paper-dialog: {
+            bottom-sheet {
+                width: 85%;
+                max-height: 80vh;
+                position: sticky;
+                --bottom-sheet-background-color: var(--app-primary-color);
+                --bottom-sheet-color: var(--app-secondary-color);
+                --bottom-sheet-label-color: var(--app-title-color);
+                --arc-font-common-base: {
+                    border-top: 2px solid var(--app-title-color);
+                    border-right: 2px solid var(--app-title-color);
+                    border-left: 2px solid var(--app-title-color);
+                };
+                --bottom-sheet-scrollable: {
+                    padding-top: 0;
+                    max-width: 100%;
                     width: 100%;
-                    height: 50%;
-                    max-width: 80%;
-                    max-height: 80%;
                 }
             }
 
+            bottom-sheet app-toolbar {
+                padding: 0;
+            }
+
+            .control {
+                font-size: 30px;
+                min-width: inherit;
+                min-height: inherit;
+                width: 45px;
+                height: 45px;
+                left: 15px;
+                border-radius: 25px;
+                margin: 0;
+                padding: 0;
+                background-color: var(--app-primary-color);
+                color: var(--app-secondary-color);
+                --paper-button-raised-keyboard-focus: {
+                    font-weight: inherit;
+                }
+            }
+
+            .control[pressed] {
+                color: var(--app-title-color);
+            }
+
             cosmoz-image-viewer {
+                width: 100%;
                 --cosmoz-image-viewer-image-zoom: {
                     height: 100%;
                     width: 100%;
@@ -135,11 +172,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </paper-item-body>
             </paper-item>
         </template>
-        <paper-dialog id="animated" fit-into="[[self]]" vertical-align="top" vertical-offset="200"
-                      entry-animation="slide-from-bottom-animation" exit-animation="slide-down-animation">
-            <h2>[[currentCity.name]]</h2>
+        <bottom-sheet id="sheet" class="center-bottom" fit-into="[[self]]" no-cancel-on-outside-click>
+            <app-toolbar class="head">
+                <h2 main-title>[[currentCity.name]]</h2>
+                <paper-button class="control" raised on-click="_closeSheet"><span>&#x274C;</span></paper-button>
+            </app-toolbar>
             <template is="dom-if" if="[[currentCity.images.length]]">
                 <cosmoz-image-viewer
+                        id="viewer"
                         images="[[currentCity.images]]"
                         show-nav
                         show-zoom
@@ -153,7 +193,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         fade>
                 </cosmoz-image-viewer>
             </template>
-        </paper-dialog>
+        </bottom-sheet>
     </template>
 
     <script>
@@ -194,8 +234,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             openModal(e) {
-                this.set('currentCity', e.model.city);
-                this.$.animated.open();
+                if (e.model.city.images.length) {
+                    this.set('currentCity', e.model.city);
+                    this.$.sheet.open();
+                    // this.$.viewer.shadowRoot.querySelector('.actions > paper-icon-button:nth-child(1)').shadowRoot.querySelector('#icon').shadowRoot.innerHTML = '<';
+                }
+            }
+
+            _closeSheet() {
+                this.$.sheet.close();
             }
 
             _sort(type) {

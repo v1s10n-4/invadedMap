@@ -35,6 +35,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				--bottom-sheet-max-width: 50%;
 			}
 
+			h2 {
+				color: var(--app-title-color);
+			}
+
 			iron-image {
 				--iron-image-width: 300px;
 				--iron-image-height: 300px;
@@ -59,6 +63,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			bottom-sheet {
+				max-height: 80vh;
 				--bottom-sheet-background-color: var(--app-primary-color);
 				--bottom-sheet-color: var(--app-secondary-color);
 				--bottom-sheet-label-color: var(--app-title-color);
@@ -67,6 +72,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					border-right: 2px dashed var(--app-primary-layout-background-color);
 					border-left: 2px dashed var(--app-primary-layout-background-color);
 				}
+				--bottom-sheet-scrollable: {
+					padding-top: 0;
+				}
+			}
+
+			bottom-sheet app-toolbar {
+				padding: 0;
 			}
 
 			#controls {
@@ -90,6 +102,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				--paper-button-raised-keyboard-focus: {
 					font-weight: inherit;
 				}
+			}
+
+			.close {
+				left: 15px;
+				margin: 0;
 			}
 
 			.control[pressed] {
@@ -149,7 +166,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 								   slot="markers">
 				</google-map-marker>
 			</template>
-		<bottom-sheet id="sheet" class="center-bottom" label="[[currentInvader.name]]" no-cancel-on-outside-click>
+		<bottom-sheet id="sheet" class="center-bottom" no-cancel-on-outside-click>
+			<app-toolbar class="head">
+				<h2 main-title>[[currentInvader.name]]</h2>
+				<paper-button class="control close" raised on-click="_closeSheet"><span>&#x274C;</span></paper-button>
+			</app-toolbar>
 			<skeleton-carousel dots="[[!mobile]]" nav="[[!mobile]]" loop auto direction="[[getDirection(mobile)]]">
 				<template as="photoUrl" is="dom-repeat" items="[[currentInvader.url]]">
 					<iron-image placeholder="[[resolveUrl('../images/sliding_invaders.gif')]]"
@@ -165,11 +186,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			<paper-item>lat:[[currentInvader.latitude]] - lon:[[currentInvader.longitude]]</paper-item>
 		</bottom-sheet>
 			<div id="controls">
-<!--				<paper-button class="control" raised><span>&#x22B9;</span></paper-button>-->
-<!--				<paper-button class="control" raised><span>&#x29BE;</span></paper-button>-->
-<!--				<paper-button class="control" raised><span>&#x29BF;</span></paper-button>-->
+				<!--&#x22B9;-->
+				<!--&#x29BE;-->
+				<!--&#x29BF;-->
+				<!--&#x2600;-->
 				<paper-button class="control" raised on-click="_centerMapOnUser"><span>&#x263C;</span></paper-button>
-<!--				<paper-button class="control" raised><span>&#x2600;</span></paper-button>-->
 				<paper-button class="control" raised on-click="increaseZoom"><p>+</p></paper-button>
 				<paper-button class="control" raised on-click="decreaseZoom"><p>-</p></paper-button>
 			</div>
@@ -308,7 +329,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				this.$.map.set('zoom', this.$.map.zoom - 1);
 			}
 
-			_closeSheet(e) {
+			_closeSheet() {
 				this.$.sheet.close();
 			}
 		}
