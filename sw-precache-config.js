@@ -53,7 +53,7 @@ module.exports = {
 		},
 		{
 			urlPattern: /https:\/\/maps.googleapis.com\/maps\/vt?pb=*/g,
-			handler: 'fastest',
+			handler: 'cacheFirst',
 			options: {
 				cache: {
 					name: 'google-map-cache'

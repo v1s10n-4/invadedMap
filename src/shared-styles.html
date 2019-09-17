@@ -14,6 +14,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="ivd-styles">
 	<template>
 		<style>
+			:host {
+				--app-fonts: 'VG5000', Helvetica, Arial, sans-serif;
+				--app-primary-color: black;
+				--primary-color: #777777;
+				--app-secondary-color: white;
+				--primary-text-color: #5f5;
+				--primary-background-color: black;
+				--secondary-text-color: #777777;
+				--app-secondary-background-color: #2A2A2A;
+				--paper-font-common-base: {
+					font-family: var(--app-fonts);
+				};
+			}
+
 			h1 {
 				margin: 16px 0;
 				color: #212121;

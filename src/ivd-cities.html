@@ -17,6 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link href="../bower_components/paper-listbox/paper-listbox.html" rel="import">
 <link href="../bower_components/bottom-sheet/bottom-sheet.html" rel="import">
 <link href="../bower_components/cosmoz-image-viewer/cosmoz-image-viewer.html" rel="import">
+<link href="../bower_components/neon-animation/web-animations.html" rel="import">
 <link href="shared-styles.html" rel="import">
 
 <dom-module id="ivd-cities">
@@ -25,7 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             :host {
                 display: block;
                 margin: 0;
-                background-color: black;
+                background-color: var(--app-primary-color);
                 padding-top: 1px;
             }
 
@@ -39,7 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             h2 {
-                color: var(--app-title-color);
+                color: var(--primary-text-color);
             }
 
             paper-item.list {
@@ -72,29 +73,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             paper-item-body {
-                background-color: black;
-                color: var(--app-title-color);
+                background-color: var(--app-primary-color);
+                color: var(--primary-text-color);
                 position: relative;
                 z-index: 1;
                 padding: 5px;
             }
 
             paper-item-body em {
-                color: var(--app-title-color);
+                color: var(--primary-text-color);
             }
 
             paper-dropdown-menu {
-                --paper-input-container-label: {
+				--paper-input-container-label: {
                     font-family: var(--app-fonts);
                 };
                 --paper-input-container-input: {
                     font-family: var(--app-fonts);
-                    color: var(--app-title-color);;
+                    color: var(--primary-text-color);
                 };
                 --paper-input-container-underline-focus: {
-                    border-bottom-color: var(--app-title-color);;
+                    border-bottom-color: var(--primary-text-color);
                 }
             }
+
+			/*paper-listbox {*/
+			/*	--paper-listbox*/
+			/*}*/
 
             bottom-sheet {
                 width: 85%;
@@ -102,11 +107,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 position: sticky;
                 --bottom-sheet-background-color: var(--app-primary-color);
                 --bottom-sheet-color: var(--app-secondary-color);
-                --bottom-sheet-label-color: var(--app-title-color);
+                --bottom-sheet-label-color: var(--primary-text-color);
                 --arc-font-common-base: {
-                    border-top: 2px solid var(--app-title-color);
-                    border-right: 2px solid var(--app-title-color);
-                    border-left: 2px solid var(--app-title-color);
+                    border-top: 2px solid var(--primary-text-color);
+                    border-right: 2px solid var(--primary-text-color);
+                    border-left: 2px solid var(--primary-text-color);
                 };
                 --bottom-sheet-scrollable: {
                     padding-top: 0;
@@ -137,7 +142,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             .control[pressed] {
-                color: var(--app-title-color);
+                color: var(--primary-text-color);
             }
 
             cosmoz-image-viewer {

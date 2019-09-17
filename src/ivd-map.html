@@ -36,7 +36,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			h2 {
-				color: var(--app-title-color);
+				color: var(--primary-text-color);
 			}
 
 			iron-image {
@@ -56,6 +56,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				}
 			}
 
+			/* ----------- iPhone 5, 5S, 5C and 5SE [landscape] ----------- */
+			@media only screen
+			and (min-device-width: 320px)
+			and (max-device-width: 568px)
+			and (-webkit-min-device-pixel-ratio: 2)
+			and (orientation: landscape) {
+				google-map {
+					height: calc(100% - 152px);
+				}
+			}
+
+			/* ----------- iPhone XS Max [landscape] ----------- */
+			@media only screen
+			and (device-width : 414px)
+			and (device-height : 896px)
+			and (-webkit-device-pixel-ratio : 3)
+			and (orientation : landscape) {
+				google-map {
+					height: calc(100% - 64px);
+				}
+			}
+
+
 			paper-item {
 				--paper-font-subhead: {
 					font-family: var(--app-fonts);
@@ -63,18 +86,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			bottom-sheet {
-				max-height: 80vh;
+				max-height: calc(100% - 77px);
 				--bottom-sheet-background-color: var(--app-primary-color);
 				--bottom-sheet-color: var(--app-secondary-color);
-				--bottom-sheet-label-color: var(--app-title-color);
+				--bottom-sheet-label-color: var(--primary-text-color);
 				--arc-font-common-base: {
-					border-top: 2px dashed var(--app-primary-layout-background-color);
-					border-right: 2px dashed var(--app-primary-layout-background-color);
-					border-left: 2px dashed var(--app-primary-layout-background-color);
-				}
+					border-top: 2px dashed var(--app-secondary-background-color);
+					border-right: 2px dashed var(--app-secondary-background-color);
+					border-left: 2px dashed var(--app-secondary-background-color);
+				};
 				--bottom-sheet-scrollable: {
 					padding-top: 0;
 				}
+			}
+
+			skeleton-carousel {
+				--skeleton-carousel-min-height: 40vh;
 			}
 
 			bottom-sheet app-toolbar {
@@ -110,7 +137,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			.control[pressed] {
-				color: var(--app-title-color);
+				color: var(--primary-text-color);
 			}
 
 			.control span {
@@ -141,7 +168,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					latitude="48.861071"
 					longitude="2.350494"
 					map="{{map}}"
-					styles="[[mapStyles]]"
+					styles="[[mapStyles]]"additional-map-options="[[additionalMapOptions]]"
+
 					click-events
 					drag-events
 					disable-default-ui
@@ -217,7 +245,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					},
 					mobile: Boolean,
 					currentInvader: Object,
-					map: Object
+					map: Object,
+					additionalMapOptions: {
+						type: Object,
+						value: {gestureHandling: 'greedy'}
+					}
 				};
 			}
 

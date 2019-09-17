@@ -28,15 +28,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 	<template>
 		<style include="ivd-styles">
 			:host {
-				--app-fonts: 'VG5000', Helvetica, Arial, sans-serif;
-				--app-primary-color: black;
-				--app-secondary-color: white;
-				--secondary-text-color: #777777;
-				--app-title-color: #5f5;
-				--app-primary-layout-background-color: #2A2A2A;
-				--paper-font-common-base: {
-					font-family: var(--app-fonts);
-				};
 				display: block;
 			}
 
@@ -50,8 +41,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			app-drawer {
 				--app-drawer-content-container: {
-					background-color: var(--app-primary-layout-background-color);
-					color: var(--app-title-color);
+					background-color: var(--app-secondary-background-color);
+					color: var(--primary-text-color);
 				}
 			}
 
@@ -60,12 +51,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			.drawer-list a.iron-selected {
-				color: var(--app-title-color);
+				color: var(--primary-text-color);
 				font-weight: bold;
 			}
 
 			app-header {
-				color: var(--app-title-color);
+				color: var(--primary-text-color);
 				background-color: var(--app-primary-color);
 			}
 
