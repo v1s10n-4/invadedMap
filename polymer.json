@@ -21,10 +21,12 @@
     "!images/books/*",
     "!images/maps/*",
     "fonts/*",
-    "bower_components/webcomponentsjs/*.js"
+    "bower_components/webcomponentsjs/*.js",
+    "bower_components/img-pan-zoom/openseadragon/openseadragon.*"
   ],
   "lint": {
-    "rules": ["polymer-2"]
+    "rules": ["polymer-2"],
+    "ignoreWarnings": ["multiple-global-declarations"]
   },
   "builds": [
     {

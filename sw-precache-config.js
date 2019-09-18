@@ -16,11 +16,21 @@ module.exports = {
 	navigateFallback: 'index.html',
 	runtimeCaching: [
 		{
-			urlPattern: /\/src\/*.html/g,
+			urlPattern: /src\/.*.html/g,
 			handler: 'fastest',
 			options: {
 				cache: {
 					name: 'src/*-cache'
+				}
+			}
+		},
+		{
+			urlPattern: /images\/invaders\/.*.(jpg|png)/g,
+			handler: 'fastest',
+			options: {
+				cache: {
+					name: '1nv4d3r5',
+					maxEntries: 420
 				}
 			}
 		},
@@ -34,7 +44,16 @@ module.exports = {
 			}
 		},
 		{
-			urlPattern: "https://space-invaders.com/api/highscore/?uid=false",
+			urlPattern: /fonts\/VG5000\-Regular_web.*/g,
+			handler: 'fastest',
+			options: {
+				cache: {
+					name: 'fonts'
+				}
+			}
+		},
+		{
+			urlPattern: /https:\/\/space-invaders\.com\/api\/highscore\/\?uid=false/g,
 			handler: 'cacheFirst',
 			options: {
 				cache: {
@@ -47,21 +66,22 @@ module.exports = {
 			handler: 'fastest',
 			options: {
 				cache: {
-					name: 'google-map-cursor'
+					name: 'google-maps-cursor'
 				}
 			}
 		},
 		{
-			urlPattern: /https:\/\/maps.googleapis.com\/maps\/vt?pb=*/g,
+			urlPattern: /^(http(s?):\/\/)?maps\.googleapis(\.|\/).*\/maps\/.*$/g,
 			handler: 'cacheFirst',
 			options: {
 				cache: {
-					name: 'google-map-cache'
+					name: 'google-maps-cache',
+					maxEntries: 404042
 				}
 			}
 		},
 		{
-			urlPattern: 'https://cdn.polyfill.io/v2/polyfill.js?features=fetch',
+			urlPattern: /https:\/\/cdn.polyfill.io\/v2\/polyfill.js\?features=fetch/g,
 			handler: 'fastest',
 			options: {
 				cache: {
