@@ -67,6 +67,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				}
 			}
 
+			@media only screen
+			and (device-width : 375px)
+			and (device-height : 812px)
+			and (-webkit-device-pixel-ratio : 3)
+			and (orientation : landscape) {
+				google-map {
+					height: calc(100% - 64px);
+				}
+			}
+
 			/* ----------- iPhone XS Max [landscape] ----------- */
 			@media only screen
 			and (device-width : 414px)
@@ -168,8 +178,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					latitude="48.861071"
 					longitude="2.350494"
 					map="{{map}}"
-					styles="[[mapStyles]]"additional-map-options="[[additionalMapOptions]]"
-
+					styles="[[mapStyles]]"
+					additional-map-options="[[additionalMapOptions]]"
 					click-events
 					drag-events
 					disable-default-ui

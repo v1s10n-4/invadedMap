@@ -135,15 +135,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			connectedCallback() {
 				super.connectedCallback();
-				let icon = this.$.sort.$.menuButton.querySelector('paper-input').querySelector('iron-icon');
-				icon.shadowRoot.innerHTML = '&#x25BC;';
-				icon.style.fontFamily = 'VG5000';
-				icon.style.fontSize = '30px';
 				fetch('https://space-invaders.com/api/highscore/?uid=false')
 					.then(res => res.json()
 						.then(json => {
 							this.set('players', json.Players);
 							console.log(json);
+							let icon = this.$.sort.$.menuButton.querySelector('paper-input').querySelector('iron-icon');
+							icon.shadowRoot.innerHTML = '&#x25BC;';
+							icon.style.fontFamily = 'VG5000';
+							icon.style.fontSize = '30px';
 						})
 						.catch(err => this.set('json', json)));
 			}
