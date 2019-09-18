@@ -21,7 +21,6 @@
     "google-map": "2.0.5",
     "google-map-markerclusterer": "XavierEr/google-map-markerclusterer#polymer-2",
     "bottom-sheet": "advanced-rest-client/bottom-sheet#2.0.2",
-    "paper-dialog": "2.1.1",
     "skeleton-carousel": "FabricElements/skeleton-carousel#2.0.7",
     "cosmoz-image-viewer": "Neovici/cosmoz-image-viewer#v2.1.4",
     "img-pan-zoom": "ryanburns23/img-pan-zoom#2.0.0",

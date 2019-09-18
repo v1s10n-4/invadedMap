@@ -1,0 +1,4 @@
+*.txt
+README.md
+.travis.yml
+.eslintrc.json
