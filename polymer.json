@@ -22,7 +22,8 @@
     "!images/maps/*",
     "fonts/*",
     "bower_components/webcomponentsjs/*.js",
-    "bower_components/img-pan-zoom/openseadragon/openseadragon.*"
+    "bower_components/img-pan-zoom/openseadragon/openseadragon.*",
+    "bower_components/autotrack/autotrack.*"
   ],
   "lint": {
     "rules": ["polymer-2"],

@@ -10,104 +10,140 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta content="Polymer Starter Kit" name="generator">
-		<meta content="width=device-width, minimum-scale=1, maximum-scale=1, initial-scale=1, user-scalable=no" name="viewport">
-		<meta http-equiv="Content-Security-Policy" content="img-src 'self' data: content: http: https:">
-		<title>Invaded Map</title>
-		<meta content="locate all space invaders for Flash Invaders app & more!" name="description">
+<head>
+	<meta charset="utf-8">
+	<meta content="Polymer Starter Kit" name="generator">
+	<meta content="width=device-width, minimum-scale=1, maximum-scale=1, initial-scale=1, user-scalable=no"
+		  name="viewport">
+	<meta content="img-src 'self' data: content: http: https:" http-equiv="Content-Security-Policy">
+	<title>Invaded Map</title>
+	<meta content="locate all space invaders for Flash Invaders app & more!" name="description">
 
-		<base href="/">
-		<link href="images/favicon.ico" rel="icon">
-		<link href="manifest.json" rel="manifest">
-		<meta content="#000000" name="theme-color">
+	<base href="/">
+	<link href="images/favicon.ico" rel="icon">
+	<link href="manifest.json" rel="manifest">
+	<meta content="#000000" name="theme-color">
 
-		<meta content="yes" name="mobile-web-app-capable">
-		<meta content="Invaded Map" name="application-name">
+	<meta content="yes" name="mobile-web-app-capable">
+	<meta content="Invaded Map" name="application-name">
 
-		<!-- Add to homescreen for Safari on iOS -->
-		<meta content="yes" name="apple-mobile-web-app-capable">
-		<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
-		<meta content="Invaded Map" name="apple-mobile-web-app-title">
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+	<meta content="Invaded Map" name="apple-mobile-web-app-title">
 
-		<!-- Homescreen icons -->
-		<link rel="apple-touch-icon" sizes="57x57" href="images/manifest/apple-icon-57x57.png">
-		<link rel="apple-touch-icon" sizes="60x60" href="images/manifest/apple-icon-60x60.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="images/manifest/apple-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="images/manifest/apple-icon-76x76.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="images/manifest/apple-icon-114x114.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="images/manifest/apple-icon-120x120.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="images/manifest/apple-icon-144x144.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="images/manifest/apple-icon-152x152.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="images/manifest/apple-icon-180x180.png">
-		<link rel="icon" type="image/png" sizes="192x192"  href="images/manifest/android-icon-192x192.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="images/manifest/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="96x96" href="images/manifest/favicon-96x96.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="images/manifest/favicon-16x16.png">
+	<!-- Homescreen icons -->
+	<link href="images/manifest/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
+	<link href="images/manifest/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
+	<link href="images/manifest/apple-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+	<link href="images/manifest/apple-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+	<link href="images/manifest/apple-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+	<link href="images/manifest/apple-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+	<link href="images/manifest/apple-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+	<link href="images/manifest/apple-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+	<link href="images/manifest/apple-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
+	<link href="images/manifest/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png">
+	<link href="images/manifest/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+	<link href="images/manifest/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
+	<link href="images/manifest/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
 
-		<!-- PWA splash screens -->
-		<link href="images/splashscreens/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-		<link href="images/splashscreens/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-		<link href="images/splashscreens/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-		<link href="images/splashscreens/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-		<link href="images/splashscreens/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-		<link href="images/splashscreens/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
-		<link href="images/splashscreens/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-		<link href="images/splashscreens/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-		<link href="images/splashscreens/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
-		<link href="images/splashscreens/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	<!-- PWA splash screens -->
+	<link href="images/splashscreens/iphone5_splash.png"
+		  media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+		  rel="apple-touch-startup-image"/>
+	<link href="images/splashscreens/iphone6_splash.png"
+		  media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+		  rel="apple-touch-startup-image"/>
+	<link href="images/splashscreens/iphoneplus_splash.png"
+		  media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
+		  rel="apple-touch-startup-image"/>
+	<link href="images/splashscreens/iphonex_splash.png"
+		  media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+		  rel="apple-touch-startup-image"/>
+	<link href="images/splashscreens/iphonexr_splash.png"
+		  media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+		  rel="apple-touch-startup-image"/>
+	<link href="images/splashscreens/iphonexsmax_splash.png"
+		  media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+		  rel="apple-touch-startup-image"/>
+	<link href="images/splashscreens/ipad_splash.png"
+		  media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+		  rel="apple-touch-startup-image"/>
+	<link href="images/splashscreens/ipadpro1_splash.png"
+		  media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+		  rel="apple-touch-startup-image"/>
+	<link href="images/splashscreens/ipadpro3_splash.png"
+		  media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
+		  rel="apple-touch-startup-image"/>
+	<link href="images/splashscreens/ipadpro2_splash.png"
+		  media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+		  rel="apple-touch-startup-image"/>
 
-		<!-- Tile icon for Windows 8 (144x144 + tile color) -->
-		<meta content="images/manifest/icon-144x144.png" name="msapplication-TileImage">
-		<meta content="#55f55f" name="msapplication-TileColor">
-		<meta content="no" name="msapplication-tap-highlight">
+	<!-- Tile icon for Windows 8 (144x144 + tile color) -->
+	<meta content="images/manifest/icon-144x144.png" name="msapplication-TileImage">
+	<meta content="#55f55f" name="msapplication-TileColor">
+	<meta content="no" name="msapplication-tap-highlight">
 
-		<script>
-			window.Polymer = {rootPath: '/'};
-			if ('serviceWorker' in navigator) {
-				window.addEventListener('load', function () {
-					navigator.serviceWorker.register('service-worker.js', {
-						scope: Polymer.rootPath,
-					});
+	<script>
+		window.Polymer = {rootPath: '/'};
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', function () {
+				navigator.serviceWorker.register('service-worker.js', {
+					scope: Polymer.rootPath,
 				});
-			}
-		</script>
+			});
+		}
+		window.ga = window.ga || function () {
+			(ga.q = ga.q || []).push(arguments)
+		};
+		ga.l = +new Date;
+		ga('create', 'UA-128622707-2', 'auto');
+		ga('require', 'eventTracker');
+		ga('require', 'pageVisibilityTracker');
+		ga('require', 'mediaQueryTracker');
+		ga('require', 'maxScrollTracker');
+		ga('require', 'impressionTracker');
+		ga('require', 'urlChangeTracker');
+		ga('set', 'userId', window.navigator.userAgent.replace(/\D+/g, ''));
+		ga('send', 'pageview');
+	</script>
 
 
-		<script src="https://cdn.polyfill.io/v2/polyfill.js?features=fetch" async></script>
-		<script src="bower_components/webcomponentsjs/webcomponents-loader.js" async></script>
-		<link href="src/my-app.html" rel="import" async>
+	<script async src="https://cdn.polyfill.io/v2/polyfill.js?features=fetch"></script>
+	<script async src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+	<script async src="https://www.google-analytics.com/analytics.js"></script>
+	<script async src="bower_components/autotrack/autotrack.js"></script>
+	<link async href="src/my-app.html" rel="import">
 
-		<style>
-			@font-face {
-				font-family: 'VG5000';
-				src:    url('fonts/VG5000-Regular_web.eot');
-				src:    url('fonts/VG5000-Regular_web.eot?#iefix') format('embedded-opentype'),
-				url('fonts/VG5000-Regular_web.woff') format('woff'),
-				url('fonts/VG5000-Regular_web.woff2') format('woff2'),
-				url('fonts/VG5000-Regular_web.ttf') format('truetype');
-				font-weight: normal;
-				font-style: normal;
-			}
+	<style>
+		@font-face {
+			font-family: 'VG5000';
+			src: url('fonts/VG5000-Regular_web.eot');
+			src: url('fonts/VG5000-Regular_web.eot?#iefix') format('embedded-opentype'),
+			url('fonts/VG5000-Regular_web.woff') format('woff'),
+			url('fonts/VG5000-Regular_web.woff2') format('woff2'),
+			url('fonts/VG5000-Regular_web.ttf') format('truetype');
+			font-weight: normal;
+			font-style: normal;
+		}
 
-			body.unloaded {
-				margin: 0;
-				font-family: 'VG5000', 'Roboto', 'Noto', sans-serif;
-				line-height: 1.5;
-				min-height: 100vh;
-				max-height: 100vh;
-				overflow: hidden;
-				background: url(images/glitchy_invaders.gif) no-repeat center center fixed;
-				-webkit-background-size: contain;
-				-moz-background-size: contain;
-				-o-background-size: contain;
-				background-size: contain;
-			}
-		</style>
-	</head>
-	<body class="unloaded">
-		<my-app></my-app>
-		<noscript>Please enable JavaScript to view this website.</noscript>
-	</body>
+		body.unloaded {
+			margin: 0;
+			font-family: 'VG5000', 'Roboto', 'Noto', sans-serif;
+			line-height: 1.5;
+			min-height: 100vh;
+			max-height: 100vh;
+			overflow: hidden;
+			background: url(images/glitchy_invaders.gif) no-repeat center center fixed;
+			-webkit-background-size: contain;
+			-moz-background-size: contain;
+			-o-background-size: contain;
+			background-size: contain;
+		}
+	</style>
+</head>
+<body class="unloaded">
+<my-app></my-app>
+<noscript>Please enable JavaScript to view this website.</noscript>
+</body>
 </html>
