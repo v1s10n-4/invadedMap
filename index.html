@@ -97,15 +97,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			(ga.q = ga.q || []).push(arguments)
 		};
 		ga.l = +new Date;
-		ga('create', 'UA-128622707-2', 'auto');
-		ga('require', 'eventTracker');
-		ga('require', 'pageVisibilityTracker');
-		ga('require', 'mediaQueryTracker');
-		ga('require', 'maxScrollTracker');
-		ga('require', 'impressionTracker');
-		ga('require', 'urlChangeTracker');
-		ga('set', 'userId', window.navigator.userAgent.replace(/\D+/g, ''));
-		ga('send', 'pageview');
+		if (document.location.hostname != 'localhost') {
+			ga('create', 'UA-128622707-2', 'auto');
+			ga('require', 'eventTracker');
+			ga('require', 'pageVisibilityTracker');
+			ga('require', 'mediaQueryTracker');
+			ga('require', 'maxScrollTracker');
+			ga('require', 'impressionTracker');
+			ga('require', 'urlChangeTracker');
+			ga('set', 'userId', window.navigator.userAgent.replace(/\D+/g, ''));
+			ga('send', 'pageview');
+		}
 	</script>
 
 

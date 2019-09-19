@@ -183,7 +183,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					click-events
 					drag-events
 					disable-default-ui
-					on-google-map-ready="_fetchData"
+					on-google-map-ready="_checkPage"
 					on-google-map-dragstart="_closeSheet"
 					on-google-map-click="_closeSheet">
 			<google-map-marker animation="DROP"
@@ -243,19 +243,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			static get properties() {
 				return {
-					invaders: {
-						type: Array,
-						value: [],
-						notify: true
+					page: {
+						type: Object,
+						notify: true,
+						observer: '_pageChanged'
 					},
+					invaders: {
+						type: Array
+					},
+					currentInvader: Object,
 					markers: {
 						type: Array,
 						value: [],
 						notify: true
 					},
 					mobile: Boolean,
-					currentInvader: Object,
 					map: Object,
+					mapStyles: Array,
 					additionalMapOptions: {
 						type: Object,
 						value: {gestureHandling: 'greedy'}
@@ -294,17 +298,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					textColor: '#0D0D0D',
 					textSize: "15px"
 				}]);
-				this.getMapStyles();
 			}
 
-			_fetchData() {
-				fetch('locations.json').then(x => x.json().then(res => {
-					res.forEach(x => {
-						x.latitude = Number(x.latitude);
-						x.longitude = Number(x.longitude);
-						this.push('invaders', x);
-					});
-				})).catch(x => x.json().then(res => console.log(res)));
+			_pageChanged() {
+				if (window.google && this.page.path.length) {
+					this.set('currentInvader', this.invaders.find(i => i.name === this.page.path.substr(1)));
+					this.smoothZoom(this.$.map.map, 15, this.$.map.zoom);
+					this.$.map.map.panTo(new google.maps.LatLng(this.currentInvader.latitude, this.currentInvader.longitude));
+					if (!this.$.sheet.opened) {
+						this.$.sheet.open();
+					}
+				} else {
+					this.recheck = true;
+				}
 			}
 
 			_clusterMarker(e) {
@@ -312,15 +318,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			_markerClicked(e) {
-				this.set('currentInvader', e.model.__data.invader);
-				this.smoothZoom(this.$.map.map, 15, this.$.map.zoom);
-				this.$.map.map.panTo(new google.maps.LatLng(this.currentInvader.latitude, this.currentInvader.longitude));
-				if (!this.$.sheet.opened) {
-					this.$.sheet.open();
-				} else {
-					e.stopPropagation();
-					e.preventDefault();
-				}
+				this.set('page.path', e.model.__data.invader.name);
+				e.stopPropagation();
+				e.preventDefault();
 			}
 
 			_centerMapOnUser() {
@@ -329,29 +329,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				this._closeSheet();
 			}
 
+			_checkPage() {
+				if (this.recheck)
+					this._pageChanged()
+			}
+
 			getDirection(mobile) {
 				return mobile ? 'vertical' : 'horizontal';
 			}
 
 			getUrl(name) {
 				return this.resolveUrl(`/images/invaders/${name}`);
-			}
-
-			getMapStyles() {
-				let hours = new Date().getHours();
-				const isDayTime = hours > 7 && hours < 19;
-				fetch(this.resolveUrl('../mapStyles.json'))
-					.then(e => e.json().then(e => {
-							if (this.$.map && this.$.map.map) {
-								this.$.map.map.setOptions({
-									styles: isDayTime ? e.day : e.night
-								});
-							} else {
-								this.set('mapStyles', isDayTime ? e.day : e.night);
-							}
-					})).catch(error => {
-						console.warn(error);
-					});
 			}
 
 			smoothZoom(map, max, cnt) {
@@ -372,6 +360,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			_closeSheet() {
+				this.set('page.path', '');
 				this.$.sheet.close();
 			}
 		}

@@ -5,6 +5,7 @@ module.exports = {
 		'index.html',
 		'locations.json',
 		'cities.json',
+		'mapStyles.json',
 		'images/**/*',
 		'!images/invaders/*',
 		'images/*.svg',

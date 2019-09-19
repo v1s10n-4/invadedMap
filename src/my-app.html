@@ -124,17 +124,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				<iron-lazy-pages
 						attr-for-selected="name"
 						fallback-selection="view404"
-						role="main"
-						selected="[[page]]"
+						hide-immediately
 						loading="{{loading}}"
-						hide-immediately>
-					<ivd-map data-path="ivd-map.html" name="map" invaders="{{invaders}}" mobile="[[mobile]]"></ivd-map>
-					<ivd-highscore data-path="ivd-highscore.html" name="highscore" mobile="[[mobile]]"></ivd-highscore>
-					<ivd-cities data-path="ivd-cities.html" name="cities" mobile="[[mobile]]"></ivd-cities>
+						role="main"
+						selected="[[page]]">
+					<ivd-map data-path="ivd-map.html"
+							 invaders="[[invaders]]"
+							 map-styles="[[mapStyles]]"
+							 mobile="[[mobile]]"
+							 name="map"
+							 page="{{subroute}}">
+					</ivd-map>
+					<ivd-highscore data-path="ivd-highscore.html" mobile="[[mobile]]" name="highscore"></ivd-highscore>
+					<ivd-cities data-path="ivd-cities.html" mobile="[[mobile]]" name="cities"></ivd-cities>
 					<ivd-404 data-path="ivd-404.html" name="404"></ivd-404>
 				</iron-lazy-pages>
 
-				<template is="dom-if" if="[[loading]]">
+				<template if="[[loading]]" is="dom-if">
 					<div id="loader"></div>
 				</template>
 			</app-header-layout>
@@ -172,19 +178,50 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			connectedCallback() {
 				super.connectedCallback();
+				this.setInvaders();
+				this.setMapStyles();
 				window.document.body.className = '';
-                window.document.body.style.backgroundColor = 'black';
+				window.document.body.style.backgroundColor = 'black';
 			}
 
 			_routePageChanged(page) {
-				this.page = page || 'map';
-				if (!this.$.drawer.persistent) {
+				console.log(page);
+				if (!this.routeData.page)
+					this.set('routeData.page', 'map');
+				if (!this.$.drawer.persistent)
 					this.$.drawer.close();
-				}
+				this.page = page || 'map';
 			}
 
 			_showPage404() {
 				this.page = 'view404';
+			}
+
+			setInvaders() {
+				fetch('locations.json').then(x => x.json().then(res => {
+					this.set('invaders', res.map(x => {
+						x.latitude = Number(x.latitude);
+						x.longitude = Number(x.longitude);
+						return x;
+					}));
+				})).catch(x => x.json().then(res => console.log(res)));
+			}
+
+			setMapStyles() {
+				let hours = new Date().getHours();
+				const isDayTime = hours > 7 && hours < 19;
+				fetch(this.resolveUrl('../mapStyles.json'))
+					.then(e => e.json().then(e => {
+						if (this.$.map && this.$.map.map) {
+							this.$.map.map.setOptions({
+								styles: isDayTime ? e.day : e.night
+							});
+						} else {
+							this.set('mapStyles', isDayTime ? e.day : e.night);
+						}
+					})).catch(error => {
+					console.warn(error);
+				});
 			}
 		}
 
