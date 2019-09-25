@@ -206,7 +206,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			</template>
 		<bottom-sheet id="sheet" class="center-bottom" no-cancel-on-outside-click>
 			<app-toolbar class="head">
-				<h2 main-title>[[currentInvader.name]]</h2>
+				<h2 main-title>[[currentInvader.name]] ([[currentInvader.points]] pts)</h2>
 				<paper-button class="control close" raised on-click="_closeSheet"><span>&#x274C;</span></paper-button>
 			</app-toolbar>
 			<skeleton-carousel dots="[[!mobile]]" nav="[[!mobile]]" loop auto direction="[[getDirection(mobile)]]">
@@ -220,7 +220,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					</iron-image>
 				</template>
 			</skeleton-carousel>
-			<paper-item>[[currentInvader.address]]</paper-item>
+			<paper-item>[[currentInvader.address]], [[currentInvader.city]]</paper-item>
+			<paper-item>last known state: [[currentInvader.state]] ([[currentInvader.reportDate]])</paper-item>
 			<paper-item>lat:[[currentInvader.latitude]] - lon:[[currentInvader.longitude]]</paper-item>
 		</bottom-sheet>
 			<div id="controls">
