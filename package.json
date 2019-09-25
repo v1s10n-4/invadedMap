@@ -16,6 +16,7 @@
     "prpl-server": "1.4.0"
   },
   "devDependencies": {
+    "htmldom2": "0.0.7",
     "browser-sync": "2.26.7",
     "eslint": "6.2.1",
     "eslint-config-google": "0.7.1",
