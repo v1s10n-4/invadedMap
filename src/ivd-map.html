@@ -304,7 +304,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			_pageChanged() {
 				if (window.google && this.page.path.length) {
 					this.set('currentInvader', this.invaders.find(i => i.name === this.page.path.substr(1)));
-					this.smoothZoom(this.$.map.map, 15, this.$.map.zoom);
+					this.smoothZoom(this.$.map.map, 19, this.$.map.zoom);
 					this.$.map.map.panTo(new google.maps.LatLng(this.currentInvader.latitude, this.currentInvader.longitude));
 					if (!this.$.sheet.opened) {
 						this.$.sheet.open();

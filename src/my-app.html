@@ -98,7 +98,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				data="{{routeData}}"
 				pattern="[[rootPath]]:page"
 				route="{{route}}"
-				tail="{{subroute}}"></app-route>
+				tail="{{subroute}}"
+				query-params="{{params}}"></app-route>
 
 		<app-drawer-layout fullbleed narrow="{{mobile}}">
 			<!-- Drawer content -->
@@ -106,6 +107,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				<app-toolbar>M3NU</app-toolbar>
 				<iron-selector attr-for-selected="name" class="drawer-list" role="navigation" selected="[[page]]">
 					<a href="[[rootPath]]map" name="map">1NV4D3R5 M4P</a>
+					<a href="[[rootPath]]list" name="list">4LL 1NV4D3R5</a>
 					<a href="[[rootPath]]highscore" name="highscore">H1GH5C0R3</a>
 					<a href="[[rootPath]]cities" name="cities">1NV4D3D C17135</a>
 				</iron-selector>
@@ -137,6 +139,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					</ivd-map>
 					<ivd-highscore data-path="ivd-highscore.html" mobile="[[mobile]]" name="highscore"></ivd-highscore>
 					<ivd-cities data-path="ivd-cities.html" mobile="[[mobile]]" name="cities"></ivd-cities>
+					<ivd-list data-path="ivd-list.html" mobile="[[mobile]]" name="list" list="{{list}}" params="{{params}}"></ivd-list>
 					<ivd-404 data-path="ivd-404.html" name="404"></ivd-404>
 				</iron-lazy-pages>
 
@@ -166,6 +169,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 						type: Array,
 						value: [],
 						notify: true
+					},
+					list: {
+						type: Array,
+						value: [],
+						notify: true
 					}
 				};
 			}
@@ -185,7 +193,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			_routePageChanged(page) {
-				console.log(page);
 				if (!this.routeData.page)
 					this.set('routeData.page', 'map');
 				if (!this.$.drawer.persistent)
@@ -205,6 +212,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 						return x;
 					}));
 				})).catch(x => x.json().then(res => console.log(res)));
+				fetch('invaders.json')
+					.then(x => x.json().then(res => this.set('list', res)))
+					.catch(x => x.json().then(res => console.log(res)));
+
 			}
 
 			setMapStyles() {

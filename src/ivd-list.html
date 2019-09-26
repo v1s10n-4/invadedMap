@@ -1,0 +1,450 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link href="../bower_components/polymer/polymer-element.html" rel="import">
+<link href="../bower_components/paper-item/paper-item.html" rel="import">
+<link href="../bower_components/paper-item/paper-item-body.html" rel="import">
+<link href="../bower_components/iron-icon/iron-icon.html" rel="import">
+<link href="../bower_components/paper-button/paper-button.html" rel="import">
+<link href="../bower_components/paper-search/paper-search-panel.html" rel="import">
+<link href="../bower_components/bottom-sheet/bottom-sheet.html" rel="import">
+<link href="../bower_components/cosmoz-image-viewer/cosmoz-image-viewer.html" rel="import">
+<link href="../bower_components/neon-animation/web-animations.html" rel="import">
+<link href="shared-styles.html" rel="import">
+
+<dom-module id="ivd-list">
+	<template>
+		<style include="shared-styles">
+			:host {
+				display: block;
+				margin: 0;
+				background-color: var(--app-primary-color);
+				padding-top: 1px;
+			}
+
+			:host * {
+				font-family: var(--app-fonts);
+			}
+
+			h1 {
+				color: var(--app-secondary-color);
+				font-size: 160%;
+			}
+
+			h2 {
+				color: var(--primary-text-color);
+			}
+
+			paper-item.list {
+				padding: 1em;
+				position: relative;
+				--paper-item-focused-before: {
+					opainvader: inherit;
+				};
+			}
+
+			paper-item.list::before, paper-item.list::after {
+				content: '';
+				display: block;
+				position: absolute;
+				background: var(--app-secondary-color);
+			}
+
+			paper-item[focused].list::after {
+				opacity: 0.12;
+			}
+
+			paper-item.list::before {
+				top: 12px;
+				bottom: 12px;
+				left: 1em;
+				right: 1em;
+			}
+
+			paper-item.list::after {
+				left: 12px;
+				right: 12px;
+				top: 1em;
+				bottom: 1em;
+			}
+
+			paper-item-body {
+				background-color: var(--app-primary-color);
+				color: var(--primary-text-color);
+				position: relative;
+				z-index: 1;
+				padding: 5px;
+			}
+
+			paper-item-body em {
+				color: var(--primary-text-color);
+			}
+
+			bottom-sheet {
+				width: 85%;
+				max-height: 80vh;
+				position: sticky;
+				--bottom-sheet-background-color: var(--app-primary-color);
+				--bottom-sheet-color: var(--app-secondary-color);
+				--bottom-sheet-label-color: var(--primary-text-color);
+				--arc-font-common-base: {
+					border-top: 2px solid var(--primary-text-color);
+					border-right: 2px solid var(--primary-text-color);
+					border-left: 2px solid var(--primary-text-color);
+				};
+				--bottom-sheet-scrollable: {
+					padding-top: 0;
+					max-width: 100%;
+					width: 100%;
+				}
+			}
+
+			@media (min-width: 640px) {
+				bottom-sheet {
+					width: 66%;
+				}
+			}
+
+			bottom-sheet app-toolbar {
+				padding: 0;
+			}
+
+			.control {
+				font-size: 30px;
+				min-width: inherit;
+				min-height: inherit;
+				width: 45px;
+				height: 45px;
+				left: 15px;
+				border-radius: 25px;
+				margin: 0;
+				padding: 0;
+				background-color: var(--app-primary-color);
+				color: var(--app-secondary-color);
+				--paper-button-raised-keyboard-focus: {
+					font-weight: inherit;
+				}
+			}
+
+			.control[pressed] {
+				color: var(--primary-text-color);
+			}
+
+			cosmoz-image-viewer {
+				width: 100%;
+				--cosmoz-image-viewer-image-zoom: {
+					height: 100%;
+					width: 100%;
+				};
+				--cosmoz-image-viewer-image: {
+					height: 100%;
+				}
+			}
+
+			iron-image {
+				width: 90px;
+				height: 90px;
+				z-index: 99;
+				border: 4px solid;
+				--iron-image-width: 90px;
+				--iron-image-height: 90px;
+			}
+
+			a.map-link {
+				color: var(--primary-text-color);
+				background-color: #000;
+				font-size: 42px;
+				text-decoration: none;
+				z-index: 1;
+				height: 98px;
+				line-height: 105px;
+				padding-inline-end: 20px;
+			}
+
+			a.map-link:visited {
+				color: #388338;
+			}
+
+			#results {
+				margin-top: 15px;
+				color: var(--app-secondary-color);
+				text-align: center;
+			}
+		</style>
+		<paper-search-panel
+				id="search"
+				count="{{count}}"
+				filters="[[filters]]"
+				has-more
+				items="[[list]]"
+				loading="[[loading]]"
+				on-change-request-params="loadData"
+				placeholder="Search invaders by name"
+				search="{{params.search}}"
+				selected-filters="{{selectedFilters}}">
+			<div id="results" fixed>[[resultsShown]] results shown for [[totalCount]] found ([[list.length]] in total)</div>
+			<template as="invader" id="list" is="dom-repeat" items="[[invaders]]">
+				<paper-item class="list" invader="[[currentInvader]]" on-click="openModal">
+					<iron-image placeholder="[[resolveUrl('../images/glitchy_invaders.gif')]]"
+								src="[[getUrl(invader.images.0)]]"
+								data-src="[[getUrl(invader.images.0)]]"
+								sizing="contain"
+								preload
+								fade>
+					</iron-image>
+					<paper-item-body style="position: relative" three-line>
+						<span>[[invader.name]]  [<em>[[invader.points]]</em> points]</span>
+						<span secondary>City: <em>[[invader.city]]</em></span>
+						<span secondary>Last known state: <em>[[invader.state]] ([[invader.reportDate]])</em></span>
+						<paper-ripple></paper-ripple>
+					</paper-item-body>
+					<template is="dom-if" if="[[invader.latitude]]">
+						<a href="/map/[[invader.name]]" class="map-link"> &#x21E8;</a>
+					</template>
+				</paper-item>
+			</template>
+		</paper-search-panel>
+
+		<bottom-sheet class="center-bottom" fit-into="[[self]]" id="sheet" no-cancel-on-outside-click>
+			<app-toolbar class="head">
+				<h2 main-title>[[currentInvader.name]]</h2>
+				<paper-button class="control" on-click="_closeSheet" raised><span>&#x274C;</span></paper-button>
+			</app-toolbar>
+			<template if="[[currentInvader.images.length]]" is="dom-if">
+				<cosmoz-image-viewer
+						auto
+						fade
+						id="viewer"
+						images="[[getUrl(currentInvader.images)]]"
+						loop
+						preload
+						show-detach="[[!mobile]]"
+						show-fullscreen
+						show-nav
+						show-page-number
+						show-zoom
+						sizing="contain">
+				</cosmoz-image-viewer>
+			</template>
+		</bottom-sheet>
+	</template>
+
+	<script>
+		class IVDList extends Polymer.Element {
+			static get is() {
+				return 'ivd-list';
+			}
+
+			static get properties() {
+				return {
+					list: {
+						type: Array,
+						value: [],
+						notify: true
+					},
+					selected: {
+						type: String,
+						observer: '_filter'
+					},
+					mobile: {
+						type: Boolean,
+						reflectToAttribute: true
+					}
+				};
+			}
+
+			connectedCallback() {
+				super.connectedCallback();
+				this.set('self', this);
+				this.set('filters', [
+					{
+						id: "city",
+						name: "City",
+						values: [
+							{id: "Aix - en - Provence", name: "Aix - en - Provence"},
+							{id: "Amsterdam", name: "Amsterdam"},
+							{id: "Anvers", name: "Anvers"},
+							{id: "Anzère", name: "Anzère"},
+							{id: "Avignon", name: "Avignon"},
+							{id: "Bilbao", name: "Bilbao"},
+							{id: "Bangkok", name: "Bangkok"},
+							{id: "Barcelona", name: "Barcelona"},
+							{id: "Berlin", name: "Berlin"},
+							{id: "Bern", name: "Bern"},
+							{id: "Basel", name: "Basel"},
+							{id: "Bhutan", name: "Bhutan"},
+							{id: "Bastia", name: "Bastia"},
+							{id: "Bruxelles", name: "Bruxelles"},
+							{id: "Cap Ferret", name: "Cap Ferret"},
+							{id: "Côte d'Azur", name: "Côte d'Azur"},
+							{id: "Cancún", name: "Cancún"},
+							{id: "Charleroi", name: "Charleroi"},
+							{id: "Clermont-Ferrand", name: "Clermont-Ferrand"},
+							{id: "Contis-Plage", name: "Contis-Plage"},
+							{id: "Dhaka", name: "Dhaka"},
+							{id: "Dijon", name: "Dijon"},
+							{id: "Daejeon", name: "Daejeon"},
+							{id: "Eilat", name: "Eilat"},
+							{id: "Faro", name: "Faro"},
+							{id: "Frankfurt", name: "Frankfurt"},
+							{id: "Forcalquier", name: "Forcalquier"},
+							{id: "Genève", name: "Genève"},
+							{id: "Grenoble", name: "Grenoble"},
+							{id: "Grumeti", name: "Grumeti"},
+							{id: "Grude", name: "Grude"},
+							{id: "Halmstad", name: "Halmstad"},
+							{id: "Hong Kong", name: "Hong Kong"},
+							{id: "Istanbul", name: "Istanbul"},
+							{id: "Katmandou", name: "Katmandou"},
+							{id: "Köln", name: "Köln"},
+							{id: "Los Angeles", name: "Los Angeles"},
+							{id: "Luberon", name: "Luberon"},
+							{id: "La Ciotat", name: "La Ciotat"},
+							{id: "London", name: "London"},
+							{id: "Lille", name: "Lille"},
+							{id: "Ljubljana", name: "Ljubljana"},
+							{id: "Lausanne", name: "Lausanne"},
+							{id: "Lyon", name: "Lyon"},
+							{id: "Manchester", name: "Manchester"},
+							{id: "Marseille", name: "Marseille"},
+							{id: "Mombasa", name: "Mombasa"},
+							{id: "Menorca", name: "Menorca"},
+							{id: "Miami", name: "Miami"},
+							{id: "Melbourne", name: "Melbourne"},
+							{id: "Málaga", name: "Málaga"},
+							{id: "Montpellier", name: "Montpellier"},
+							{id: "Marrakech", name: "Marrakech"},
+							{id: "Montauban", name: "Montauban"},
+							{id: "Nantes", name: "Nantes"},
+							{id: "Newcastle", name: "Newcastle"},
+							{id: "Nîmes", name: "Nîmes"},
+							{id: "Noordwijk", name: "Noordwijk"},
+							{id: "New York", name: "New York"},
+							{id: "Paris - 11ème arrondissement", name: "Paris - 11ème arrondissement"},
+							{id: "Paris - 4ème arrondissement", name: "Paris - 4ème arrondissement"},
+							{id: "Paris - 5ème arrondissement", name: "Paris - 5ème arrondissement"},
+							{id: "Paris - 6ème arrondissement", name: "Paris - 6ème arrondissement"},
+							{id: "Paris - 10ème arrondissement", name: "Paris - 10ème arrondissement"},
+							{id: "Paris - 20ème arrondissement", name: "Paris - 20ème arrondissement"},
+							{id: "Paris - 12ème arrondissement", name: "Paris - 12ème arrondissement"},
+							{id: "Paris - 13ème arrondissement", name: "Paris - 13ème arrondissement"},
+							{id: "Paris - 18ème arrondissement", name: "Paris - 18ème arrondissement"},
+							{id: "Paris - 2ème arrondissement", name: "Paris - 2ème arrondissement"},
+							{id: "Paris - 3ème arrondissement", name: "Paris - 3ème arrondissement"},
+							{id: "Paris - 1er arrondissement", name: "Paris - 1er arrondissement"},
+							{id: "Paris - 19ème arrondissement", name: "Paris - 19ème arrondissement"},
+							{id: "Paris - 15ème arrondissement", name: "Paris - 15ème arrondissement"},
+							{id: "Paris - 16ème arrondissement", name: "Paris - 16ème arrondissement"},
+							{id: "Paris - 14ème arrondissement", name: "Paris - 14ème arrondissement"},
+							{id: "Paris - 9ème arrondissement", name: "Paris - 9ème arrondissement"},
+							{id: "Paris - 7ème arrondissement", name: "Paris - 7ème arrondissement"},
+							{id: "Paris - 8ème arrondissement", name: "Paris - 8ème arrondissement"},
+							{id: "Paris - banlieue 94", name: "Paris - banlieue 94"},
+							{id: "Paris - banlieue 92", name: "Paris - banlieue 92"},
+							{id: "Paris - 17ème arrondissement", name: "Paris - 17ème arrondissement"},
+							{id: "Paris - banlieue 93", name: "Paris - banlieue 93"},
+							{id: "Paris - banlieue 77", name: "Paris - banlieue 77"},
+							{id: "Pau", name: "Pau"},
+							{id: "Perpignan", name: "Perpignan"},
+							{id: "Perth", name: "Perth"},
+							{id: "Ravenna", name: "Ravenna"},
+							{id: "Rabat", name: "Rabat"},
+							{id: "Redu", name: "Redu"},
+							{id: "Rennes", name: "Rennes"},
+							{id: "Roma", name: "Roma"},
+							{id: "Rotterdam", name: "Rotterdam"},
+							{id: "San Diego", name: "San Diego"},
+							{id: "São Paulo", name: "São Paulo"},
+							{id: "Tokyo", name: "Tokyo"},
+							{id: "Toulouse", name: "Toulouse"},
+							{id: "Valmorel", name: "Valmorel"},
+							{id: "Varanasi", name: "Varanasi"},
+							{id: "Versailles", name: "Versailles"},
+							{id: "Visby", name: "Visby"},
+							{id: "Wien", name: "Wien"}
+						]
+					},
+					{
+						id: "points",
+						name: "Points",
+						values: [
+							{id: "10", name: "10 points"},
+							{id: "20", name: "20 points"},
+							{id: "30", name: "30 points"},
+							{id: "40", name: "40 points"},
+							{id: "50", name: "50 points"},
+							{id: "100", name: "100 points"}
+						]
+					},
+					{
+						id: 'state',
+						name: 'State',
+						values: [
+							{id: 'OK', name: 'OK'},
+							{id: 'Un peu dégradé', name: 'A little degraded'},
+							{id: 'Dégradé', name: 'Degraded'},
+							{id: 'Très dégradé', name: 'Very degraded'},
+							{id: 'Détruit', name: 'Destroy'},
+							{id: 'Non visible', name: 'Non visible'},
+							{id: 'Inconnu', name: 'Unknown'}
+						]
+					}
+				]);
+				this.loadData({});
+				let searchIcon = this.$.search.$.paperSearchBar.shadowRoot.querySelector('.horizontal-holder iron-icon');
+				searchIcon.shadowRoot.innerHTML = '&#x01f50d';
+				searchIcon.style.fontSize = '30px';
+				searchIcon.style.paddingTop = '5px';
+				searchIcon.style.fontFamily = 'VG5000';
+				let moreBtn = this.$.search.shadowRoot.querySelector('paper-more-button');
+				moreBtn.style.color = '#fff';
+			}
+
+			loadData() {
+				this.dispatchEvent(new CustomEvent('iron-resize', {bubbles: true}));
+
+				let results = this.list;
+				for (let category in this.$.search.selectedFilters) {
+					let items = [];
+					for (let value in this.$.search.selectedFilters[category]) {
+						items = [...items, ...results.filter(invader => {
+							return invader[category] == this.$.search.selectedFilters[category][value];
+						})];
+					}
+					results = items;
+				}
+				results = results.filter(x => !!~x.name.indexOf(this.$.search.search));
+				this.set('totalCount', results.length);
+				this.set('invaders',results.slice(0, this.count));
+				this.set('resultsShown', results.length > this.count ? this.count : this.totalCount)
+			}
+
+			openModal(e) {
+				if (e.model.invader.images.length) {
+					this.set('currentInvader', e.model.invader);
+					this.$.sheet.open();
+				}
+			}
+
+			_closeSheet() {
+				this.$.sheet.close();
+			}
+
+			getUrl(name) {
+				if (typeof name == 'object')
+					return name.map(x => this.resolveUrl(`/images/invaders/${x}`));
+				return this.resolveUrl(`/images/invaders/${name}`);
+			}
+		}
+
+
+		window.customElements.define(IVDList.is, IVDList);
+	</script>
+</dom-module>

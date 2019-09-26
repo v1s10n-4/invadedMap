@@ -5,11 +5,13 @@
     "src/ivd-map.html",
     "src/ivd-highscore.html",
     "src/ivd-cities.html",
+    "src/ivd-list.html",
     "src/ivd-404.html"
   ],
   "sources": [
     "src/**/*",
     "locations.json",
+    "invaders.json",
     "cities.json",
     "mapStyles.json",
     "bower.json"

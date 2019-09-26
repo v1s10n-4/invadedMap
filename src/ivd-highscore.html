@@ -139,7 +139,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					.then(res => res.json()
 						.then(json => {
 							this.set('players', json.Players);
-							console.log(json);
 							let icon = this.$.sort.$.menuButton.querySelector('paper-input').querySelector('iron-icon');
 							icon.shadowRoot.innerHTML = '&#x25BC;';
 							icon.style.fontFamily = 'VG5000';
