@@ -11,12 +11,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link href="../bower_components/polymer/polymer-element.html" rel="import">
 <link href="../bower_components/paper-item/paper-item.html" rel="import">
 <link href="../bower_components/paper-item/paper-item-body.html" rel="import">
-<link href="../bower_components/iron-icon/iron-icon.html" rel="import">
+<link href="../bower_components/iron-image/iron-image.html" rel="import">
 <link href="../bower_components/paper-button/paper-button.html" rel="import">
 <link href="../bower_components/paper-search/paper-search-panel.html" rel="import">
 <link href="../bower_components/bottom-sheet/bottom-sheet.html" rel="import">
 <link href="../bower_components/cosmoz-image-viewer/cosmoz-image-viewer.html" rel="import">
 <link href="../bower_components/neon-animation/web-animations.html" rel="import">
+<link href="../bower_components/neon-animation/animations/slide-from-right-animation.html" rel="import">
+<link href="../bower_components/neon-animation/animations/slide-right-animation.html" rel="import">
 <link href="shared-styles.html" rel="import">
 
 <dom-module id="ivd-list">
@@ -177,29 +179,42 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				color: var(--app-secondary-color);
 				text-align: center;
 			}
+
+			paper-search-panel {
+				--background-color: var(--app-primary-color);
+				--disabled-text-color: var(--primary-text-color);
+				--input-styles: {
+					color: var(--primary-text-color);
+				};
+				--layout-vertical: {
+					--paper-filter-dialog-background-color: var(--app-primary-color);
+					--paper-filter-dialog: {
+						background-color: var(--app-primary-color);
+					}
+				}
+			}
 		</style>
 		<paper-search-panel
 				id="search"
 				count="{{count}}"
 				filters="[[filters]]"
-				has-more
+				has-more="[[isMore(resultsShown, totalCount)]]"
 				items="[[list]]"
 				loading="[[loading]]"
 				on-change-request-params="loadData"
 				placeholder="Search invaders by name"
-				search="{{params.search}}"
 				selected-filters="{{selectedFilters}}">
 			<div id="results" fixed>[[resultsShown]] results shown for [[totalCount]] found ([[list.length]] in total)</div>
 			<template as="invader" id="list" is="dom-repeat" items="[[invaders]]">
 				<paper-item class="list" invader="[[currentInvader]]" on-click="openModal">
-					<iron-image placeholder="[[resolveUrl('../images/glitchy_invaders.gif')]]"
+					<iron-image placeholder="[[resolveUrl('../images/glitchy_invaders_2.gif')]]"
 								src="[[getUrl(invader.images.0)]]"
 								data-src="[[getUrl(invader.images.0)]]"
 								sizing="contain"
 								preload
 								fade>
 					</iron-image>
-					<paper-item-body style="position: relative" three-line>
+					<paper-item-body three-line>
 						<span>[[invader.name]]  [<em>[[invader.points]]</em> points]</span>
 						<span secondary>City: <em>[[invader.city]]</em></span>
 						<span secondary>Last known state: <em>[[invader.state]] ([[invader.reportDate]])</em></span>
@@ -217,22 +232,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				<h2 main-title>[[currentInvader.name]]</h2>
 				<paper-button class="control" on-click="_closeSheet" raised><span>&#x274C;</span></paper-button>
 			</app-toolbar>
-			<template if="[[currentInvader.images.length]]" is="dom-if">
-				<cosmoz-image-viewer
-						auto
-						fade
-						id="viewer"
-						images="[[getUrl(currentInvader.images)]]"
-						loop
-						preload
-						show-detach="[[!mobile]]"
-						show-fullscreen
-						show-nav
-						show-page-number
-						show-zoom
-						sizing="contain">
-				</cosmoz-image-viewer>
-			</template>
+			<cosmoz-image-viewer
+					auto
+					fade
+					id="viewer"
+					images="[[getUrl(currentInvader.images)]]"
+					loop
+					preload
+					show-detach="[[!mobile]]"
+					show-fullscreen
+					show-nav
+					show-page-number
+					show-zoom
+					sizing="contain">
+			</cosmoz-image-viewer>
 		</bottom-sheet>
 	</template>
 
@@ -387,24 +400,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 						id: 'state',
 						name: 'State',
 						values: [
-							{id: 'OK', name: 'OK'},
-							{id: 'Un peu dégradé', name: 'A little degraded'},
-							{id: 'Dégradé', name: 'Degraded'},
-							{id: 'Très dégradé', name: 'Very degraded'},
-							{id: 'Détruit', name: 'Destroy'},
+							{id: 'OK', name: 'OK (Flashable)'},
+							{id: 'Un peu dégradé', name: 'A little degraded (Flashable)'},
+							{id: 'Dégradé', name: 'Degraded (Flashable)'},
+							{id: 'Très dégradé', name: 'Very degraded (Not flashable)'},
+							{id: 'Détruit', name: 'Destroy (Not flashable)'},
 							{id: 'Non visible', name: 'Non visible'},
 							{id: 'Inconnu', name: 'Unknown'}
 						]
 					}
 				]);
 				this.loadData({});
-				let searchIcon = this.$.search.$.paperSearchBar.shadowRoot.querySelector('.horizontal-holder iron-icon');
-				searchIcon.shadowRoot.innerHTML = '&#x01f50d';
-				searchIcon.style.fontSize = '30px';
-				searchIcon.style.paddingTop = '5px';
-				searchIcon.style.fontFamily = 'VG5000';
-				let moreBtn = this.$.search.shadowRoot.querySelector('paper-more-button');
-				moreBtn.style.color = '#fff';
 			}
 
 			loadData() {
@@ -423,13 +429,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				results = results.filter(x => !!~x.name.indexOf(this.$.search.search));
 				this.set('totalCount', results.length);
 				this.set('invaders',results.slice(0, this.count));
-				this.set('resultsShown', results.length > this.count ? this.count : this.totalCount)
+				this.set('resultsShown', results.length > this.count ? this.count : this.totalCount);
+				setTimeout(() => this.styleButtons(), 100);
 			}
 
 			openModal(e) {
 				if (e.model.invader.images.length) {
 					this.set('currentInvader', e.model.invader);
 					this.$.sheet.open();
+					let actions = this.$.viewer.shadowRoot.querySelectorAll('paper-icon-button');
+					actions[0].parentElement.style.fontSize = '27px';
+					actions[0].$.icon.shadowRoot.innerHTML = '&#x21e6;';
+					actions[1].$.icon.shadowRoot.innerHTML = '&#x21e8;';
+					actions[1].$.icon.shadowRoot.innerHTML = '&#x21e8;';
+					actions[2].$.icon.shadowRoot.innerHTML = '&#x01f50e;';
+					actions[3].$.icon.shadowRoot.innerHTML = '&#x2936;';
+					actions[4].$.icon.shadowRoot.innerHTML = '&#x01f6aa;';
+					actions[3].style.transform = 'rotate(180deg)';
 				}
 			}
 
@@ -441,6 +457,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				if (typeof name == 'object')
 					return name.map(x => this.resolveUrl(`/images/invaders/${x}`));
 				return this.resolveUrl(`/images/invaders/${name}`);
+			}
+
+			styleButtons() {
+				let searchIcon = this.$.search.$.paperSearchBar.shadowRoot.querySelector('.horizontal-holder iron-icon');
+				searchIcon.style.fontSize = '30px';
+				searchIcon.style.paddingTop = '5px';
+				searchIcon.shadowRoot.innerHTML = '&#x01f50d';
+				let filterIcon = this.$.search.$.paperSearchBar.shadowRoot.querySelector('#filter').$.icon;
+				filterIcon.style.fontSize = '30px';
+				filterIcon.shadowRoot.innerHTML = '&#x22d4;';
+				if (this.$.search.hasMore) {
+					let moreBtn = this.$.search.shadowRoot.querySelector('paper-more-button').shadowRoot.querySelector('paper-button');
+					moreBtn.style.color = '#fff';
+					moreBtn.style.border = '3px dashed #fff';
+					moreBtn.style.color = '#5f5';
+				}
+				if (this.$.search.search.length) {
+					let clearBtn = this.$.search.$.paperSearchBar.shadowRoot.querySelector('paper-icon-button[icon=clear]');
+					clearBtn.$.icon.shadowRoot.innerHTML = '&#x274C;';
+					clearBtn.style.fontSize = '27px';
+				}
+				let filterDialog = this.$.search.$.filterDialog;
+				filterDialog.$.dialog.entryAnimation = 'slide-from-right-animation';
+				filterDialog.$.dialog.exitAnimation = 'slide-right-animation';
+				filterDialog.$.dialog.style.backgroundColor = '#2A2A2A';
+				filterDialog.$.dialog.style.color = '#5f5';
+			}
+
+			isMore(count, total) {
+				return count !== total;
 			}
 		}
 

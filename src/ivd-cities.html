@@ -187,22 +187,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <h2 main-title>[[currentCity.name]]</h2>
                 <paper-button class="control" raised on-click="_closeSheet"><span>&#x274C;</span></paper-button>
             </app-toolbar>
-            <template is="dom-if" if="[[currentCity.images.length]]">
-                <cosmoz-image-viewer
-                        id="viewer"
-                        images="[[currentCity.images]]"
-                        show-nav
-                        show-zoom
-                        show-detach="[[!mobile]]"
-                        show-page-number
-                        show-fullscreen
-                        loop
-                        auto
-                        sizing="contain"
-                        preload
-                        fade>
-                </cosmoz-image-viewer>
-            </template>
+			<cosmoz-image-viewer
+					id="viewer"
+					images="[[currentCity.images]]"
+					show-nav
+					show-zoom
+					show-detach="[[!mobile]]"
+					show-page-number
+					show-fullscreen
+					loop
+					auto
+					sizing="contain"
+					preload
+					fade>
+			</cosmoz-image-viewer>
         </bottom-sheet>
     </template>
 
@@ -247,7 +245,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 if (e.model.city.images.length) {
                     this.set('currentCity', e.model.city);
                     this.$.sheet.open();
-                    // this.$.viewer.shadowRoot.querySelector('.actions > paper-icon-button:nth-child(1)').shadowRoot.querySelector('#icon').shadowRoot.innerHTML = '<';
+	                let actions = this.$.viewer.shadowRoot.querySelectorAll('paper-icon-button');
+	                actions[0].parentElement.style.fontSize = '27px';
+	                actions[0].$.icon.shadowRoot.innerHTML = '&#x21e6;';
+	                actions[1].$.icon.shadowRoot.innerHTML = '&#x21e8;';
+	                actions[1].$.icon.shadowRoot.innerHTML = '&#x21e8;';
+	                actions[2].$.icon.shadowRoot.innerHTML = '&#x01f50e;';
+	                actions[3].$.icon.shadowRoot.innerHTML = '&#x2936;';
+	                actions[4].$.icon.shadowRoot.innerHTML = '&#x01f6aa;';
+	                actions[3].style.transform = 'rotate(180deg)';
                 }
             }
 
