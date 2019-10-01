@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /invader.spotter.free.fr/
+Disallow: /space-invaders.com/
+Sitemap: http://invaded-map.com/sitemap.xml

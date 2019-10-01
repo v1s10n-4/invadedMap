@@ -1,4 +1,5 @@
-*.txt
+urls.books.txt
+urls.maps.txt
 README.md
 .travis.yml
 .eslintrc.json

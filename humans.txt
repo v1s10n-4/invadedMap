@@ -1,0 +1,18 @@
+/* TEAM */
+    Developer: v1s10n_4
+    Contact:
+        Github: vision-4
+        Twitter: @v1s10n_4
+    From: Paris, France.
+
+/* THANKS */
+    space-invaders.com
+    invader.spotter.free.fr
+    battleparis.com
+
+/* SITE */
+    Last update: 2019/42/42
+    Language: French
+    Standards: HTML5, CSS3, ES6
+    Components: ProgressiveWebApp (PWA), WebComponents, Google maps API
+    Software: Polymer, JetBrains IDE
