@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link href="../bower_components/polymer/polymer-element.html" rel="import">
+<link rel="stylesheet" href="https://zerofesse.zeroheight.com/api/design_tokens?auth=2NjmAdRonREik7RlNVaS7g&format=css&id=25222&dl=1">
 
 <!-- shared styles for all views -->
 <dom-module id="ivd-styles">
@@ -16,24 +17,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 		<style>
 			:host {
 				--app-fonts: 'VG5000', Helvetica, Arial, sans-serif;
-				--primary-text-color: #55FF55;
-				--primary-background-color: #000000;
-				--primary-border-color: #FFFFFF;
-				--secondary-text-color: #777777;
-				--secondary-background-color: #2A2A2A;
-				--secondary-border-color: #000000;
-				--tertiary-text-color: #FFFFFF;
+				--primary-text-color: var(--dark-primary-text-color);
+				--primary-background-color: var(--dark-primary-background-color);
+				--primary-border-color: var(--dark-primary-border-color);
+				--secondary-text-color: var(--dark-secondary-text-color);
+				--secondary-background-color: var(--dark-secondary-background-color);
+				--secondary-border-color: var(--dark-secondary-border-color);
+				--tertiary-text-color: var(--dark-tertiary-text-color);
 				--paper-font-common-base: {
 					font-family: var(--app-fonts);
+					transition: color .5s ease-in-out !important;
 				};
 				/*!* LIGHT THEME *!*/
 				/*--primary-text-color: #FF0000; !* text/buttons main color *!*/
 				/*--primary-background-color: #FFFFFF; !* background main color *!*/
 				/*--primary-border-color: #000000; !* list item *!*/
 				/*--secondary-text-color: #777777; !* labels / placeholders *!*/
-				/*--secondary-background-color: #DDD; !* Drawer *!*/
+				/*--secondary-background-color: #DDDDDD; !* Drawer *!*/
 				/*--secondary-border-color: #FFFFFF; !* list item image *!*/
 				/*--tertiary-text-color: #000000; !* results & menu links *!*/
+			}
+
+			* {
+				transition: color .5s ease-in-out, border-color .5s ease-in-out, background-color .5s ease-in-out !important;
 			}
 
 			h1 {

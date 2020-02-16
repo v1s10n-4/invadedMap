@@ -19,11 +19,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link href="../bower_components/iron-image/iron-image.html" rel="import">
 <link href="../bower_components/geo-location/geo-location.html" rel="import">
 <link href="../bower_components/skeleton-carousel/skeleton-carousel.html" rel="import">
-<link href="ivd-styles.html" rel="import">
 
 <dom-module id="ivd-map">
 	<template>
-		<style include="ivd-styles">
+		<style>
 			:host {
 				display: block;
 				margin: 0;
@@ -230,7 +229,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				<!--&#x29BE;-->
 				<!--&#x29BF;-->
 				<!--&#x2600;-->
-				<paper-button class="control" raised on-click="_centerMapOnUser"><span>&#x263C;</span></paper-button>
+				<paper-button class="control" raised on-click="_centerMapOnUser"><span>&#x2600;</span></paper-button>
 				<paper-button class="control" raised on-click="increaseZoom"><p>+</p></paper-button>
 				<paper-button class="control" raised on-click="decreaseZoom"><p>-</p></paper-button>
 			</div>

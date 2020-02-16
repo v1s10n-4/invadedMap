@@ -19,11 +19,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link href="../bower_components/neon-animation/web-animations.html" rel="import">
 <link href="../bower_components/neon-animation/animations/slide-from-right-animation.html" rel="import">
 <link href="../bower_components/neon-animation/animations/slide-right-animation.html" rel="import">
-<link href="ivd-styles.html" rel="import">
 
 <dom-module id="ivd-list">
 	<template>
-		<style include="ivd-styles">
+		<style>
 			:host {
 				display: block;
 				margin: 0;
@@ -460,6 +459,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			styleButtons() {
+				const styles = getComputedStyle(this);
 				let searchIcon = this.$.search.$.paperSearchBar.shadowRoot.querySelector('.horizontal-holder iron-icon');
 				searchIcon.style.fontSize = '30px';
 				searchIcon.style.paddingTop = '5px';
@@ -467,6 +467,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				let filterIcon = this.$.search.$.paperSearchBar.shadowRoot.querySelector('#filter').$.icon;
 				filterIcon.style.fontSize = '30px';
 				filterIcon.shadowRoot.innerHTML = '&#x22d4;';
+				if (!filterIcon.shadowRoot.onClick)
+					filterIcon.shadowRoot.onClick = this.styleButtons;
 				if (this.$.search.hasMore) {
 					let moreBtn = this.$.search.shadowRoot.querySelector('paper-more-button').shadowRoot.querySelector('paper-button');
 					moreBtn.style.color = '#fff';
@@ -481,8 +483,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				let filterDialog = this.$.search.$.filterDialog;
 				filterDialog.$.dialog.entryAnimation = 'slide-from-right-animation';
 				filterDialog.$.dialog.exitAnimation = 'slide-right-animation';
-				filterDialog.$.dialog.style.backgroundColor = '#2A2A2A';
-				filterDialog.$.dialog.style.color = 'var(--primary-text-color)';
+				filterDialog.$.dialog.style.backgroundColor = styles.getPropertyValue('--primary-background-color');
+				filterDialog.$.dialog.style.color = styles.getPropertyValue('--primary-text-color');
+				filterDialog.$.dialog.querySelector('app-toolbar').style.color = styles.getPropertyValue('--primary-text-color');
 			}
 
 			isMore(count, total) {

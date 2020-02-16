@@ -58,7 +58,8 @@ module.exports = {
 			handler: 'cacheFirst',
 			options: {
 				cache: {
-					name: 'SIAPI-highscores'
+					name: 'SIAPI-highscores',
+					maxAgeSeconds: 60 * 60 * 24
 				}
 			}
 		},
@@ -77,7 +78,8 @@ module.exports = {
 			options: {
 				cache: {
 					name: 'google-maps-cache',
-					maxEntries: 404042
+					maxEntries: 1000,
+					maxAgeSeconds: 60 * 60 * 24 * 30
 				}
 			}
 		},

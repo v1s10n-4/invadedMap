@@ -19,6 +19,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link href="../bower_components/app-route/app-route.html" rel="import">
 <link href="../bower_components/iron-lazy-pages/iron-lazy-pages.html" rel="import">
 <link href="../bower_components/iron-selector/iron-selector.html" rel="import">
+<link href="../bower_components/paper-button/paper-button.html" rel="import">
 <link href="../bower_components/paper-icon-button/paper-icon-button.html" rel="import">
 <link href="../bower_components/paper-spinner/paper-spinner.html" rel="import">
 <link href="my-icons.html" rel="import">
@@ -48,6 +49,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				--app-drawer-content-container: {
 					background-color: var(--secondary-background-color);
 					color: var(--primary-text-color);
+				}
+			}
+
+			paper-button {
+				--paper-button: {
+					font-size: 30px;
+					color: var(--tertiary-text-color);
+					min-width: 52px;
+					width: 52px;
+					height: 52px;
+					border-radius: 25px;
+					margin-right: 0;
 				}
 			}
 
@@ -101,7 +114,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 		<app-drawer-layout fullbleed narrow="{{mobile}}">
 			<!-- Drawer content -->
 			<app-drawer id="drawer" slot="drawer" swipe-open="[[mobile]]">
-				<app-toolbar>M3NU</app-toolbar>
+				<app-toolbar>
+					<div main-title>M3NU</div>
+					<paper-button on-click="_toggleTheme" on-hold="test" tabindex="-1">[[theme]]</paper-button>
+				</app-toolbar>
 				<iron-selector attr-for-selected="name" class="drawer-list" role="navigation" selected="[[page]]">
 					<a href="[[rootPath]]map" name="map">1NV4D3R5 M4P</a>
 					<a href="[[rootPath]]list" name="list">4LL 1NV4D3R5</a>
@@ -132,6 +148,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 							 map-styles="[[mapStyles]]"
 							 mobile="[[mobile]]"
 							 name="map"
+							 id="map"
 							 page="{{subroute}}">
 					</ivd-map>
 					<ivd-highscore data-path="ivd-highscore.html" mobile="[[mobile]]" name="highscore"></ivd-highscore>
@@ -171,6 +188,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 						type: Array,
 						value: [],
 						notify: true
+					},
+					theme: {
+						type: String,
+						value: '☼'
 					}
 				};
 			}
@@ -215,9 +236,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			}
 
-			setMapStyles() {
-				let hours = new Date().getHours();
-				const isDayTime = hours > 7 && hours < 19;
+			setMapStyles(mode) {
+				const hours = new Date().getHours();
+				const isDayTime = mode ? mode.value : (hours > 7 && hours < 19);
 				fetch(this.resolveUrl('../mapStyles.json'))
 					.then(e => e.json().then(e => {
 						if (this.$.map && this.$.map.map) {
@@ -230,6 +251,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 					})).catch(error => {
 					console.warn(error);
 				});
+			}
+
+			_toggleTheme() {
+				const theme = this.theme === '☽' ? 'dark' : 'light';
+				this.updateStyles({
+					'--primary-text-color': `var(--${theme}-primary-text-color)`,
+					'--primary-background-color': `var(--${theme}-primary-background-color)`,
+					'--primary-border-color': `var(--${theme}-primary-border-color)`,
+					'--secondary-text-color': `var(--${theme}-secondary-text-color)`,
+					'--secondary-background-color': `var(--${theme}-secondary-background-color)`,
+					'--secondary-border-color': `var(--${theme}-secondary-border-color)`,
+					'--tertiary-text-color': `var(--${theme}-tertiary-text-color)`,
+					'--tertiary-background-color': `var(--${theme}-tertiary-background-color)`,
+					'--tertiary-border-color': `var(--${theme}-tertiary-border-color)`,
+				});
+				this.setMapStyles({ value: this.theme === '☼'});
+				this.set('theme', this.theme === '☼' ? '☽' : '☼');
+				if (this.shadowRoot.querySelector('ivd-list').styleButtons)
+					this.shadowRoot.querySelector('ivd-list').styleButtons();
 			}
 		}
 
