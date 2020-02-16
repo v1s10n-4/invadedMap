@@ -16,21 +16,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 		<style>
 			:host {
 				--app-fonts: 'VG5000', Helvetica, Arial, sans-serif;
-				--app-primary-color: black;
-				--primary-color: #777777;
-				--app-secondary-color: white;
-				--primary-text-color: #55ff55;
-				--primary-background-color: black;
+				--primary-text-color: #55FF55;
+				--primary-background-color: #000000;
+				--primary-border-color: #FFFFFF;
 				--secondary-text-color: #777777;
-				--app-secondary-background-color: #2A2A2A;
+				--secondary-background-color: #2A2A2A;
+				--secondary-border-color: #000000;
+				--tertiary-text-color: #FFFFFF;
 				--paper-font-common-base: {
 					font-family: var(--app-fonts);
 				};
+				/*!* LIGHT THEME *!*/
+				/*--primary-text-color: #FF0000; !* text/buttons main color *!*/
+				/*--primary-background-color: #FFFFFF; !* background main color *!*/
+				/*--primary-border-color: #000000; !* list item *!*/
+				/*--secondary-text-color: #777777; !* labels / placeholders *!*/
+				/*--secondary-background-color: #DDD; !* Drawer *!*/
+				/*--secondary-border-color: #FFFFFF; !* list item image *!*/
+				/*--tertiary-text-color: #000000; !* results & menu links *!*/
 			}
 
 			h1 {
 				margin: 16px 0;
-				color: #212121;
+				color: var(--primary-text-color);
 				font-size: 22px;
 			}
 

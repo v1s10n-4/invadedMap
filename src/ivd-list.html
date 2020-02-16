@@ -27,7 +27,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			:host {
 				display: block;
 				margin: 0;
-				background-color: var(--app-primary-color);
+				background-color: var(--primary-background-color);
 				padding-top: 1px;
 			}
 
@@ -36,7 +36,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			h1 {
-				color: var(--app-secondary-color);
+				color: var(--tertiary-text-color);
 				font-size: 160%;
 			}
 
@@ -56,7 +56,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				content: '';
 				display: block;
 				position: absolute;
-				background: var(--app-secondary-color);
+				background: var(--primary-border-color);
 			}
 
 			paper-item[focused].list::after {
@@ -78,7 +78,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 			}
 
 			paper-item-body {
-				background-color: var(--app-primary-color);
+				background-color: var(--primary-background-color);
 				color: var(--primary-text-color);
 				position: relative;
 				z-index: 1;
@@ -93,8 +93,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				width: 85%;
 				max-height: 80vh;
 				position: sticky;
-				--bottom-sheet-background-color: var(--app-primary-color);
-				--bottom-sheet-color: var(--app-secondary-color);
+				--bottom-sheet-background-color: var(--primary-background-color);
+				--bottom-sheet-color: var(--tertiary-text-color);
 				--bottom-sheet-label-color: var(--primary-text-color);
 				--arc-font-common-base: {
 					border-top: 2px solid var(--primary-text-color);
@@ -128,8 +128,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				border-radius: 25px;
 				margin: 0;
 				padding: 0;
-				background-color: var(--app-primary-color);
-				color: var(--app-secondary-color);
+				background-color: var(--primary-background-color);
+				color: var(--tertiary-text-color);
 				--paper-button-raised-keyboard-focus: {
 					font-weight: inherit;
 				}
@@ -154,7 +154,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				width: 90px;
 				height: 90px;
 				z-index: 99;
-				border: 4px solid;
+				border: 4px solid var(--secondary-border-color);
 				--iron-image-width: 90px;
 				--iron-image-height: 90px;
 			}
@@ -176,20 +176,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			#results {
 				margin-top: 15px;
-				color: var(--app-secondary-color);
+				color: var(--tertiary-text-color);
 				text-align: center;
 			}
 
 			paper-search-panel {
-				--background-color: var(--app-primary-color);
+				--background-color: var(--primary-background-color);
 				--disabled-text-color: var(--primary-text-color);
 				--input-styles: {
 					color: var(--primary-text-color);
 				};
 				--layout-vertical: {
-					--paper-filter-dialog-background-color: var(--app-primary-color);
+					--paper-filter-dialog-background-color: var(--primary-background-color);
 					--paper-filter-dialog: {
-						background-color: var(--app-primary-color);
+						background-color: var(--primary-background-color);
 					}
 				}
 			}
@@ -470,8 +470,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				if (this.$.search.hasMore) {
 					let moreBtn = this.$.search.shadowRoot.querySelector('paper-more-button').shadowRoot.querySelector('paper-button');
 					moreBtn.style.color = '#fff';
-					moreBtn.style.border = '3px dashed #fff';
-					moreBtn.style.color = '#5f5';
+					moreBtn.style.border = '3px dashed var(--primary-border-color)';
+					moreBtn.style.color = 'var(--primary-text-color)';
 				}
 				if (this.$.search.search.length) {
 					let clearBtn = this.$.search.$.paperSearchBar.shadowRoot.querySelector('paper-icon-button[icon=clear]');
@@ -482,7 +482,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				filterDialog.$.dialog.entryAnimation = 'slide-from-right-animation';
 				filterDialog.$.dialog.exitAnimation = 'slide-right-animation';
 				filterDialog.$.dialog.style.backgroundColor = '#2A2A2A';
-				filterDialog.$.dialog.style.color = '#5f5';
+				filterDialog.$.dialog.style.color = 'var(--primary-text-color)';
 			}
 
 			isMore(count, total) {

@@ -46,13 +46,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			app-drawer {
 				--app-drawer-content-container: {
-					background-color: var(--app-secondary-background-color);
+					background-color: var(--secondary-background-color);
 					color: var(--primary-text-color);
 				}
-			}
-
-			.drawer-list a {
-				color: var(--app-primary-color);
 			}
 
 			.drawer-list a.iron-selected {
@@ -62,12 +58,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 			app-header {
 				color: var(--primary-text-color);
-				background-color: var(--app-primary-color);
+				background-color: var(--primary-background-color);
 			}
 
 			app-header paper-icon-button {
-				color: white;
-				--paper-icon-button-ink-color: var(--app-secondary-color);
+				color: var(--tertiary-text-color);
+				--paper-icon-button-ink-color: var(--tertiary-text-color);
 			}
 
 			.drawer-list {
@@ -78,7 +74,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 				display: block;
 				padding: 0 16px;
 				text-decoration: none;
-				color: var(--app-secondary-color);
+				color: var(--tertiary-text-color);
 				line-height: 40px;
 			}
 
