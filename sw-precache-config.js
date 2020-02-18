@@ -91,6 +91,15 @@ module.exports = {
 					name: 'fetch-polyfill'
 				}
 			}
-		}
+		},
+		{
+			urlPattern: /https:\/\/zerofesse.zeroheight.com\/api\/design_tokens\?auth=2NjmAdRonREik7RlNVaS7g&format=css&id=25222&dl=1/g,
+			handler: 'fastest',
+			options: {
+				cache: {
+					name: 'zeroheight'
+				}
+			}
+		},
 	],
 };
