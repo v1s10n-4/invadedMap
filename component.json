@@ -1,12 +1,13 @@
 {
-  "Light Primary Background Color": "#3070cd",
   "blue": "#3070cd",
+  "darkPrimaryBackgroundColor": "#2b3a43",
   "green": "#76cca5",
-  "grey-blueish-100": "#3c505d",
   "light-blue": "#66c6ed",
   "light-red": "#ff8686",
-  "lightHoveredBackgroundColor": "#3070cd",
-  "lightPrimaryTextColor": "#3070cd",
+  "lightFocusedBackgroundColor": "rgba(102, 198, 237, 0.2)",
+  "lightHoveredBackgroundColor": "rgba(102, 198, 237, 0.1)",
+  "lightPrimaryBackgroundColor": "#ffffff",
+  "lightSecondaryBackgroundColor": "#f6f9fb",
   "red": "#e75858",
   "yellow": "#efc657"
 }
