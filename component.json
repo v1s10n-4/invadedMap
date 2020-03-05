@@ -1,8 +1,12 @@
 {
+  "Light Primary Background Color": "#3070cd",
   "blue": "#3070cd",
   "green": "#76cca5",
+  "grey-blueish-100": "#3c505d",
   "light-blue": "#66c6ed",
   "light-red": "#ff8686",
+  "lightHoveredBackgroundColor": "#3070cd",
+  "lightPrimaryTextColor": "#3070cd",
   "red": "#e75858",
   "yellow": "#efc657"
 }
